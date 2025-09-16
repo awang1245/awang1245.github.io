@@ -1,0 +1,99 @@
+:root {
+  font-family: "Avenir LT", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  --light-blue: #f0f5fa;
+}
+
+body {
+  box-sizing: border-box;
+  color: black;
+  background-color: var(--light-blue);
+
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+p {
+  margin: 0;
+}
+
+.intro-section {
+  padding: 16px 64px;
+  border-bottom-style: solid;
+  border-color: black;
+  border-width: 1px;
+  top: 0px;
+  background-color: var(--light-blue);
+  position: sticky;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 300;
+  margin: 0;
+  padding: none;
+}
+
+.intro {
+}
+
+.handmade {
+  text-align: left;
+}
+
+.result-start {
+  text-align: center;
+}
+
+.result-end {
+  text-align: right;
+}
+
+.link-list {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.def-link,
+.def-link:visited {
+  color: black;
+  padding: 8px 64px;
+  text-decoration: none;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 96px;
+  border-bottom-style: solid;
+  border-color: darkgray;
+  border-width: 1px;
+}
+
+.def-link p {
+  font-weight: 300;
+  visibility: hidden;
+}
+
+.def-link h2 {
+  margin: 0;
+  font-size: 5em;
+  font-weight: 300;
+  text-wrap: nowrap;
+}
+
+.def-link:hover {
+  background-color: black;
+  color: var(--light-blue);
+}
+
+.def-link:hover > h2 {
+  font-style: italic;
+}
+
+.def-link:hover > p {
+  visibility: visible;
+}

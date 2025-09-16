@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-light.woff2") format("woff2"),
+    url("../public/fonts/avenir-light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-light-oblique.woff2") format("woff2"),
+    url("../public/fonts/avenir-light-oblique.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-book.woff2") format("woff2"),
+    url("../public/fonts/avenir-book.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-book-oblique.woff2") format("woff2"),
+    url("../public/fonts/avenir-book-oblique.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-roman.woff2") format("woff2"),
+    url("../public/fonts/avenir-roman.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-roman-oblique.woff2") format("woff2"),
+    url("../public/fonts/avenir-roman-oblique.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-medium.woff2") format("woff2"),
+    url("../public/fonts/avenir-medium.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-medium-oblique.woff2") format("woff2"),
+    url("../public/fonts/avenir-medium-oblique.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-medium.woff2") format("woff2"),
+    url("../public/fonts/avenir-medium.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir LT";
+  src: url("../public/fonts/avenir-medium-oblique.woff2") format("woff2"),
+    url("../public/fonts/avenir-medium-oblique.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
