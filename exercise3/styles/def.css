@@ -22,7 +22,7 @@ main a {
 
 h1 {
   /* width: 50%; */
-  font-size: 16rem;
+  font-size: 18vw;
   font-weight: 600;
   line-height: 1;
   margin: 0;
@@ -49,4 +49,17 @@ footer {
   border-top-style: solid;
   border-color: black;
   border-width: 1px;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .def-section {
+    border-top-style: solid;
+    border-color: black;
+    border-width: 1px;
+  }
 }
