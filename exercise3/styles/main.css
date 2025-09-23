@@ -52,7 +52,6 @@ h1 {
   padding: 16px 64px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
   gap: 64px;
   color: black;
@@ -87,8 +86,15 @@ h1 {
   display: block;
 }
 
-.index-link {
+a.index-link,
+p.name {
   color: blue;
+}
+
+a.index-link:hover,
+p.name:hover {
+  font-style: italic;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
