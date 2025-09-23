@@ -64,6 +64,8 @@ footer {
   }
 
   .index-button {
+    flex: 1;
+    justify-content: start;
     border-right-style: none;
   }
 }
