@@ -13,48 +13,98 @@
     <!--keywords/snippet for search engines-->
     <meta name="viewport" content="width=device-width" />
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
+    <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/def.css" />
   </head>
   <body>
-    <!--all the contents of an HTML document goes here-->
-    <a href="./index.html">
-      <p>&lt; Back to Start</p>
-    </a>
-    <h1><a href="./index.html">A Handmade Web</a>: Definition 01</h1>
-    <p>
-      <b>
-        I evoke the term 'handmade web' to refer to web pages coded by hand
-        rather than by software; web pages made and maintained by individuals
-        rather than by businesses or corporations; web pages which are
-        provisional, temporary, or one-of-a-kind; web pages which challenge
-        conventions of reading, writing, design, ownership, privacy, security,
-        or identity.</b
-      >
-    </p>
-    <p>
-      Handmade web pages flourished in the mid-to-late-1990s, in the brief
-      period after the academic web and before the corporate web.
-      &lsquo;Handmade&rsquo; is by no means the only or best term to define the
-      web of this period.
-    </p>
-    <p>
-      In her essay,
-      <a href="https://art.teleportacia.org/observation/vernacular/"
-        >A Vernacular Web</a
-      >
-      (2005), Olia Lialina describes the web of the mid-1990s as: bright, rich,
-      personal, slow and under construction. It was a web of sudden connections
-      and personal links. Pages were built on the edge of tomorrow, full of hope
-      for a faster connection and a more powerful computer... it was a web of
-      amateurs soon to be washed away by dot.com ambitions, professional
-      authoring tools and guidelines designed by usability experts.<br />For
-      more information on Olia Lialina and Dragan Espenschied's excellent
-      research on the amateur web, see:
-      <a href="https://blog.geocities.institute/about"
-        >One Terabyte of Kilobyte Age: Digging through the Geocities Torrent</a
-      >.
-    </p>
-    <a href="./def2.html">
-      <p>Definition 02 &gt;</p>
-    </a>
+    <nav>
+      <a href="./index.html" class="index-button"><p>A HANDMADE WEB</p></a>
+      <div class="nav-list">
+        <a href="./index.html" class="nav-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M5 12l4 4" />
+            <path d="M5 12l4 -4" />
+          </svg>
+          <p>HOME</p>
+        </a>
+        <a href="./def2.html" class="nav-button"
+          ><p>DEF 02</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M15 16l4 -4" />
+            <path d="M15 8l4 4" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <main>
+      <div class="head-section"><h1>DEF 01</h1></div>
+      <div class="def-section">
+        <p>
+          <b>
+            I evoke the term 'handmade web' to refer to web pages coded by hand
+            rather than by software; web pages made and maintained by
+            individuals rather than by businesses or corporations; web pages
+            which are provisional, temporary, or one-of-a-kind; web pages which
+            challenge conventions of reading, writing, design, ownership,
+            privacy, security, or identity.</b
+          >
+        </p>
+        <p>
+          Handmade web pages flourished in the mid-to-late-1990s, in the brief
+          period after the academic web and before the corporate web.
+          &lsquo;Handmade&rsquo; is by no means the only or best term to define
+          the web of this period.
+        </p>
+        <p>
+          In her essay,
+          <a href="https://art.teleportacia.org/observation/vernacular/"
+            >A Vernacular Web</a
+          >
+          (2005), Olia Lialina describes the web of the mid-1990s as: bright,
+          rich, personal, slow and under construction. It was a web of sudden
+          connections and personal links. Pages were built on the edge of
+          tomorrow, full of hope for a faster connection and a more powerful
+          computer... it was a web of amateurs soon to be washed away by dot.com
+          ambitions, professional authoring tools and guidelines designed by
+          usability experts.<br />For more information on Olia Lialina and
+          Dragan Espenschied's excellent research on the amateur web, see:
+          <a href="https://blog.geocities.institute/about"
+            >One Terabyte of Kilobyte Age: Digging through the Geocities
+            Torrent</a
+          >.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>Anna Wang</p>
+      <a href="../index.html" class="index"><p>Web as Medium 1 Index</p></a>
+    </footer>
   </body>
 </html>

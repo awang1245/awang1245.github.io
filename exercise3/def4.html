@@ -13,62 +13,112 @@
     <!--keywords/snippet for search engines-->
     <meta name="viewport" content="width=device-width" />
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
+    <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/def.css" />
   </head>
   <body>
-    <!--all the contents of an HTML document goes here-->
-    <a href="./def3.html">
-      <p>&lt; Definition 03</p>
-    </a>
-    <h1><a href="./index.html">A Handmade Web</a>: Definition 04</h1>
-    <p>
-      <b>
-        I evoke the term 'handmade web' in order to draw attention both to the
-        manual labour involved in the composition of web pages, and the
-        functioning of the web page itself as a 'manual', a 'handbook', a set of
-        instructions required for a computer program to run.</b
-      >
-    </p>
-    <p>
-      For most of its history web pages have been read on desktop or laptop
-      computers. Readers have had the option of right-clicking on any page,
-      selecting View Page Source, copying, pasting, and re-writing the source
-      code. In this manner, readers become writers.
-    </p>
-    <p>
-      In February 2015, Matthew Rothberg created a website called
-      <a href="https://github.com/mroth/unindexed">Unindexed</a>
-      which continuously searched Google for itself. It survived for 22 days
-      before being indexed, at which point it was permanently deleted. Rothberg
-      has since shared the
-      <a href="https://github.com/mroth/unindexed">source code on GitHub</a>, so
-      you too can create a website which self-destructs the moment Google
-      indexes it.
-    </p>
-    <p>
-      Dozens of readers have re-written the source code of Nick Montfort&rsquo;s
-      <a href="https://nickm.com/poems/taroko_gorge.html">Taroko Gorge</a>
-      (2008). For many, this was their first experience 'making' a
-      computer-generated text.
-    </p>
-    <p>
-      I have rewritten
-      <a href="https://nickm.com/poems/taroko_gorge.html">Taroko Gorge</a> three
-      times. Further to the close relation between the handmade web and
-      ephemeral print materials, excerpts of output and source code from the
-      first iteration,
-      <a href="https://luckysoap.com/generations/gorge.html">Gorge</a> (2010),
-      were published in my very small press print book
-      <a href="https://luckysoap.com/generations/generations.html"
-        >GENERATION[S]</a
-      >
-      (2010), which, I believe, is now only available as a PDF.
-      <a href="https://luckysoap.com/generations/gorge.html">Gorge</a> is a
-      never-ending tract of computer-generated text spewing verse
-      approximations, poetic paroxysms on food, consumption, decadence, and
-      desire.
-    </p>
-    <a href="./def5.html">
-      <p>Definition 05 &gt;</p>
-    </a>
+    <nav>
+      <a href="./index.html" class="index-button"><p>A HANDMADE WEB</p></a>
+      <div class="nav-list">
+        <a href="./def3.html" class="nav-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M5 12l4 4" />
+            <path d="M5 12l4 -4" />
+          </svg>
+          <p>DEF 03</p>
+        </a>
+        <a href="./def5.html" class="nav-button"
+          ><p>DEF 05</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M15 16l4 -4" />
+            <path d="M15 8l4 4" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <main>
+      <div class="head-section"><h1>DEF 04</h1></div>
+      <div class="def-section">
+        <p>
+          <b>
+            I evoke the term 'handmade web' in order to draw attention both to
+            the manual labour involved in the composition of web pages, and the
+            functioning of the web page itself as a 'manual', a 'handbook', a
+            set of instructions required for a computer program to run.</b
+          >
+        </p>
+        <p>
+          For most of its history web pages have been read on desktop or laptop
+          computers. Readers have had the option of right-clicking on any page,
+          selecting View Page Source, copying, pasting, and re-writing the
+          source code. In this manner, readers become writers.
+        </p>
+        <p>
+          In February 2015, Matthew Rothberg created a website called
+          <a href="https://github.com/mroth/unindexed">Unindexed</a>
+          which continuously searched Google for itself. It survived for 22 days
+          before being indexed, at which point it was permanently deleted.
+          Rothberg has since shared the
+          <a href="https://github.com/mroth/unindexed">source code on GitHub</a
+          >, so you too can create a website which self-destructs the moment
+          Google indexes it.
+        </p>
+        <p>
+          Dozens of readers have re-written the source code of Nick
+          Montfort&rsquo;s
+          <a href="https://nickm.com/poems/taroko_gorge.html">Taroko Gorge</a>
+          (2008). For many, this was their first experience 'making' a
+          computer-generated text.
+        </p>
+        <p>
+          I have rewritten
+          <a href="https://nickm.com/poems/taroko_gorge.html">Taroko Gorge</a>
+          three times. Further to the close relation between the handmade web
+          and ephemeral print materials, excerpts of output and source code from
+          the first iteration,
+          <a href="https://luckysoap.com/generations/gorge.html">Gorge</a>
+          (2010), were published in my very small press print book
+          <a href="https://luckysoap.com/generations/generations.html"
+            >GENERATION[S]</a
+          >
+          (2010), which, I believe, is now only available as a PDF.
+          <a href="https://luckysoap.com/generations/gorge.html">Gorge</a> is a
+          never-ending tract of computer-generated text spewing verse
+          approximations, poetic paroxysms on food, consumption, decadence, and
+          desire.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>Anna Wang</p>
+      <a href="../index.html" class="index"><p>Web as Medium 1 Index</p></a>
+    </footer>
   </body>
 </html>

@@ -13,32 +13,81 @@
     <!--keywords/snippet for search engines-->
     <meta name="viewport" content="width=device-width" />
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
+    <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/def.css" />
   </head>
   <body>
-    <!--all the contents of an HTML document goes here-->
-    <a href="./def5.html">
-      <p>&lt; Definition 05</p>
-    </a>
-    <h1><a href="./index.html">A Handmade Web</a>: Definition 06</h1>
-    <p>
-      <b>
-        I evoke the term 'handmade web' to suggest slowness and smallness as a
-        forms of resistance.</b
-      >
-    </p>
-    <p>
-      In today's highly commercialised web of multinational corporations,
-      proprietary applications, read-only devices, search algorithms, Content
-      Management Systems, WYSIWYG editors, and digital publishers it becomes an
-      increasingly radical act to hand-code and self-publish experimental web
-      art and writing projects.
-    </p>
-    <p>
-      The more proprietary, predatory, and puerile a place the web becomes, the
-      more committed I am to using it in poetic and intransigent ways.
-    </p>
-    <a href="./index.html">
-      <p>Back to Start &gt;</p>
-    </a>
+    <nav>
+      <a href="./index.html" class="index-button"><p>A HANDMADE WEB</p></a>
+      <div class="nav-list">
+        <a href="./def5.html" class="nav-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M5 12l4 4" />
+            <path d="M5 12l4 -4" />
+          </svg>
+          <p>DEF 05</p>
+        </a>
+        <a href="./index.html" class="nav-button"
+          ><p>HOME</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l14 0" />
+            <path d="M15 16l4 -4" />
+            <path d="M15 8l4 4" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <main>
+      <div class="head-section"><h1>DEF 06</h1></div>
+      <div class="def-section">
+        <p>
+          <b>
+            I evoke the term 'handmade web' to suggest slowness and smallness as
+            a forms of resistance.</b
+          >
+        </p>
+        <p>
+          In today's highly commercialised web of multinational corporations,
+          proprietary applications, read-only devices, search algorithms,
+          Content Management Systems, WYSIWYG editors, and digital publishers it
+          becomes an increasingly radical act to hand-code and self-publish
+          experimental web art and writing projects.
+        </p>
+        <p>
+          The more proprietary, predatory, and puerile a place the web becomes,
+          the more committed I am to using it in poetic and intransigent ways.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>Anna Wang</p>
+      <a href="../index.html" class="index"><p>Web as Medium 1 Index</p></a>
+    </footer>
   </body>
 </html>
