@@ -1,0 +1,52 @@
+main {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+main a {
+  text-decoration: underline;
+  color: blue;
+}
+
+.head-section,
+.def-section {
+  flex: 0 0 50%;
+}
+
+.head-section {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 24px 64px;
+}
+
+h1 {
+  /* width: 50%; */
+  font-size: 16rem;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+  padding: none;
+  /* position: fixed;
+  top: 97px;
+  left: 64px; */
+}
+
+.def-section {
+  padding: 40px 64px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+
+  border-left-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+footer {
+  border-top-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
