@@ -9,33 +9,44 @@
 }
 
 body {
+  background-color: white;
   width: 100vw;
+  height: 100vh;
   margin: 0;
-  padding: 48px 24px;
+  padding: 96px 48px;
   display: flex;
   flex-flow: row nowrap;
   gap: 96px;
 }
 
 .variation1 {
+  height: fit-content;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
 .mini-tri {
-  width: 0;
+  height: 32px;
+  width: 32px;
+  background-color: magenta;
+  mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
+  /* width: 0;
   height: 0;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-bottom: 32px solid magenta;
+  border-bottom: 32px solid magenta; */
 }
 
 div[class^="layer"] {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+
+div[class^="layer"] > .mini-tri:nth-last-child {
+  transform: scale(1.25);
 }
 
 .layer1 {
@@ -67,20 +78,21 @@ div[class^="layer"] {
 }
 
 .variation1:hover .mini-tri {
-  width: 0;
+  transform: rotate(45deg);
+  /* width: 0;
   height: 0;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
   border-bottom: none;
-  border-top: 32px solid teal;
+  border-top: 32px solid teal; */
 }
 
 .variation2 {
   display: flex;
   flex-flow: row nowrap;
   position: relative;
-  mix-blend-mode: multiply;
-  width: 400px;
+  width: 372px;
+  height: 400px;
 }
 
 .rect1 {
@@ -88,9 +100,10 @@ div[class^="layer"] {
   left: 0;
   width: 80px;
   height: 400px;
-  background: red;
-  transform: skewX(-20deg);
+  background: cyan;
+  transform: skewX(-16deg);
   transform-origin: bottom left;
+  z-index: 10;
 }
 
 .rect2 {
@@ -98,9 +111,11 @@ div[class^="layer"] {
   left: 0;
   width: 80px;
   height: 400px;
-  background: green;
-  transform: skewX(-16deg);
+  background: magenta;
+  transform: skewX(-20deg);
   transform-origin: bottom left;
+  mix-blend-mode: multiply;
+  z-index: 10;
 }
 
 .rect3 {
@@ -108,9 +123,11 @@ div[class^="layer"] {
   right: 0;
   width: 80px;
   height: 400px;
-  background: purple;
-  transform: skewX(20deg);
+  background: yellow;
+  transform: skewX(16deg);
   transform-origin: bottom right;
+  mix-blend-mode: multiply;
+  z-index: 5;
 }
 
 .rect4 {
@@ -118,9 +135,147 @@ div[class^="layer"] {
   right: 0;
   width: 80px;
   height: 400px;
-  background: yellow;
-  transform: skewX(16deg);
+  background: red;
+  transform: skewX(20deg);
   transform-origin: bottom right;
 }
 
-/* linear-gradient(90deg,rgba(213, 189, 255, 1) 0%, rgba(207, 255, 201, 1) 100%); */
+.rect5 {
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  width: 80px;
+  height: 160px;
+  background: cyan;
+  transform: skewX(20deg);
+  transform-origin: bottom right;
+}
+
+.rect6 {
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  width: 80px;
+  height: 160px;
+  background: yellow;
+  transform: skewX(24deg);
+  transform-origin: bottom right;
+  mix-blend-mode: multiply;
+}
+
+.variation2:hover {
+  filter: invert(1);
+}
+
+.variation3 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.stroke1 {
+  position: absolute;
+  left: 45px;
+  width: 50px;
+  height: 30px;
+  transform: rotate(0deg) skew(-60deg);
+  background: linear-gradient(
+    180deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
+  );
+}
+
+.stroke2 {
+  position: absolute;
+  left: 117px;
+  top: 0;
+  width: 40px;
+  height: 60px;
+  transform: rotate(0deg) skew(40deg);
+  z-index: 10;
+  background: linear-gradient(
+    0deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+}
+
+.stroke3 {
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 40px;
+  height: 50px;
+  transform: rotate(120deg) skew(50deg);
+  background: linear-gradient(
+    120deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+  z-index: 30;
+}
+
+.stroke4 {
+  position: absolute;
+  left: 17px;
+  top: 110px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(125deg) skew(-50deg);
+  background: linear-gradient(
+    120deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+}
+
+.stroke5 {
+  position: absolute;
+  left: 50px;
+  top: 138px;
+  width: 40px;
+  height: 60px;
+  transform: rotate(125deg) skew(20deg);
+  background: linear-gradient(
+    120deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+  z-index: 10;
+}
+
+.stroke6 {
+  position: absolute;
+  left: 132px;
+  top: 62px;
+  width: 61px;
+  height: 92px;
+  transform: rotate(50deg) skew(50deg);
+  background: linear-gradient(
+    20deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
+  );
+  z-index: 20;
+}
+
+.stroke7 {
+  position: absolute;
+  left: 103px;
+  top: 129px;
+  width: 38px;
+  height: 51px;
+  transform: rotate(100deg) skew(44deg);
+  background: linear-gradient(
+    30deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+  z-index: 10;
+}
+
+.variation3:hover {
+  transform: scale(1.5);
+  transition: 0.3s;
+}
