@@ -3,6 +3,7 @@
 }
 
 :root {
+  font-family: "Avenir LT", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -13,10 +14,123 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  padding: 96px 48px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  gap: 96px;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+[class^="nav-button"] {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+}
+
+[class^="nav-button"]:hover {
+  background-color: black;
+  color: white;
+  font-style: italic;
+}
+
+.nav-button-left {
+  border-right-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.nav-button-right {
+  border-left-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 24px;
+  height: 496px;
+  min-width: 448px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+@media screen and (min-width: 1345px) {
+  .grid-item {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  main > :nth-child(3n) {
+    border-right: 0;
+  }
+
+  main > :nth-last-child(-n + 3) {
+    border-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1344px) {
+  .grid-item {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main > :nth-child(2n) {
+    border-right: 0;
+  }
+
+  main > :nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 896px) {
+  .grid-item {
+    border-right: 0;
+    border-bottom: 1px solid black;
+  }
+
+  main {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  main > :nth-last-child(-n + 2) {
+    border-bottom: 1px solid black;
+  }
+
+  main > :last-child {
+    border-bottom: 0;
+  }
 }
 
 .variation1 {
@@ -28,15 +142,10 @@ body {
 }
 
 .mini-tri {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   background-color: magenta;
   mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
-  /* width: 0;
-  height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-bottom: 32px solid magenta; */
 }
 
 div[class^="layer"] {
@@ -50,42 +159,36 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 }
 
 .layer1 {
-  width: 32px;
+  width: 48px;
 }
 
 .layer2 {
-  width: 64px;
-}
-
-.layer3 {
   width: 96px;
 }
 
+.layer3 {
+  width: 144px;
+}
+
 .layer4 {
-  width: 128px;
-}
-
-.layer5 {
-  width: 160px;
-}
-
-.layer6 {
   width: 192px;
 }
 
-.layer7 {
-  width: 224px;
+.layer5 {
+  width: 240px;
 }
 
-.variation1:hover .mini-tri {
-  transform: rotate(45deg);
-  /* width: 0;
-  height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-bottom: none;
-  border-top: 32px solid teal; */
+.layer6 {
+  width: 288px;
 }
+
+.layer7 {
+  width: 336px;
+}
+
+/* .variation1:hover .mini-tri {
+  transform: rotate(45deg);
+} */
 
 .variation2 {
   display: flex;
@@ -163,21 +266,21 @@ div[class^="layer"] > .mini-tri:nth-last-child {
   mix-blend-mode: multiply;
 }
 
-.variation2:hover {
+/* .variation2:hover {
   filter: invert(1);
-}
+} */
 
 .variation3 {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 256px;
+  height: 300px;
 }
 
 .stroke1 {
   position: absolute;
-  left: 45px;
-  width: 50px;
-  height: 30px;
+  left: 40px;
+  width: 75px;
+  height: 45px;
   transform: rotate(0deg) skew(-60deg);
   background: linear-gradient(
     180deg,
@@ -188,10 +291,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke2 {
   position: absolute;
-  left: 117px;
+  left: 155.5px;
   top: 0;
-  width: 40px;
-  height: 60px;
+  width: 60px;
+  height: 90px;
   transform: rotate(0deg) skew(40deg);
   z-index: 10;
   background: linear-gradient(
@@ -203,10 +306,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke3 {
   position: absolute;
-  left: 50px;
-  top: 60px;
-  width: 40px;
-  height: 50px;
+  left: 55px;
+  top: 90px;
+  width: 60px;
+  height: 75px;
   transform: rotate(120deg) skew(50deg);
   background: linear-gradient(
     120deg,
@@ -218,10 +321,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke4 {
   position: absolute;
-  left: 17px;
-  top: 110px;
-  width: 40px;
-  height: 40px;
+  left: 5.5px;
+  top: 165px;
+  width: 60px;
+  height: 60px;
   transform: rotate(125deg) skew(-50deg);
   background: linear-gradient(
     120deg,
@@ -232,10 +335,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke5 {
   position: absolute;
-  left: 50px;
-  top: 138px;
-  width: 40px;
-  height: 60px;
+  left: 55px;
+  top: 207px;
+  width: 60px;
+  height: 90px;
   transform: rotate(125deg) skew(20deg);
   background: linear-gradient(
     120deg,
@@ -247,10 +350,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke6 {
   position: absolute;
-  left: 132px;
-  top: 62px;
-  width: 61px;
-  height: 92px;
+  left: 178px;
+  top: 93px;
+  width: 91.5px;
+  height: 138px;
   transform: rotate(50deg) skew(50deg);
   background: linear-gradient(
     20deg,
@@ -262,10 +365,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .stroke7 {
   position: absolute;
-  left: 103px;
-  top: 129px;
-  width: 38px;
-  height: 51px;
+  left: 134.5px;
+  top: 193.5px;
+  width: 57px;
+  height: 76.5px;
   transform: rotate(100deg) skew(44deg);
   background: linear-gradient(
     30deg,
@@ -275,7 +378,53 @@ div[class^="layer"] > .mini-tri:nth-last-child {
   z-index: 10;
 }
 
-.variation3:hover {
+/* .variation3:hover {
   transform: scale(1.5);
   transition: 0.3s;
+} */
+
+.variation4 {
+  position: relative;
+  height: 320px;
+  width: 400px;
+}
+
+.rect {
+  height: 100%;
+  width: 100%;
+  background: blue;
+}
+
+.cutout1 {
+  position: absolute;
+  left: 50px;
+  top: 80px;
+  background: white;
+  width: 160px;
+  height: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .def-link {
+    flex-flow: column nowrap;
+    align-items: start;
+    gap: 8px;
+  }
+
+  .def-link p {
+    padding-bottom: 12px;
+  }
+
+  h1,
+  .def-link h2 {
+    font-size: 4em;
+  }
+
+  .intro {
+    gap: 16px;
+  }
+
+  .intro p {
+    text-align: left;
+  }
 }
