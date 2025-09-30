@@ -36,31 +36,74 @@ nav {
   border-width: 1px;
 }
 
-[class^="nav-button"] {
+.nav-button {
   height: 100%;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
   padding: 24px 32px;
-}
 
-[class^="nav-button"]:hover {
-  background-color: black;
-  color: white;
-  font-style: italic;
-}
-
-.nav-button-left {
   border-right-style: solid;
   border-color: black;
   border-width: 1px;
 }
 
-.nav-button-right {
+a.work-index {
+  padding-right: 32px;
+}
+
+a.work-index:hover {
+  color: blue;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.nav-list {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+[class^="animation-button"] {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 32px;
+  gap: 8px;
+
   border-left-style: solid;
   border-color: black;
   border-width: 1px;
+}
+
+.animation-button-left {
+  padding-left: 24px;
+  padding-right: 32px;
+}
+
+.animation-button-right {
+  padding-left: 32px;
+  padding-right: 24px;
+}
+
+.nav-button:hover,
+[class^="animation-button"]:hover {
+  background-color: black;
+  color: white;
+  font-style: italic;
+}
+
+svg {
+  width: 32px;
+  height: auto;
+}
+
+[class^="animation-button"]:hover > svg {
+  transform: skewX(-12deg);
 }
 
 main {
@@ -159,10 +202,6 @@ div[class^="layer"] {
   justify-content: space-between;
 }
 
-div[class^="layer"] > .mini-tri:nth-last-child {
-  transform: scale(1.25);
-}
-
 .layer1 {
   width: 48px;
 }
@@ -191,9 +230,10 @@ div[class^="layer"] > .mini-tri:nth-last-child {
   width: 336px;
 }
 
-/* .variation1:hover .mini-tri {
+.grid-item:nth-child(3):hover .mini-tri {
   transform: rotate(45deg);
-} */
+  transition: 0.3s;
+}
 
 .variation2 {
   display: flex;
@@ -271,9 +311,9 @@ div[class^="layer"] > .mini-tri:nth-last-child {
   mix-blend-mode: multiply;
 }
 
-/* .variation2:hover {
+.grid-item:nth-child(5):hover > .variation2 {
   filter: invert(1);
-} */
+}
 
 .variation3 {
   position: relative;
@@ -601,19 +641,19 @@ div[class^="layer"] > .mini-tri:nth-last-child {
   background-color: black;
 }
 
-.variation5:hover > [class^="part"]:nth-child(3n + 1) {
+.grid-item:first-child:hover > .variation5 > [class^="part"]:nth-child(3n + 1) {
   top: 0;
   left: 0;
   transition: 0.5s;
 }
 
-.variation5:hover > [class^="part"]:nth-child(3n + 2) {
+.grid-item:first-child:hover > .variation5 > [class^="part"]:nth-child(3n + 2) {
   top: 96px;
   left: 96px;
   transition: 0.5s;
 }
 
-.variation5:hover > [class^="part"]:nth-child(3n) {
+.grid-item:first-child:hover > .variation5 > [class^="part"]:nth-child(3n) {
   top: 136px;
   left: 40px;
   transition: 0.5s;

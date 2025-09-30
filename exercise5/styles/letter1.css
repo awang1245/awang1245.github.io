@@ -1,0 +1,267 @@
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.variation5 {
+  position: relative;
+  width: 290px;
+  height: 250px;
+  transform: scale(2);
+}
+
+@keyframes v5A {
+  0% {
+    top: var(--y);
+    left: var(--x);
+  }
+  50% {
+    top: 0px;
+    left: 0px;
+  }
+  100% {
+    top: var(--y);
+    left: var(--x);
+  }
+}
+
+@keyframes v5B {
+  0% {
+    top: var(--y);
+    left: var(--x);
+  }
+  50% {
+    top: 96px;
+    left: 96px;
+  }
+  100% {
+    top: var(--y);
+    left: var(--x);
+  }
+}
+
+@keyframes v5C {
+  0% {
+    top: var(--y);
+    left: var(--x);
+  }
+  50% {
+    top: 136px;
+    left: 40px;
+  }
+  100% {
+    top: var(--y);
+    left: var(--x);
+  }
+}
+
+.part1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  --y: 0px;
+  --x: 0px;
+  border-bottom: 200px solid rgb(236, 92, 42);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part2 {
+  position: absolute;
+  top: 96px;
+  left: 96px;
+  --y: 96px;
+  --x: 96px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part3 {
+  position: absolute;
+  top: 136px;
+  left: 40px;
+  --y: 136px;
+  --x: 40px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(236, 92, 42);
+}
+
+.part4 {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  --y: 12px;
+  --x: 12px;
+  border-bottom: 200px solid rgb(64, 118, 218);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part5 {
+  position: absolute;
+  top: 108px;
+  left: 108px;
+  --y: 108px;
+  --x: 108px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part6 {
+  position: absolute;
+  top: 148px;
+  left: 52px;
+  --y: 148px;
+  --x: 52px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(64, 118, 218);
+}
+
+.part7 {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  --y: 24px;
+  --x: 24px;
+  border-bottom: 200px solid rgb(91, 178, 144);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part8 {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  --y: 120px;
+  --x: 120px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part9 {
+  position: absolute;
+  top: 160px;
+  left: 64px;
+  --y: 160px;
+  --x: 64px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(91, 178, 144);
+}
+
+.part10 {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  --y: 36px;
+  --x: 36px;
+  border-bottom: 200px solid rgb(255, 160, 203);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part11 {
+  position: absolute;
+  top: 132px;
+  left: 132px;
+  --y: 132px;
+  --x: 132px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part12 {
+  position: absolute;
+  top: 172px;
+  left: 76px;
+  --y: 172px;
+  --x: 76px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(255, 160, 203);
+}
+
+.part13 {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+  --y: 48px;
+  --x: 48px;
+  border-bottom: 200px solid black;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part14 {
+  position: absolute;
+  top: 144px;
+  left: 144px;
+  --y: 144px;
+  --x: 144px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part15 {
+  position: absolute;
+  top: 184px;
+  left: 88px;
+  --y: 184px;
+  --x: 88px;
+  width: 160px;
+  height: 48px;
+  background-color: black;
+}
+
+.variation5 > [class^="part"]:nth-child(3n + 1) {
+  animation-name: v5A;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.variation5 > [class^="part"]:nth-child(3n + 2) {
+  animation: v5B;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.variation5 > [class^="part"]:nth-child(3n) {
+  animation: v5C;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.variation5:hover > [class^="part"] {
+  animation-play-state: paused;
+  filter: blur(8px);
+}
