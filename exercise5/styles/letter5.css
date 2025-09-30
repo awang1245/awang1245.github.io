@@ -21,20 +21,34 @@ main {
 
 .rect1 {
   position: absolute;
-  /* left: 0; */
   width: 80px;
   height: 400px;
   background: cyan;
   transform: skewX(-16deg);
   transform-origin: bottom left;
   z-index: 10;
-  animation: rect1-transition 3s ease-in 1;
+  animation: rect1-transition 1s ease-in 1;
 }
 
 @keyframes rect1-transition {
   0% {
     left: 50vw;
     top: -100vh;
+  }
+
+  70% {
+    left: 0;
+    top: 0;
+  }
+
+  80% {
+    left: 4px;
+    top: 12px;
+  }
+
+  90% {
+    left: -2px;
+    top: -4px;
   }
 
   100% {
@@ -45,7 +59,8 @@ main {
 
 .rect2 {
   position: absolute;
-  left: 0;
+  left: 50vw;
+  top: -100vh;
   width: 80px;
   height: 400px;
   background: magenta;
@@ -53,11 +68,41 @@ main {
   transform-origin: bottom left;
   mix-blend-mode: multiply;
   z-index: 10;
+  animation: rect2-transition 1s ease-in 1 forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rect2-transition {
+  0% {
+    left: 50vw;
+    top: -100vh;
+  }
+
+  70% {
+    left: 0;
+    top: 0;
+  }
+
+  80% {
+    left: 4px;
+    top: 12px;
+  }
+
+  90% {
+    left: -2px;
+    top: -4px;
+  }
+
+  100% {
+    left: 0;
+    top: 0;
+  }
 }
 
 .rect3 {
   position: absolute;
-  right: 0;
+  right: 50vw;
+  top: -100vh;
   width: 80px;
   height: 400px;
   background: yellow;
@@ -65,37 +110,154 @@ main {
   transform-origin: bottom right;
   mix-blend-mode: multiply;
   z-index: 5;
+  animation: rect3-transition 1s ease-in 1 forwards;
+  animation-delay: 2s;
+}
+
+@keyframes rect3-transition {
+  0% {
+    right: 50vw;
+    top: -100vh;
+  }
+
+  70% {
+    right: 0;
+    top: 0;
+  }
+
+  80% {
+    right: 4px;
+    top: 12px;
+  }
+
+  90% {
+    right: -2px;
+    top: -4px;
+  }
+
+  100% {
+    right: 0;
+    top: 0;
+  }
 }
 
 .rect4 {
   position: absolute;
-  right: 0;
+  right: 50vw;
+  top: -100vh;
   width: 80px;
   height: 400px;
   background: red;
   transform: skewX(20deg);
   transform-origin: bottom right;
+  animation: rect4-transition 1s ease-in 1 forwards;
+  animation-delay: 3s;
+}
+
+@keyframes rect4-transition {
+  0% {
+    right: 50vw;
+    top: -100vh;
+  }
+
+  70% {
+    right: 0;
+    top: 0;
+  }
+
+  80% {
+    right: 4px;
+    top: 12px;
+  }
+
+  90% {
+    right: -2px;
+    top: -4px;
+  }
+
+  100% {
+    right: 0;
+    top: 0;
+  }
 }
 
 .rect5 {
   position: absolute;
-  bottom: 0;
-  right: 80px;
+  right: 50vw;
+  bottom: 100vh;
   width: 80px;
   height: 160px;
   background: cyan;
   transform: skewX(20deg);
   transform-origin: bottom right;
+  animation: rect5-transition 1s ease-in 1 forwards;
+  animation-delay: 5s;
+}
+
+@keyframes rect5-transition {
+  0% {
+    right: 50vw;
+    bottom: 100vh;
+  }
+
+  70% {
+    right: 80px;
+    bottom: 0;
+  }
+
+  80% {
+    right: 76px;
+    bottom: 12px;
+  }
+
+  90% {
+    right: 82px;
+    bottom: 4px;
+  }
+
+  100% {
+    right: 80px;
+    bottom: 0;
+  }
 }
 
 .rect6 {
   position: absolute;
-  bottom: 0;
-  right: 80px;
+  right: 50vw;
+  bottom: 100vh;
   width: 80px;
   height: 160px;
   background: yellow;
   transform: skewX(24deg);
   transform-origin: bottom right;
   mix-blend-mode: multiply;
+  animation: rect6-transition 1s ease-in 1 forwards;
+  animation-delay: 4s;
+}
+
+@keyframes rect6-transition {
+  0% {
+    right: 50vw;
+    bottom: 100vh;
+  }
+
+  70% {
+    right: 80px;
+    bottom: 0;
+  }
+
+  80% {
+    right: 76px;
+    bottom: 12px;
+  }
+
+  90% {
+    right: 82px;
+    bottom: 4px;
+  }
+
+  100% {
+    right: 80px;
+    bottom: 0;
+  }
 }
