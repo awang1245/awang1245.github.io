@@ -19,36 +19,40 @@ main {
 
 .cutout1-test {
   position: absolute;
-  left: 88px;
-  bottom: 64px;
-  border-left: 128px solid red;
-  height: 136px;
+  left: 32px;
+  bottom: 32px;
+  border-top: 80px solid transparent;
+  border-right: 176px solid red;
+  height: 200px;
   width: 0;
 }
 
 .cutout2-test {
   position: absolute;
   top: 0;
-  border-right: 300px solid red;
-  height: 56px;
+  border-bottom: 144px solid transparent;
+  border-left: 300px solid red;
+  height: 144px;
   width: 0;
 }
 
 .cutout3-test {
   position: absolute;
   top: 0;
-  right: 72px;
-  border-right: 24px solid red;
-  height: 200px;
+  right: 88px;
+  border-bottom: 24px solid transparent;
+  border-right: 16px solid red;
+  height: 180px;
   width: 0;
 }
 
 .cutout4-test {
   position: absolute;
   bottom: 0;
-  right: 72px;
-  border-left: 24px solid red;
-  height: 64px;
+  right: 88px;
+  border-top: 24px solid transparent;
+  border-left: 16px solid red;
+  height: 80px;
   width: 0;
 }
 
@@ -88,24 +92,22 @@ main {
   }
 
   50% {
-    left: 120px;
-    bottom: 72px;
+    left: 104px;
+    bottom: 56px;
     border-top: 40px solid transparent;
     border-bottom: 0px solid transparent;
     border-left: 0px solid transparent;
-    border-right: 112px solid white;
-    height: 136px;
+    border-right: 120px solid white;
+    height: 160px;
     width: 0;
   }
 
   75% {
-    left: 88px;
-    bottom: 64px;
-    border-top: 0px solid transparent;
-    border-bottom: 0px solid transparent;
-    border-left: 0px solid transparent;
-    border-right: 128px solid white;
-    height: 136px;
+    left: 24px;
+    bottom: 24px;
+    border-top: 88px solid transparent;
+    border-right: 208px solid white;
+    height: 216px;
     width: 0;
   }
 
@@ -165,11 +167,9 @@ main {
 
   75% {
     top: 0;
-    border-bottom: 0px solid transparent;
-    border-top: 0px solid transparent;
-    border-left: 0px solid transparent;
-    border-right: 320px solid white;
-    height: 56px;
+    border-bottom: 144px solid transparent;
+    border-left: 330px solid white;
+    height: 144px;
     width: 0;
   }
 
@@ -232,9 +232,9 @@ main {
 
   75% {
     top: 0;
-    right: 72px;
+    right: 64px;
     border-right: 24px solid white;
-    height: 200px;
+    height: 216px;
     width: 0;
   }
 
@@ -298,9 +298,9 @@ main {
 
   75% {
     bottom: 0;
-    right: 72px;
+    right: 64px;
     border-left: 24px solid white;
-    height: 64px;
+    height: 72px;
     width: 0;
   }
 
