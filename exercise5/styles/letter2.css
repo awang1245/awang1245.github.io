@@ -17,7 +17,7 @@ main {
   background: blue;
 }
 
-.cutout1-test {
+/* .cutout1-test {
   position: absolute;
   left: 32px;
   bottom: 32px;
@@ -54,7 +54,7 @@ main {
   border-left: 16px solid red;
   height: 80px;
   width: 0;
-}
+} */
 
 .cutout1 {
   position: absolute;
@@ -64,6 +64,10 @@ main {
   border-right: 112px solid white;
   height: 136px;
   width: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   animation: c1 5s ease-in-out infinite;
 }
@@ -314,4 +318,14 @@ main {
     height: 80px;
     width: 0;
   }
+}
+
+.smiley {
+  visibility: hidden;
+  font-size: 48px;
+  padding-left: 120px;
+}
+
+.cutout1:hover > .smiley {
+  visibility: visible;
 }

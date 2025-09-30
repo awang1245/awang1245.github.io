@@ -313,6 +313,7 @@ div[class^="layer"] {
 
 .grid-item:nth-child(5):hover > .variation2 {
   filter: invert(1);
+  transition: 0.5s;
 }
 
 .variation3 {
@@ -479,11 +480,57 @@ div[class^="layer"] {
   width: 0;
 }
 
+.grid-item:nth-child(2):hover > .variation4 > .cutout1 {
+  left: 96px;
+  bottom: 16px;
+  border-top: 60px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-left: 0px solid transparent;
+  border-right: 168px solid white;
+  height: 216px;
+  width: 0;
+  transition: 0.3s;
+}
+
+.grid-item:nth-child(2):hover > .variation4 > .cutout2 {
+  top: 0;
+  border-bottom: 112px solid transparent;
+  border-top: 0px solid transparent;
+  border-left: 290px solid white;
+  border-right: 0px solid transparent;
+  height: 168px;
+  width: 0;
+  transition: 0.3s;
+}
+
+.grid-item:nth-child(2):hover > .variation4 > .cutout3 {
+  top: 0;
+  right: 104px;
+  border-bottom: 24px solid transparent;
+  border-top: 0px solid transparent;
+  border-left: 0px solid transparent;
+  border-right: 12px solid white;
+  height: 216px;
+  width: 0;
+  transition: 0.3s;
+}
+
+.grid-item:nth-child(2):hover > .variation4 > .cutout4 {
+  bottom: 0;
+  right: 104px;
+  border-top: 24px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-right: 0px solid transparent;
+  border-left: 12px solid white;
+  height: 88px;
+  width: 0;
+  transition: 0.3s;
+}
+
 .variation5 {
   position: relative;
   width: 290px;
   height: 250px;
-  /* filter: blur(8px); */
 }
 
 .part1 {
