@@ -17,6 +17,24 @@ main {
   background: blue;
 }
 
+.variation4:hover > .rect {
+  background: linear-gradient(300deg, blue, #ffdcf1, #d4c4ff);
+  background-size: 180% 180%;
+  animation: blue-gradient 12s ease infinite;
+}
+
+@keyframes blue-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* .cutout1-test {
   position: absolute;
   left: 32px;
@@ -64,10 +82,6 @@ main {
   border-right: 112px solid white;
   height: 136px;
   width: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   animation: c1 5s ease-in-out infinite;
 }
@@ -318,14 +332,4 @@ main {
     height: 80px;
     width: 0;
   }
-}
-
-.smiley {
-  visibility: hidden;
-  font-size: 48px;
-  padding-left: 120px;
-}
-
-.cutout1:hover > .smiley {
-  visibility: visible;
 }
