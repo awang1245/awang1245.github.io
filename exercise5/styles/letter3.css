@@ -38,6 +38,7 @@ main {
 }
 
 .mini-tri:hover {
+  background-color: greenyellow;
   animation: fast-spin 1s linear infinite;
 }
 
