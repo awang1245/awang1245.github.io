@@ -76,6 +76,7 @@ main {
   padding: 0px 24px;
   height: 496px;
   min-width: 448px;
+  background-color: white;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
 }
@@ -131,6 +132,10 @@ main {
   main > :last-child {
     border-bottom: 0;
   }
+}
+
+.grid-item:hover {
+  filter: brightness(75%);
 }
 
 .variation1 {
@@ -397,11 +402,221 @@ div[class^="layer"] > .mini-tri:nth-last-child {
 
 .cutout1 {
   position: absolute;
-  left: 50px;
-  top: 80px;
-  background: white;
+  left: 120px;
+  bottom: 72px;
+  border-top: 40px solid transparent;
+  border-right: 112px solid white;
+  height: 136px;
+  width: 0;
+}
+
+.cutout2 {
+  position: absolute;
+  top: 0;
+  border-bottom: 112px solid transparent;
+  border-left: 300px solid white;
+  height: 144px;
+  width: 0;
+}
+
+.cutout3 {
+  position: absolute;
+  top: 0;
+  right: 88px;
+  border-bottom: 24px solid transparent;
+  border-right: 16px solid white;
+  height: 180px;
+  width: 0;
+}
+
+.cutout4 {
+  position: absolute;
+  bottom: 0;
+  right: 88px;
+  border-top: 24px solid transparent;
+  border-left: 16px solid white;
+  height: 80px;
+  width: 0;
+}
+
+.variation5 {
+  position: relative;
+  width: 290px;
+  height: 250px;
+  /* filter: blur(8px); */
+}
+
+.part1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 200px solid rgb(236, 92, 42);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part2 {
+  position: absolute;
+  top: 96px;
+  left: 96px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part3 {
+  position: absolute;
+  top: 136px;
+  left: 40px;
   width: 160px;
-  height: 60px;
+  height: 48px;
+  background-color: rgb(236, 92, 42);
+}
+
+.part4 {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border-bottom: 200px solid rgb(64, 118, 218);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part5 {
+  position: absolute;
+  top: 108px;
+  left: 108px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part6 {
+  position: absolute;
+  top: 148px;
+  left: 52px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(64, 118, 218);
+}
+
+.part7 {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  border-bottom: 200px solid rgb(91, 178, 144);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part8 {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part9 {
+  position: absolute;
+  top: 160px;
+  left: 64px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(91, 178, 144);
+}
+
+.part10 {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  border-bottom: 200px solid rgb(255, 160, 203);
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part11 {
+  position: absolute;
+  top: 132px;
+  left: 132px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part12 {
+  position: absolute;
+  top: 172px;
+  left: 76px;
+  width: 160px;
+  height: 48px;
+  background-color: rgb(255, 160, 203);
+}
+
+.part13 {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+  border-bottom: 200px solid black;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  height: 0;
+  width: 240px;
+}
+
+.part14 {
+  position: absolute;
+  top: 144px;
+  left: 144px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 104px solid white;
+}
+
+.part15 {
+  position: absolute;
+  top: 184px;
+  left: 88px;
+  width: 160px;
+  height: 48px;
+  background-color: black;
+}
+
+.variation5:hover > [class^="part"]:nth-child(3n + 1) {
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+.variation5:hover > [class^="part"]:nth-child(3n + 2) {
+  top: 96px;
+  left: 96px;
+  transition: 0.5s;
+}
+
+.variation5:hover > [class^="part"]:nth-child(3n) {
+  top: 136px;
+  left: 40px;
+  transition: 0.5s;
 }
 
 @media screen and (max-width: 768px) {
