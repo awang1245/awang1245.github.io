@@ -43,6 +43,7 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 24px 32px;
+  text-wrap: nowrap;
 
   border-right-style: solid;
   border-color: black;
@@ -73,6 +74,7 @@ a.work-index:hover {
   justify-content: center;
   padding: 0px 32px;
   gap: 8px;
+  text-wrap: nowrap;
 
   border-left-style: solid;
   border-color: black;
