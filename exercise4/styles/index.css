@@ -177,7 +177,7 @@ main {
   }
 }
 
-.grid-item:hover {
+a.grid-item:hover {
   filter: brightness(75%);
 }
 
