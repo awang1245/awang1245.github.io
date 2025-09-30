@@ -241,6 +241,7 @@ div[class^="layer"] {
   position: relative;
   width: 372px;
   height: 400px;
+  transform: scale(0.9);
 }
 
 .rect1 {
