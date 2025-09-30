@@ -56,7 +56,6 @@ a.work-index {
 a.work-index:hover {
   color: blue;
   text-decoration: underline;
-  font-style: italic;
 }
 
 .nav-list {
@@ -94,14 +93,10 @@ a.work-index:hover {
 [class^="animation-button"]:hover {
   background-color: black;
   color: white;
-  font-style: italic;
+  transition: 0.3s;
 }
 
 svg {
   width: 32px;
   height: auto;
-}
-
-[class^="animation-button"]:hover > svg {
-  transform: skewX(-12deg);
 }
