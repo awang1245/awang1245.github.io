@@ -19,7 +19,7 @@ main {
   width: 48px;
   background-color: magenta;
   mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
-  animation: spin 4s ease-in infinite;
+  animation: spin 4s ease-in-out infinite;
   display: block;
 }
 
