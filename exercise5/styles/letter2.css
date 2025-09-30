@@ -1,0 +1,317 @@
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.variation4 {
+  position: relative;
+  height: 320px;
+  width: 400px;
+}
+
+.rect {
+  height: 100%;
+  width: 100%;
+  background: blue;
+}
+
+.cutout1-test {
+  position: absolute;
+  left: 88px;
+  bottom: 64px;
+  border-left: 128px solid red;
+  height: 136px;
+  width: 0;
+}
+
+.cutout2-test {
+  position: absolute;
+  top: 0;
+  border-right: 300px solid red;
+  height: 56px;
+  width: 0;
+}
+
+.cutout3-test {
+  position: absolute;
+  top: 0;
+  right: 72px;
+  border-right: 24px solid red;
+  height: 200px;
+  width: 0;
+}
+
+.cutout4-test {
+  position: absolute;
+  bottom: 0;
+  right: 72px;
+  border-left: 24px solid red;
+  height: 64px;
+  width: 0;
+}
+
+.cutout1 {
+  position: absolute;
+  left: 120px;
+  bottom: 72px;
+  border-top: 40px solid transparent;
+  border-right: 112px solid white;
+  height: 136px;
+  width: 0;
+
+  animation: c1 5s ease-in-out infinite;
+}
+
+@keyframes c1 {
+  0% {
+    left: 120px;
+    bottom: 72px;
+    border-top: 40px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 112px solid white;
+    height: 136px;
+    width: 0;
+  }
+
+  25% {
+    left: 96px;
+    bottom: 16px;
+    border-top: 60px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 168px solid white;
+    height: 216px;
+    width: 0;
+  }
+
+  50% {
+    left: 120px;
+    bottom: 72px;
+    border-top: 40px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 112px solid white;
+    height: 136px;
+    width: 0;
+  }
+
+  75% {
+    left: 88px;
+    bottom: 64px;
+    border-top: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 128px solid white;
+    height: 136px;
+    width: 0;
+  }
+
+  100% {
+    left: 120px;
+    bottom: 72px;
+    border-top: 40px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 112px solid white;
+    height: 136px;
+    width: 0;
+  }
+}
+
+.cutout2 {
+  position: absolute;
+  top: 0;
+  border-bottom: 112px solid transparent;
+  border-left: 300px solid white;
+  height: 144px;
+  width: 0;
+
+  animation: c2 5s infinite;
+}
+
+@keyframes c2 {
+  0% {
+    top: 0;
+    border-bottom: 112px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 300px solid white;
+    border-right: 0px solid transparent;
+    height: 144px;
+    width: 0;
+  }
+
+  25% {
+    top: 0;
+    border-bottom: 112px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 290px solid white;
+    border-right: 0px solid transparent;
+    height: 168px;
+    width: 0;
+  }
+
+  50% {
+    top: 0;
+    border-bottom: 112px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 300px solid white;
+    border-right: 0px solid transparent;
+    height: 144px;
+    width: 0;
+  }
+
+  75% {
+    top: 0;
+    border-bottom: 0px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 320px solid white;
+    height: 56px;
+    width: 0;
+  }
+
+  100% {
+    top: 0;
+    border-bottom: 112px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 300px solid white;
+    border-right: 0px solid transparent;
+    height: 144px;
+    width: 0;
+  }
+}
+
+.cutout3 {
+  position: absolute;
+  top: 0;
+  right: 88px;
+  border-bottom: 24px solid transparent;
+  border-right: 16px solid white;
+  height: 180px;
+  width: 0;
+
+  animation: c3 5s ease-in-out infinite;
+}
+
+@keyframes c3 {
+  0% {
+    top: 0;
+    right: 88px;
+    border-bottom: 24px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 16px solid white;
+    height: 180px;
+    width: 0;
+  }
+
+  25% {
+    top: 0;
+    right: 104px;
+    border-bottom: 24px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 12px solid white;
+    height: 216px;
+    width: 0;
+  }
+
+  50% {
+    top: 0;
+    right: 88px;
+    border-bottom: 24px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 16px solid white;
+    height: 180px;
+    width: 0;
+  }
+
+  75% {
+    top: 0;
+    right: 72px;
+    border-right: 24px solid white;
+    height: 200px;
+    width: 0;
+  }
+
+  100% {
+    top: 0;
+    right: 88px;
+    border-bottom: 24px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 16px solid white;
+    height: 180px;
+    width: 0;
+  }
+}
+
+.cutout4 {
+  position: absolute;
+  bottom: 0;
+  right: 88px;
+  border-top: 24px solid transparent;
+  border-left: 16px solid white;
+  height: 80px;
+  width: 0;
+
+  animation: c4 5s ease-in-out infinite;
+}
+
+@keyframes c4 {
+  0% {
+    bottom: 0;
+    right: 88px;
+    border-top: 24px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-left: 16px solid white;
+    height: 80px;
+    width: 0;
+  }
+
+  25% {
+    bottom: 0;
+    right: 104px;
+    border-top: 24px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-left: 12px solid white;
+    height: 88px;
+    width: 0;
+  }
+
+  50% {
+    bottom: 0;
+    right: 88px;
+    border-top: 24px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-left: 16px solid white;
+    height: 80px;
+    width: 0;
+  }
+
+  75% {
+    bottom: 0;
+    right: 72px;
+    border-left: 24px solid white;
+    height: 64px;
+    width: 0;
+  }
+
+  100% {
+    bottom: 0;
+    right: 88px;
+    border-top: 24px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-left: 16px solid white;
+    height: 80px;
+    width: 0;
+  }
+}

@@ -12,7 +12,7 @@ main {
   transform: scale(2);
 }
 
-@keyframes v5A {
+@keyframes part1-animation {
   0% {
     top: var(--y);
     left: var(--x);
@@ -27,7 +27,7 @@ main {
   }
 }
 
-@keyframes v5B {
+@keyframes part2-animation {
   0% {
     top: var(--y);
     left: var(--x);
@@ -42,7 +42,7 @@ main {
   }
 }
 
-@keyframes v5C {
+@keyframes part3-animation {
   0% {
     top: var(--y);
     left: var(--x);
@@ -243,22 +243,13 @@ main {
 }
 
 .variation5 > [class^="part"]:nth-child(3n + 1) {
-  animation-name: v5A;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  animation: part1-animation 2s ease-in-out infinite;
 }
 .variation5 > [class^="part"]:nth-child(3n + 2) {
-  animation: v5B;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  animation: part2-animation 2s ease-in-out infinite;
 }
 .variation5 > [class^="part"]:nth-child(3n) {
-  animation: v5C;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  animation: part3-animation 2s ease-in-out infinite;
 }
 
 .variation5:hover > [class^="part"] {
