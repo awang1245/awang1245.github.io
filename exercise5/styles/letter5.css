@@ -1,0 +1,82 @@
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.variation2 {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  width: 372px;
+  height: 400px;
+}
+
+.rect1 {
+  position: absolute;
+  left: 0;
+  width: 80px;
+  height: 400px;
+  background: cyan;
+  transform: skewX(-16deg);
+  transform-origin: bottom left;
+  z-index: 10;
+}
+
+.rect2 {
+  position: absolute;
+  left: 0;
+  width: 80px;
+  height: 400px;
+  background: magenta;
+  transform: skewX(-20deg);
+  transform-origin: bottom left;
+  mix-blend-mode: multiply;
+  z-index: 10;
+}
+
+.rect3 {
+  position: absolute;
+  right: 0;
+  width: 80px;
+  height: 400px;
+  background: yellow;
+  transform: skewX(16deg);
+  transform-origin: bottom right;
+  mix-blend-mode: multiply;
+  z-index: 5;
+}
+
+.rect4 {
+  position: absolute;
+  right: 0;
+  width: 80px;
+  height: 400px;
+  background: red;
+  transform: skewX(20deg);
+  transform-origin: bottom right;
+}
+
+.rect5 {
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  width: 80px;
+  height: 160px;
+  background: cyan;
+  transform: skewX(20deg);
+  transform-origin: bottom right;
+}
+
+.rect6 {
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  width: 80px;
+  height: 160px;
+  background: yellow;
+  transform: skewX(24deg);
+  transform-origin: bottom right;
+  mix-blend-mode: multiply;
+}

@@ -1,0 +1,55 @@
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.variation1 {
+  height: fit-content;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+}
+
+.mini-tri {
+  height: 48px;
+  width: 48px;
+  background-color: magenta;
+  mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
+}
+
+div[class^="layer"] {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.layer1 {
+  width: 48px;
+}
+
+.layer2 {
+  width: 96px;
+}
+
+.layer3 {
+  width: 144px;
+}
+
+.layer4 {
+  width: 192px;
+}
+
+.layer5 {
+  width: 240px;
+}
+
+.layer6 {
+  width: 288px;
+}
+
+.layer7 {
+  width: 336px;
+}

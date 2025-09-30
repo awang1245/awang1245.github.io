@@ -335,6 +335,14 @@ div[class^="layer"] {
   );
 }
 
+.grid-item:nth-child(4):hover > .variation3 > .stroke1 {
+  background: linear-gradient(
+    180deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
+}
+
 .stroke2 {
   position: absolute;
   left: 155.5px;
@@ -347,6 +355,14 @@ div[class^="layer"] {
     0deg,
     rgba(207, 255, 201, 1) 0%,
     rgba(213, 189, 255, 1) 100%
+  );
+}
+
+.grid-item:nth-child(4):hover > .variation3 > .stroke2 {
+  background: linear-gradient(
+    0deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
   );
 }
 
@@ -365,6 +381,14 @@ div[class^="layer"] {
   z-index: 30;
 }
 
+.grid-item:nth-child(4):hover > .variation3 > .stroke3 {
+  background: linear-gradient(
+    120deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
+  );
+}
+
 .stroke4 {
   position: absolute;
   left: 5.5px;
@@ -376,6 +400,14 @@ div[class^="layer"] {
     120deg,
     rgba(207, 255, 201, 1) 0%,
     rgba(213, 189, 255, 1) 100%
+  );
+}
+
+.grid-item:nth-child(4):hover > .variation3 > .stroke4 {
+  background: linear-gradient(
+    120deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
   );
 }
 
@@ -394,6 +426,14 @@ div[class^="layer"] {
   z-index: 10;
 }
 
+.grid-item:nth-child(4):hover > .variation3 > .stroke5 {
+  background: linear-gradient(
+    120deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
+  );
+}
+
 .stroke6 {
   position: absolute;
   left: 178px;
@@ -407,6 +447,14 @@ div[class^="layer"] {
     rgba(207, 255, 201, 1) 100%
   );
   z-index: 20;
+}
+
+.grid-item:nth-child(4):hover > .variation3 > .stroke6 {
+  background: linear-gradient(
+    20deg,
+    rgba(207, 255, 201, 1) 0%,
+    rgba(213, 189, 255, 1) 100%
+  );
 }
 
 .stroke7 {
@@ -424,10 +472,13 @@ div[class^="layer"] {
   z-index: 10;
 }
 
-/* .variation3:hover {
-  transform: scale(1.5);
-  transition: 0.3s;
-} */
+.grid-item:nth-child(4):hover > .variation3 > .stroke7 {
+  background: linear-gradient(
+    30deg,
+    rgba(213, 189, 255, 1) 0%,
+    rgba(207, 255, 201, 1) 100%
+  );
+}
 
 .variation4 {
   position: relative;
