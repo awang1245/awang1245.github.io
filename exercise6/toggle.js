@@ -19,28 +19,26 @@ setColor();
 toggleButton.addEventListener("click", () => {
   isLight = !isLight;
   if (isLight) {
-    isAstig = false;
+    setAstig(false);
     astigButton.textContent = "Astigmatism On";
   }
   setColor();
 });
 
 astigButton.addEventListener("click", () => {
-  isAstig = !isAstig;
-  setAstig();
+  setAstig(!isAstig);
 });
 
-function setAstig() {
-  if (!isLight) {
-    if (isAstig) {
-      lampGlow.classList.add("lamp-glow-astig");
-      lampGlow.classList.remove("lamp-glow");
-      astigButton.textContent = "Astigmatism Off";
-    } else {
-      lampGlow.classList.remove("lamp-glow-astig");
-      lampGlow.classList.add("lamp-glow");
-      astigButton.textContent = "Astigmatism On";
-    }
+function setAstig(mode) {
+  isAstig = mode;
+  if (isAstig) {
+    lampGlow.classList.add("lamp-glow-astig");
+    lampGlow.classList.remove("lamp-glow");
+    astigButton.textContent = "Astigmatism Off";
+  } else {
+    lampGlow.classList.remove("lamp-glow-astig");
+    lampGlow.classList.add("lamp-glow");
+    astigButton.textContent = "Astigmatism On";
   }
 }
 
@@ -85,7 +83,7 @@ function setColor() {
     toggleButton.classList.remove("toggle-button-light");
     toggleButton.textContent = "Lights On";
 
-    //lamp
+    // lamp
     lampGlow.style.visibility = "visible";
     lampShade.classList.add("lamp-shade-dark");
     lampShade.classList.remove("lamp-shade-light");

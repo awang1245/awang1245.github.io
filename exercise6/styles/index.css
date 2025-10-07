@@ -240,7 +240,7 @@ main {
   background: white;
 } */
 
-/* .lamp-glow,
+.lamp-glow,
 .lamp-glow-astig {
   position: absolute;
   left: 50px;
@@ -257,9 +257,9 @@ main {
   );
   border-radius: 50%;
   z-index: 10;
-} */
+}
 
-.lamp-glow,
+/* .lamp-glow,
 .lamp-glow-astig {
   position: absolute;
   left: -50px;
@@ -276,7 +276,7 @@ main {
   );
   border-radius: 50%;
   z-index: 10;
-}
+} */
 
 .lamp-glow-astig::before {
   content: "";
