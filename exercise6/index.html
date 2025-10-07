@@ -7,7 +7,7 @@
     <!--charset: character encoding capable of encoding all characters on the web  -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!--for browser compatibility: choose rendering engine to view the page in an correct view (for old ver. IE)  -->
-    <title>Exercise 4: CSS Letterforms - Composition</title>
+    <title>Exercise 6: On/Off</title>
     <!--declaring the title, or name, of the HTML document. displayed in the browser's title bar-->
     <meta name="description" content="" />
     <!--keywords/snippet for search engines-->
@@ -16,21 +16,36 @@
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/typography.css" />
   </head>
-  <body>
+  <body class="body-light">
     <!--all the contents of an HTML document goes here-->
     <nav>
-      <a href="./index.html" class="nav-button">ON/OFF</a>
       <a href="../index.html" class="work-index">Work Index</a>
+      <button class="toggle-button" id="toggle-button">
+        <p>Lights Off</p>
+      </button>
     </nav>
     <main>
       <div class="lamp-wrapper">
-        <div class="lamp-glow"></div>
-        <img src="./public/lamp-shade.svg" class="lamp-shade" />
-        <!-- <div class="lamp-trapezoid"></div> -->
-        <!-- <div class="lamp-ellipse"></div> -->
-        <div class="lamp-neck"></div>
-        <div class="lamp-base"></div>
+        <div class="lamp-glow" id="lamp-glow"></div>
+        <svg
+          width="300"
+          height="264"
+          viewBox="0 0 300 264"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="lamp-shade-light"
+          id="lamp-shade"
+        >
+          <path
+            d="M251.52 0.5L299.488 238.991C299.06 240.946 297.635 242.832 295.217 244.636C292.765 246.465 289.344 248.172 285.07 249.749C276.526 252.902 264.668 255.503 250.592 257.56C222.445 261.672 185.519 263.594 148.689 263.438C111.861 263.281 75.1524 261.048 47.4424 256.857C33.5836 254.762 21.9994 252.18 13.7822 249.134C9.67197 247.61 6.43126 245.98 4.17285 244.255C1.93762 242.548 0.725831 240.795 0.505859 239.013L47.5918 0.5H251.52Z"
+            stroke="currentColor"
+          />
+        </svg>
+        <div class="lamp-neck-light" id="lamp-neck"></div>
+        <div class="lamp-base-light" id="lamp-base"></div>
+        <!-- <div class="lamp-string"></div> -->
       </div>
     </main>
   </body>
+  <script src="./toggle.js"></script>
 </html>

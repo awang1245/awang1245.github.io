@@ -18,10 +18,25 @@ body {
   flex-flow: column nowrap;
 }
 
+.body-light {
+  background-color: white;
+  color: black;
+}
+
+.body-dark {
+  background-color: black;
+  color: white;
+}
+
 a,
 a:visited {
   color: white;
   text-decoration: none;
+}
+
+p {
+  padding: none;
+  margin: 0;
 }
 
 nav {
@@ -36,7 +51,14 @@ nav {
   border-width: 1px;
 }
 
-.nav-button {
+/* .nav-list {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+} */
+
+button {
   height: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -44,20 +66,43 @@ nav {
   justify-content: center;
   padding: 24px 32px;
   text-wrap: nowrap;
+  background-color: black;
+  color: white;
+
+  font-family: "Avenir LT", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  border: none;
+  border-left-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  transition: 0.3s;
+}
+
+.page-title {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  text-wrap: nowrap;
+  color: white;
 
   border-right-style: solid;
   border-color: white;
   border-width: 1px;
 }
 
-.nav-button:hover {
-  background-color: white;
-  color: black;
-  transition: 0.3s;
-}
-
 a.work-index {
-  padding-right: 32px;
+  padding-left: 32px;
 }
 
 a.work-index:hover {
@@ -67,6 +112,7 @@ a.work-index:hover {
 
 main {
   height: calc(100vh - 73px);
+  min-height: 560px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,34 +124,30 @@ main {
   position: relative;
 }
 
-.lamp-shade {
+.lamp-shade-light {
   position: absolute;
   left: 50px;
+  stroke: black;
+  stroke-width: 1px;
 }
 
-/* .lamp-trapezoid {
+.lamp-shade-dark {
   position: absolute;
   left: 50px;
-  border-bottom: 240px solid #fff5e5;
-  border-left: 54px solid transparent;
-  border-right: 54px solid transparent;
-  height: 0;
-  width: 300px;
-  z-index: 5;
-} */
+  stroke: white;
+  stroke-width: 1px;
+}
 
-/* .lamp-ellipse {
+.lamp-neck-light {
   position: absolute;
-  left: 50px;
-  top: 216px;
-  width: 300px;
-  height: 50px;
-  background: #fff5e5;
-  border-radius: 50%;
-  z-index: 5;
-} */
+  left: 160px;
+  bottom: 0;
+  width: 80px;
+  height: 137px;
+  background: black;
+}
 
-.lamp-neck {
+.lamp-neck-dark {
   position: absolute;
   left: 160px;
   bottom: 0;
@@ -114,7 +156,26 @@ main {
   background: white;
 }
 
-.lamp-base {
+.lamp-base-dark {
+  position: absolute;
+  left: 160px;
+  bottom: 0;
+  width: 80px;
+  height: 137px;
+  background: white;
+}
+
+.lamp-base-light {
+  position: absolute;
+  left: 92px;
+  bottom: 8px;
+  width: 216px;
+  height: 120px;
+  background: black;
+  border-radius: 50%;
+}
+
+.lamp-base-dark {
   position: absolute;
   left: 92px;
   bottom: 8px;
@@ -123,6 +184,15 @@ main {
   background: white;
   border-radius: 50%;
 }
+
+/* .lamp-string {
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  height: 80px;
+  width: 2px;
+  background: white;
+} */
 
 .lamp-glow {
   position: absolute;
