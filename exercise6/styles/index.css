@@ -14,8 +14,6 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  display: flex;
-  flex-flow: column nowrap;
 }
 
 a {
@@ -35,6 +33,19 @@ a {
 p {
   padding: none;
   margin: 0;
+}
+
+.grain-texture {
+  background-image: url(../public/images/grain.png);
+  background-size: cover;
+  height: 100%;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999999999;
 }
 
 nav {
@@ -240,7 +251,7 @@ main {
   background: white;
 } */
 
-.lamp-glow,
+/* .lamp-glow,
 .lamp-glow-astig {
   position: absolute;
   left: 50px;
@@ -257,15 +268,14 @@ main {
   );
   border-radius: 50%;
   z-index: 10;
-}
+} */
 
-/* .lamp-glow,
-.lamp-glow-astig {
+.lamp-glow {
   position: absolute;
-  left: -50px;
-  top: -100px;
-  width: 500px;
-  height: 500px;
+  left: -150px;
+  top: -200px;
+  width: 700px;
+  height: 700px;
   background: radial-gradient(
     circle,
     rgba(255, 195, 90, 1) 0%,
@@ -276,9 +286,28 @@ main {
   );
   border-radius: 50%;
   z-index: 10;
-} */
+}
 
-.lamp-glow-astig::before {
+.lamp-glare,
+.lamp-glare-astig {
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 195, 90, 1) 0%,
+    rgba(255, 195, 90, 0.8) 20%,
+    rgba(255, 195, 90, 0.2) 40%,
+    rgba(255, 195, 90, 0) 60%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.lamp-glare-astig::before {
   content: "";
   inset: -5000vh;
   position: fixed;
@@ -286,16 +315,16 @@ main {
   scale: 20 0.4;
   rotate: 43deg;
   z-index: 99999;
-  opacity: 0.8;
+  opacity: 1;
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
-.lamp-glow-astig::after {
+.lamp-glare-astig::after {
   content: "";
   inset: -5000vh;
   position: fixed;
-  backdrop-filter: blur(10px) contrast(1.2);
+  backdrop-filter: blur(10px) contrast(1.5) brightness(1.05);
   scale: 12 0.2;
   rotate: 43deg;
   z-index: 99999;

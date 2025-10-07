@@ -7,6 +7,7 @@ const navButton = document.getElementById("nav-button");
 
 // lamp
 const lampGlow = document.getElementById("lamp-glow");
+const lampGlare = document.getElementById("lamp-glare");
 const lampShade = document.getElementById("lamp-shade");
 const lampNeck = document.getElementById("lamp-neck");
 const lampBase = document.getElementById("lamp-base");
@@ -32,12 +33,12 @@ astigButton.addEventListener("click", () => {
 function setAstig(mode) {
   isAstig = mode;
   if (isAstig) {
-    lampGlow.classList.add("lamp-glow-astig");
-    lampGlow.classList.remove("lamp-glow");
+    lampGlare.classList.add("lamp-glare-astig");
+    lampGlare.classList.remove("lamp-glare");
     astigButton.textContent = "Astigmatism Off";
   } else {
-    lampGlow.classList.remove("lamp-glow-astig");
-    lampGlow.classList.add("lamp-glow");
+    lampGlare.classList.remove("lamp-glare-astig");
+    lampGlare.classList.add("lamp-glare");
     astigButton.textContent = "Astigmatism On";
   }
 }
