@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Avenir LT", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+body {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+a,
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.nav-button {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  text-wrap: nowrap;
+
+  border-right-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.nav-button:hover {
+  background-color: white;
+  color: black;
+  transition: 0.3s;
+}
+
+a.work-index {
+  padding-right: 32px;
+}
+
+a.work-index:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+main {
+  height: calc(100vh - 73px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lamp-wrapper {
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+
+.lamp-shade {
+  position: absolute;
+  left: 50px;
+}
+
+/* .lamp-trapezoid {
+  position: absolute;
+  left: 50px;
+  border-bottom: 240px solid #fff5e5;
+  border-left: 54px solid transparent;
+  border-right: 54px solid transparent;
+  height: 0;
+  width: 300px;
+  z-index: 5;
+} */
+
+/* .lamp-ellipse {
+  position: absolute;
+  left: 50px;
+  top: 216px;
+  width: 300px;
+  height: 50px;
+  background: #fff5e5;
+  border-radius: 50%;
+  z-index: 5;
+} */
+
+.lamp-neck {
+  position: absolute;
+  left: 160px;
+  bottom: 0;
+  width: 80px;
+  height: 137px;
+  background: white;
+}
+
+.lamp-base {
+  position: absolute;
+  left: 92px;
+  bottom: 8px;
+  width: 216px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+}
+
+.lamp-glow {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 195, 90, 1) 0%,
+    rgba(255, 195, 90, 0.8) 20%,
+    rgba(255, 195, 90, 0.4) 40%,
+    rgba(255, 195, 90, 0) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.lamp-glow::before {
+  content: "";
+  inset: -5000vh;
+  position: fixed;
+  backdrop-filter: blur(12px) contrast(1.35) saturate(1.2) brightness(1.7);
+  scale: 20 0.5;
+  rotate: 43deg;
+  z-index: 99999;
+  opacity: 1;
+  pointer-events: none;
+  mix-blend-mode: color;
+}
