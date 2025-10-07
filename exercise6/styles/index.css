@@ -18,6 +18,10 @@ body {
   flex-flow: column nowrap;
 }
 
+a {
+  text-decoration: none;
+}
+
 .body-light {
   background-color: white;
   color: black;
@@ -26,12 +30,6 @@ body {
 .body-dark {
   background-color: black;
   color: white;
-}
-
-a,
-a:visited {
-  color: white;
-  text-decoration: none;
 }
 
 p {
@@ -45,18 +43,56 @@ nav {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
 
+.nav-light {
+  border-bottom-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.nav-dark {
   border-bottom-style: solid;
   border-color: white;
   border-width: 1px;
 }
 
-/* .nav-list {
+.button-list {
   height: 100%;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-} */
+}
+
+.nav-button-light {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  text-wrap: nowrap;
+  color: black;
+
+  border-right-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.nav-button-dark {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  text-wrap: nowrap;
+  color: white;
+
+  border-right-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
 
 button {
   height: 100%;
@@ -66,8 +102,6 @@ button {
   justify-content: center;
   padding: 24px 32px;
   text-wrap: nowrap;
-  background-color: black;
-  color: white;
 
   font-family: "Avenir LT", sans-serif;
   font-size: 16px;
@@ -75,15 +109,36 @@ button {
   line-height: 1.5;
 
   border: none;
+}
+
+.toggle-button-light {
+  background-color: white;
+  color: black;
+  border-left-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.toggle-button-dark {
+  background-color: black;
+  color: white;
   border-left-style: solid;
   border-color: white;
   border-width: 1px;
 }
 
-button:hover {
+.nav-button-light:hover,
+.toggle-button-light:hover {
+  background-color: black;
+  color: white;
+  transition: 0.2s;
+}
+
+.nav-button-dark:hover,
+.toggle-button-dark:hover {
   background-color: white;
   color: black;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .page-title {
@@ -99,15 +154,6 @@ button:hover {
   border-right-style: solid;
   border-color: white;
   border-width: 1px;
-}
-
-a.work-index {
-  padding-left: 32px;
-}
-
-a.work-index:hover {
-  color: blue;
-  text-decoration: underline;
 }
 
 main {
@@ -194,7 +240,8 @@ main {
   background: white;
 } */
 
-.lamp-glow {
+.lamp-glow,
+.lamp-glow-astig {
   position: absolute;
   left: 50px;
   top: 0;
@@ -212,15 +259,28 @@ main {
   z-index: 10;
 }
 
-.lamp-glow::before {
+.lamp-glow-astig::before {
   content: "";
   inset: -5000vh;
   position: fixed;
-  backdrop-filter: blur(12px) contrast(1.35) saturate(1.2) brightness(1.7);
+  backdrop-filter: blur(12px) contrast(1.1);
   scale: 20 0.5;
+  rotate: 43deg;
+  z-index: 99999;
+  opacity: 0.7;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.lamp-glow-astig::after {
+  content: "";
+  inset: -5000vh;
+  position: fixed;
+  backdrop-filter: blur(10px) contrast(1.2) saturate(1) brightness(1.05);
+  scale: 12 0.2;
   rotate: 43deg;
   z-index: 99999;
   opacity: 1;
   pointer-events: none;
-  mix-blend-mode: color;
+  mix-blend-mode: screen;
 }
