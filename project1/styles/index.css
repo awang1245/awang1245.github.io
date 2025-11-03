@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Basis Grotesque Arabic Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  --grey-20: #cccccc;
+  --grey-40: #999999;
+  --grey-60: #666666;
+  --grey-80: #333333;
+
+  --green-20: #f6faf3;
+  --green-40: #ecf5e7;
+  --green-60: #e3f0db;
+  --green-80: #d9ebcf;
+  --green-100: #d0e6c3;
+
+  --white-20: #fffdfa;
+  --white-40: #fffcf4;
+  --white-60: #fffaef;
+  --white-80: #fff9e9;
+  --white-100: #fff7e4;
+
+  --puer-20: #f9f6f3;
+  --puer-40: #f2ece7;
+  --puer-60: #ece3dc;
+  --puer-80: #e5d9d0;
+  --puer-100: #dfd0c4;
+}
+
+body {
+  background-image: url(../public/images/green.png);
+  background-size: 100% 100%;
+  /* background: linear-gradient(180deg, #fff 0%, #f6faf3 50%, #ecf5e7 100%); */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  /* position: relative; */
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: black;
+}
+
+p {
+  padding: none;
+  margin: 0;
+  line-height: 1.25;
+}
+
+h1 {
+  font-family: "PP Eiko", serif;
+  font-weight: 400;
+  font-size: 64px;
+  padding: none;
+  margin: 0;
+}
+
+h2 {
+  font-family: "PP Eiko", serif;
+  font-weight: 400;
+  font-size: 32px;
+  padding: none;
+  margin: 0;
+}
+
+.paper-texture {
+  background-image: url(../public/images/paper_texture.png);
+  background-size: cover;
+  height: 100%;
+  mix-blend-mode: plus-darker;
+  opacity: 0.6;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999999999;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 24px;
+  line-height: 1;
+  padding: 0px 40px;
+  padding-top: 24px;
+}
+
+.nav-divider {
+  background-color: var(--grey-60);
+  height: 40px;
+  width: 1px;
+}
+
+.nav-bar {
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  height: 64px;
+  border-radius: 12px;
+  background: white;
+}
+
+[class^="nav-field"] {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 0px 20px;
+  gap: 16px;
+}
+
+.nav-field-middle {
+  flex: 1;
+}
+
+.field-text {
+  font-family: "PP Eiko", serif;
+  font-weight: 400;
+  font-size: 24px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+}
+
+.catalog-button {
+  height: 64px;
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+}
+
+nav > a:hover,
+nav > .nav-bar > a:hover {
+  background: var(--grey-20);
+  transition: 0.2s;
+}
+
+main {
+  height: calc(100vh - 88px);
+  min-height: 640px;
+  position: relative;
+  padding: 0px 40px;
+}
+
+.index-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fade-in 500ms ease-in forwards;
+  opacity: 0;
+}
+
+.nav-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 280px;
+  width: 440px;
+  padding: 24px;
+  border-radius: 16px;
+  opacity: 0;
+}
+
+.nav-card:nth-child(2) {
+  transform: translate(calc(-50% - 60px), calc(-50% - 80px));
+  --end: translate(calc(-50% + 440px), calc(-50% - 140px)) rotate(-12deg);
+  background-color: var(--white-100);
+  animation: fade-in 500ms ease-in forwards 700ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 10;
+}
+
+.nav-card:nth-child(3) {
+  transform: translate(-50%, -50%);
+  --end: translate(calc(-50% - 410px), calc(-50% + 80px)) rotate(15deg);
+  background-color: var(--puer-100);
+  animation: fade-in 500ms ease-in forwards 1500ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 20;
+}
+
+.nav-card:nth-child(4) {
+  transform: translate(calc(-50% + 60px), calc(-50% + 80px));
+  --end: translate(calc(-50% + 340px), calc(-50% + 160px)) rotate(5deg);
+  background-color: var(--green-100);
+  animation: fade-in 500ms ease-in forwards 2250ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 30;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scatter {
+  0% {
+  }
+  100% {
+    transform: var(--end);
+  }
+}
+
+.card-heading {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 4px;
+}
+
+.card-blurb {
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
