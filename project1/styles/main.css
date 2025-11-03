@@ -1,0 +1,91 @@
+.index-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fade-in 500ms ease-in forwards;
+  opacity: 0;
+}
+
+/* .nav-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+} */
+
+.nav-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 280px;
+  width: 440px;
+  padding: 24px;
+  border-radius: 16px;
+  opacity: 0;
+}
+
+.nav-card-link:nth-child(2) .nav-card {
+  transform: translate(calc(-50% - 60px), calc(-50% - 80px));
+  --end: translate(calc(-50% + 440px), calc(-50% - 140px)) rotate(-12deg);
+  background-color: var(--white-100);
+  animation: fade-in 500ms ease-in forwards 700ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 10;
+}
+
+.nav-card-link:nth-child(3) .nav-card {
+  transform: translate(-50%, -50%);
+  --end: translate(calc(-50% - 410px), calc(-50% + 80px)) rotate(15deg);
+  background-color: var(--puer-100);
+  animation: fade-in 500ms ease-in forwards 1500ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 20;
+}
+
+.nav-card-link:nth-child(4) .nav-card {
+  transform: translate(calc(-50% + 60px), calc(-50% + 80px));
+  --end: translate(calc(-50% + 340px), calc(-50% + 160px)) rotate(5deg);
+  background-color: var(--green-100);
+  animation: fade-in 500ms ease-in forwards 2250ms,
+    scatter 500ms ease-in-out forwards 3000ms;
+  z-index: 30;
+}
+
+/* handle this later */
+/* .nav-card-link:hover > .nav-card {
+  z-index: 50;
+} */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scatter {
+  0% {
+  }
+  100% {
+    transform: var(--end);
+  }
+}
+
+.card-heading {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 4px;
+}
+
+.card-blurb {
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}

@@ -1,0 +1,147 @@
+main {
+  width: 100vw;
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.grid-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+@media (min-width: 788px), (max-height: 640px) {
+  main {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1088px) {
+  main {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+img {
+  pointer-events: none;
+  position: absolute;
+  mix-blend-mode: multiply;
+  transition: all 0.3s ease;
+  transform: translate(var(--x-position), var(--y-position))
+    rotate(var(--rotation, 0deg)) scale(0.75);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.tea-card {
+  position: absolute;
+  height: 240px;
+  width: 390px;
+  padding: 24px;
+  border-radius: 16px;
+  z-index: 100;
+  display: none;
+}
+
+.tea-card.show {
+  transition: 0.3s;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.card-heading {
+  display: flex;
+  flex-flow: column nowrap;
+  text-decoration: underline;
+  gap: 4px;
+}
+
+.card-blurb {
+  display: flex;
+  flex-flow: column nowrap;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.card-section {
+  padding: 8px 10px;
+}
+
+.card-bottom {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-top-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.card-bottom > .card-section:first-child {
+  flex: 1;
+  border-right-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.card-bottom > .card-section:nth-child(2) {
+  padding: 8px 12px;
+}
+
+.green {
+  background-color: var(--green-100);
+}
+
+.white {
+  background-color: var(--white-100);
+}
+
+.yellow {
+  background-color: var(--yellow-100);
+}
+
+.oolong {
+  background-color: var(--oolong-100);
+}
+
+.black {
+  background-color: var(--black-100);
+}
+
+.puer {
+  background-color: var(--puer-100);
+}
+
+.hitboxes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.hitbox {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: auto;
+  z-index: 50;
+}

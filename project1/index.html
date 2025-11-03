@@ -15,80 +15,58 @@
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <!--all the contents of an HTML document goes here-->
     <div class="paper-texture"></div>
     <nav>
-      <div class="nav-bar">
-        <a href="./index.html" class="nav-field">
-          <p class="field-name">TITLE:</p>
-          <p class="field-text">Loose Leaf</p>
-        </a>
-        <div class="nav-divider"></div>
-        <div class="nav-field-middle">
-          <p class="field-name">NOTE:</p>
-          <p class="field-text">A Field Guide to Loose Leaf Tea</p>
-        </div>
-        <div class="nav-divider"></div>
-        <div class="nav-field">
-          <p class="field-name">DATE:</p>
-          <p class="field-text">Oct 2025</p>
-        </div>
+      <a href="./index.html">LOOSE LEAF</a>
+      <div class="nav-right">
+        <a href="./tea-catalog.html">TEA CATALOG</a>
+        <a href="./how-to-prepare.html">HOW TO PREPARE</a>
+        <a href="./what-is-tea.html">WHAT IS TEA</a>
       </div>
-      <a class="catalog-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-folder"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"
-          />
-        </svg>
-      </a>
     </nav>
     <main>
       <h1 class="index-heading">Index</h1>
-      <div class="nav-card">
-        <div class="card-heading">
-          <h2>Tea Catalog</h2>
+      <a href="./tea-catalog.html" class="nav-card-link">
+        <div class="nav-card">
+          <div class="card-heading">
+            <h2>Tea Catalog</h2>
+          </div>
+          <p class="card-blurb">
+            The modern tea world recognizes six categories of tea, where all
+            true tea is made with leaves harvested from a single plant species
+            called Camellia sinensis.
+          </p>
         </div>
-        <p class="card-blurb">
-          The modern tea world recognizes six categories of tea, where all true
-          tea is made with leaves harvested from a single plant species called
-          Camellia sinensis.
-        </p>
-      </div>
-      <div class="nav-card">
-        <div class="card-heading">
-          <h2>How to Prepare</h2>
+      </a>
+      <a href="how-to-prepare.html" class="nav-card-link">
+        <div class="nav-card">
+          <div class="card-heading">
+            <h2>How to Prepare</h2>
+          </div>
+          <p class="card-blurb">
+            The modern tea world recognizes six categories of tea, where all
+            true tea is made with leaves harvested from a single plant species
+            called Camellia sinensis.
+          </p>
         </div>
-        <p class="card-blurb">
-          The modern tea world recognizes six categories of tea, where all true
-          tea is made with leaves harvested from a single plant species called
-          Camellia sinensis.
-        </p>
-      </div>
-      <div class="nav-card">
-        <div class="card-heading">
-          <h2>Camellia Sinensis</h2>
-          <p>/kə'mɛliə s&#618;a'nɛns&#618;as/</p>
+      </a>
+      <a href="./what-is-tea.html" class="nav-card-link">
+        <div class="nav-card">
+          <div class="card-heading">
+            <h2>Camellia Sinensis</h2>
+            <p>/kə'mɛliə s&#618;a'nɛns&#618;as/</p>
+          </div>
+          <p class="card-blurb">
+            The modern tea world recognizes six categories of tea, where all
+            true tea is made with leaves harvested from a single plant species
+            called Camellia sinensis.
+          </p>
         </div>
-        <p class="card-blurb">
-          The modern tea world recognizes six categories of tea, where all true
-          tea is made with leaves harvested from a single plant species called
-          Camellia sinensis.
-        </p>
-      </div>
+      </a>
     </main>
   </body>
 </html>
