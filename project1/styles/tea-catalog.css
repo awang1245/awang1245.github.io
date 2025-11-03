@@ -53,26 +53,31 @@ img {
 }
 
 .tea-card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   position: absolute;
   height: 240px;
   width: 390px;
   padding: 24px;
   border-radius: 16px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  opacity: 0;
   z-index: 100;
-  display: none;
 }
 
 .tea-card.show {
   transition: 0.3s;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .card-heading {
   display: flex;
   flex-flow: column nowrap;
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
   gap: 4px;
 }
 

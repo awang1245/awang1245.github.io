@@ -32,20 +32,24 @@ function initClusters() {
   const vh = window.innerHeight;
 
   // choose grid layout based on aspect ratio
-  let cols, rows;
+  let cols, rows, radius;
   // for wider screens, desktop especially
   if (lg.matches) {
     cols = 3;
     rows = 2;
+    radius = 100;
     // for narrower screens, tablet and mobile especially
   } else if (md.matches) {
     cols = 2;
     rows = 3;
+    radius = 80;
   } else {
     cols = 1;
     rows = 6;
+    radius = 60;
   }
 
+  // store in global vars for later use
   numRows = rows;
   numCols = cols;
 
@@ -66,39 +70,33 @@ function initClusters() {
       let yMin = r * cellHeight;
       let yMax = (r + 1) * cellHeight - 2 * padding;
 
-      const margin = 200;
-      if (lg.matches) {
-        radius = 100;
-      } else if (md.matches) {
-        radius = 80;
+      // to allow extra vertical gapping between clusters for medium screens
+      if (md.matches) {
         yMin = r * (cellHeight + 50);
         yMax = yMin + cellHeight - 2 * padding;
-      } else {
-        radius = 60;
-      }
-
-      // if leftmost col
-      if (c === 0) {
-        xMin = 0;
       }
 
       // if bottom row
       if (r === rows - 1) {
         yMin += 100;
-        yMax = Math.min(yMax, vh - margin);
+        yMax = Math.min(yMax, vh - 2 * padding);
       }
-
       // if rightmost col
       if (c === cols - 1) {
-        xMax = Math.min(xMax, vw - margin);
+        xMax = Math.min(xMax, vw - 2 * padding);
       }
 
+      // to allow even more vertical gapping for small screens
       if (sm.matches) {
         xMax = vw - 2 * padding;
         yMin = r * (cellHeight + 150) + padding;
         yMax = yMin + cellHeight - padding;
       }
 
+      // if leftmost col
+      if (c === 0) {
+        xMin = 0;
+      }
       // if top row
       if (r === 0) {
         yMin = 0;
