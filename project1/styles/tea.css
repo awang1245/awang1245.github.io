@@ -90,7 +90,17 @@ p.character {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: start;
   align-self: stretch;
+}
+
+hr {
+  border: 0;
+  height: 1.5px;
+  width: 120px;
+  color: black;
+  background-color: black;
+  margin: 24px 0;
 }
 
 .tea-info {
