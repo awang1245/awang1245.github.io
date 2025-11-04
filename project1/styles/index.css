@@ -60,11 +60,17 @@ body {
 
 a {
   text-decoration: none;
+  font-weight: 400;
 }
 
 a,
 a:visited {
+  color: var(--grey-60);
+}
+
+a:hover {
   color: black;
+  transition: 0.3s;
 }
 
 p {

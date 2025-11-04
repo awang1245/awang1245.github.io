@@ -105,12 +105,3 @@ p.character {
   height: auto;
   z-index: 999999999;
 }
-
-a.discover {
-  color: var(--grey-40);
-}
-
-a.discover:hover {
-  color: black;
-  transition: 0.3s;
-}
