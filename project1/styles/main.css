@@ -1,3 +1,10 @@
+main {
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
 .nav-card {
   position: absolute;
   top: 50%;
@@ -95,4 +102,930 @@
   border-right-style: solid;
   border-color: black;
   border-width: 1px;
+}
+
+img {
+  position: absolute;
+  mix-blend-mode: multiply;
+}
+
+.index {
+  opacity: 0;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 0;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 0;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 0;
+
+  --x3: 0vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 0;
+
+  --x4: 0vw;
+  --y4: 0vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 0;
+
+  --x5: 0vw;
+  --y5: 0vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: 0vw;
+  --y6: 0vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.text1 {
+  position: absolute;
+  line-height: 1;
+  top: 14.4vh;
+  left: 9.3vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 14.4vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 68.7vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: 68.7vw;
+  --y4: 0vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: 68.7vw;
+  --y5: 0vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: 68.7vw;
+  --y6: 0vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.text2 {
+  position: absolute;
+  line-height: 1;
+  top: 28.8vh;
+  left: 86.2vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: -17.5vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: -17.5vw;
+  --y3: 57.7vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: -17.5vw;
+  --y4: 57.7vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: -17.5vw;
+  --y5: 57.7vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: -17.5vw;
+  --y6: 57.7vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.text3 {
+  position: absolute;
+  line-height: 1;
+  top: 72.1vh;
+  left: 80vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: -26.9vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: -67.5vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: -67.5vw;
+  --y4: 0vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: -67.5vw;
+  --y5: 0vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: -67.5vw;
+  --y6: 0vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.text4 {
+  position: absolute;
+  line-height: 1;
+  top: 93.8vh;
+  left: 2vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 26.1vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 26.1vw;
+  --y3: -65vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: 26.1vw;
+  --y4: -65vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: 26.1vw;
+  --y5: -65vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: 26.1vw;
+  --y6: -65vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.leaf1 {
+  top: 4vh;
+  left: 2vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 0vw;
+  --y3: 3vh;
+  --s3: 1;
+  --r3: 18deg;
+  --o3: 1;
+
+  --x4: 8.7vw;
+  --y4: 86.3vh;
+  --s4: 1;
+  --r4: -12deg;
+  --o4: 1;
+
+  --x5: 8.7vw;
+  --y5: 86.3vh;
+  --s5: 1;
+  --r5: -12deg;
+  --o5: 1;
+
+  --x6: 8.7vw;
+  --y6: 86.3vh;
+  --s6: 1;
+  --r6: -12deg;
+  --o6: 1;
+}
+
+.title1 {
+  position: absolute;
+  line-height: 1;
+  top: 37.7vh;
+  left: 39.6vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: -37.6vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: -37.6vw;
+  --y3: -23.3vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: -60vw;
+  --y4: -23.3vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: -60vw;
+  --y5: -23.3vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 0;
+
+  --x6: -60vw;
+  --y6: -23.3vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 0;
+}
+
+.title2 {
+  position: absolute;
+  line-height: 1;
+  top: 53.8vh;
+  left: 42.4vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 41.2vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 41.2vw;
+  --y3: 33vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 1;
+
+  --x4: 60vw;
+  --y4: 33vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 1;
+
+  --x5: 60vw;
+  --y5: 33vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 0;
+
+  --x6: 60vw;
+  --y6: 33vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 0;
+}
+
+.begin {
+  position: absolute;
+  font-size: 64px;
+  font-family: "PP Eiko", serif;
+  font-weight: 300;
+  line-height: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  opacity: 0;
+  top: 41.9vh;
+  left: 38.9vw;
+  text-align: center;
+  padding: none;
+  margin: 0;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 0;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 0;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 0;
+
+  --x3: 0vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: 0deg;
+  --o3: 0;
+
+  --x4: 0vw;
+  --y4: 0vh;
+  --s4: 1;
+  --r4: 0deg;
+  --o4: 0;
+
+  --x5: 0vw;
+  --y5: 0vh;
+  --s5: 1;
+  --r5: 0deg;
+  --o5: 1;
+
+  --x6: 0vw;
+  --y6: 0vh;
+  --s6: 1;
+  --r6: 0deg;
+  --o6: 1;
+}
+
+.text1 {
+  position: absolute;
+  line-height: 1;
+  top: 14.4vh;
+  left: 9.3vw;
+}
+
+.text2 {
+  position: absolute;
+  line-height: 1;
+  top: 28.8%;
+  left: 86.2%;
+}
+
+.text3 {
+  position: absolute;
+  line-height: 1;
+  top: 72.1%;
+  left: 80%;
+}
+
+.text4 {
+  position: absolute;
+  line-height: 1;
+  top: 93.8%;
+  left: 2%;
+}
+
+.leaf1 {
+  top: 4vh;
+  left: 2vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 0vw;
+  --y3: 3vh;
+  --s3: 1;
+  --r3: 18deg;
+  --o3: 1;
+
+  --x4: 8.7vw;
+  --y4: 86.3vh;
+  --s4: 1;
+  --r4: -12deg;
+  --o4: 1;
+
+  --x5: 8.7vw;
+  --y5: 86.3vh;
+  --s5: 1;
+  --r5: -12deg;
+  --o5: 1;
+
+  --x6: 8.7vw;
+  --y6: 86.3vh;
+  --s6: 1;
+  --r6: -12deg;
+  --o6: 1;
+}
+.leaf2 {
+  top: 3vh;
+  left: 13.2vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 0vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: -24deg;
+  --o3: 1;
+
+  --x4: -11.2vw;
+  --y4: 89.7vh;
+  --s4: 1;
+  --r4: -18deg;
+  --o4: 1;
+
+  --x5: -11.2vw;
+  --y5: 89.7vh;
+  --s5: 1;
+  --r5: -18deg;
+  --o5: 1;
+
+  --x6: -11.2vw;
+  --y6: 89.7vh;
+  --s6: 1;
+  --r6: -18deg;
+  --o6: 1;
+}
+.leaf3 {
+  top: 4.4vh;
+  left: 25.8vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 6.6vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 44deg;
+  --o2: 1;
+
+  --x3: 14.6vw;
+  --y3: 16vh;
+  --s3: 1.3;
+  --r3: 83.9deg;
+  --o3: 1;
+
+  --x4: 27.3vw;
+  --y4: 82.2vh;
+  --s4: 0.82;
+  --r4: 30deg;
+  --o4: 1;
+
+  --x5: 27.3vw;
+  --y5: 82.2vh;
+  --s5: 0.82;
+  --r5: 30deg;
+  --o5: 1;
+
+  --x6: 27.3vw;
+  --y6: 82.2vh;
+  --s6: 0.82;
+  --r6: 30deg;
+  --o6: 1;
+}
+
+.leaf4 {
+  position: absolute;
+  mix-blend-mode: multiply;
+  top: 12.9vh;
+  left: 43.8vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0.5vw;
+  --y1: 18.2vh;
+  --s1: 1.3;
+  --r1: -35deg;
+  --o1: 1;
+
+  --x2: 3vw;
+  --y2: 50.7vh;
+  --s2: 1;
+  --r2: 83.8deg;
+  --o2: 1;
+
+  --x3: -5.3vw;
+  --y3: 71.7vh;
+  --s3: 0.84;
+  --r3: 174deg;
+  --o3: 1;
+
+  --x4: -5.3vw;
+  --y4: 71.7vh;
+  --s4: 0.84;
+  --r4: 174deg;
+  --o4: 1;
+
+  --x5: -5.3vw;
+  --y5: 71.7vh;
+  --s5: 0.84;
+  --r5: 174deg;
+  --o5: 1;
+
+  --x6: -5.3vw;
+  --y6: 71.7vh;
+  --s6: 0.84;
+  --r6: 174deg;
+  --o6: 1;
+}
+
+.leaf5 {
+  top: 2.3vh;
+  left: 55.4vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: -11.6vw;
+  --y2: 20.1vh;
+  --s2: 1;
+  --r2: -35.5deg;
+  --o2: 1;
+
+  --x3: -13vw;
+  --y3: 58vh;
+  --s3: 1.38;
+  --r3: -103deg;
+  --o3: 1;
+
+  --x4: -25.3vw;
+  --y4: 87.6vh;
+  --s4: 0.98;
+  --r4: 4deg;
+  --o4: 1;
+
+  --x5: -25.3vw;
+  --y5: 87.6vh;
+  --s5: 0.98;
+  --r5: 4deg;
+  --o5: 1;
+
+  --x6: -25.3vw;
+  --y6: 87.6vh;
+  --s6: 0.98;
+  --r6: 4deg;
+  --o6: 1;
+}
+
+.leaf6 {
+  top: 2.8vh;
+  left: 60vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 0vw;
+  --y3: 2vh;
+  --s3: 1;
+  --r3: -34deg;
+  --o3: 1;
+
+  --x4: 15.4vw;
+  --y4: 84.1vh;
+  --s4: 0.85;
+  --r4: -3deg;
+  --o4: 1;
+
+  --x5: 15.4vw;
+  --y5: 84.1vh;
+  --s5: 0.85;
+  --r5: -3deg;
+  --o5: 1;
+
+  --x6: 15.4vw;
+  --y6: 84.1vh;
+  --s6: 0.85;
+  --r6: -3deg;
+  --o6: 1;
+}
+
+.leaf7 {
+  top: 8vh;
+  left: 80.3vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: -4vw;
+  --y3: 2vh;
+  --s3: 1;
+  --r3: -27deg;
+  --o3: 1;
+
+  --x4: -7.3vw;
+  --y4: 82.2vh;
+  --s4: 1;
+  --r4: -32deg;
+  --o4: 1;
+
+  --x5: -7.3vw;
+  --y5: 82.2vh;
+  --s5: 1;
+  --r5: -32deg;
+  --o5: 1;
+
+  --x6: -7.3vw;
+  --y6: 82.2vh;
+  --s6: 1;
+  --r6: -32deg;
+  --o6: 1;
+}
+
+.leaf8 {
+  top: 4vh;
+  left: 84.7vw;
+
+  animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
+
+  --x0: 0vw;
+  --y0: 0vh;
+  --s0: 1;
+  --r0: 0deg;
+  --o0: 1;
+
+  --x1: 0vw;
+  --y1: 0vh;
+  --s1: 1;
+  --r1: 0deg;
+  --o1: 1;
+
+  --x2: 0vw;
+  --y2: 0vh;
+  --s2: 1;
+  --r2: 0deg;
+  --o2: 1;
+
+  --x3: 0vw;
+  --y3: 0vh;
+  --s3: 1;
+  --r3: 36deg;
+  --o3: 1;
+
+  --x4: 0vw;
+  --y4: 85.8vh;
+  --s4: 1;
+  --r4: 187deg;
+  --o4: 1;
+
+  --x5: 0vw;
+  --y5: 85.8vh;
+  --s5: 1;
+  --r5: 187deg;
+  --o5: 1;
+
+  --x6: 0vw;
+  --y6: 85.8vh;
+  --s6: 1;
+  --r6: 187deg;
+  --o6: 1;
+}
+
+@keyframes openingIntro {
+  0% {
+    transform: translate(var(--x0), var(--y0)) scale(var(--s0))
+      rotate(var(--r0));
+    opacity: var(--o0);
+  }
+  16% {
+    transform: translate(var(--x1), var(--y1)) scale(var(--s1))
+      rotate(var(--r1));
+    opacity: var(--o1);
+  }
+  33% {
+    transform: translate(var(--x2), var(--y2)) scale(var(--s2))
+      rotate(var(--r2));
+    opacity: var(--o2);
+  }
+  50% {
+    transform: translate(var(--x3), var(--y3)) scale(var(--s3))
+      rotate(var(--r3));
+    opacity: var(--o3);
+  }
+  66% {
+    transform: translate(var(--x4), var(--y4)) scale(var(--s4))
+      rotate(var(--r4));
+    opacity: var(--o4);
+  }
+  83% {
+    transform: translate(var(--x5), var(--y5)) scale(var(--s5))
+      rotate(var(--r5));
+    opacity: var(--o5);
+  }
+  100% {
+    transform: translate(var(--x6), var(--y6)) scale(var(--s6))
+      rotate(var(--r6));
+    opacity: var(--o6);
+  }
 }

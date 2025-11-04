@@ -293,3 +293,7 @@ window.addEventListener("resize", () => {
 
 lg.addEventListener("change", initClusters);
 md.addEventListener("change", initClusters);
+
+document.getElementById("reshuffle").addEventListener("click", () => {
+  location.reload();
+});

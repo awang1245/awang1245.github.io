@@ -77,8 +77,8 @@ p {
 
 h1 {
   font-family: "PP Eiko", serif;
-  font-weight: 400;
-  font-size: 64px;
+  font-weight: 300;
+  font-size: 96px;
   padding: none;
   margin: 0;
 }
@@ -121,9 +121,4 @@ nav {
   display: flex;
   flex-flow: row nowrap;
   gap: 48px;
-}
-
-main {
-  min-height: 640px;
-  position: relative;
 }

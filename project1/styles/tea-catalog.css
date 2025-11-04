@@ -41,6 +41,34 @@ main {
   }
 }
 
+.instructions {
+  position: fixed;
+  left: calc(50% - 250px);
+  top: calc(50% - 16px);
+
+  z-index: 90;
+}
+
+#reshuffle {
+  position: fixed;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
+  border-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  color: var(--grey-60);
+  left: calc(50% - 40px);
+  top: calc(50% + 16px);
+
+  z-index: 90;
+}
+
+#reshuffle:hover {
+  color: black;
+}
+
 img {
   pointer-events: none;
   position: absolute;
