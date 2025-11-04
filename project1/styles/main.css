@@ -222,6 +222,7 @@ img {
 
 .index {
   opacity: 0;
+  z-index: 999999999;
 
   animation: openingIntro 4s cubic-bezier(0.215, 0.61, 0.355, 1.15) forwards;
 
