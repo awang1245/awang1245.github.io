@@ -8,6 +8,7 @@ main {
   height: 100%;
   min-height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .index-card {
@@ -220,7 +221,7 @@ img {
   pointer-events: none;
 }
 
-.index {
+a.index {
   opacity: 0;
   z-index: 999999999;
 
@@ -695,22 +696,22 @@ img {
 .text2 {
   position: absolute;
   line-height: 1;
-  top: 28.8%;
-  left: 86.2%;
+  top: 28.8vh;
+  left: 86.2vw;
 }
 
 .text3 {
   position: absolute;
   line-height: 1;
-  top: 72.1%;
-  left: 80%;
+  top: 72.1vh;
+  left: 80vw;
 }
 
 .text4 {
   position: absolute;
   line-height: 1;
-  top: 93.8%;
-  left: 2%;
+  top: 93.8vh;
+  left: 2vw;
 }
 
 .leaf1 {
