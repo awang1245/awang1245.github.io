@@ -63,7 +63,6 @@ main {
 #reshuffle {
   line-height: 1;
   font-size: 16px;
-  font-weight: 300;
   border-style: none;
   margin: 0;
   padding: 0;
@@ -73,7 +72,7 @@ main {
 
 #reshuffle:hover {
   color: black;
-  font-weight: 300;
+  transition: 0.3s;
 }
 
 img {

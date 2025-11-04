@@ -35,6 +35,10 @@ main {
   min-height: 100vh;
   overflow-y: auto;
   padding-top: 96px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 64px;
 }
 
 main.green-tea {
@@ -100,4 +104,13 @@ p.character {
   width: 40%;
   height: auto;
   z-index: 999999999;
+}
+
+a.discover {
+  color: var(--grey-40);
+}
+
+a.discover:hover {
+  color: black;
+  transition: 0.3s;
 }
