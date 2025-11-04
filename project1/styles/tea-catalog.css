@@ -1,3 +1,8 @@
+body {
+  background-image: url(../public/images/green.png);
+  background-size: 100% 100%;
+}
+
 main {
   width: 100vw;
   position: relative;
@@ -41,32 +46,34 @@ main {
   }
 }
 
-.instructions {
+.context {
   position: fixed;
-  left: calc(50% - 250px);
-  top: calc(50% - 16px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 840px;
+  left: calc(50% - 420px);
+  top: calc(50% - 50px);
 
   z-index: 90;
 }
 
 #reshuffle {
-  position: fixed;
   line-height: 1;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   border-style: none;
   margin: 0;
   padding: 0;
   background-color: transparent;
   color: var(--grey-60);
-  left: calc(50% - 40px);
-  top: calc(50% + 16px);
-
-  z-index: 90;
 }
 
 #reshuffle:hover {
   color: black;
+  font-weight: 300;
 }
 
 img {

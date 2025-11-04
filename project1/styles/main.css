@@ -1,3 +1,8 @@
+body {
+  background-image: url(../public/images/green.png);
+  background-size: 100% 100%;
+}
+
 main {
   width: 100vw;
   height: 100%;

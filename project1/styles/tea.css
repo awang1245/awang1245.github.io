@@ -1,0 +1,103 @@
+body.green-tea {
+  background-image: url(../public/images/green.png);
+  background-size: 100% 100%;
+}
+
+body.white-tea {
+  background-image: url(../public/images/white.png);
+  background-size: 100% 100%;
+}
+
+body.yellow-tea {
+  background-image: url(../public/images/yellow.png);
+  background-size: 100% 100%;
+}
+
+body.oolong-tea {
+  background-image: url(../public/images/oolong.png);
+  background-size: 100% 100%;
+}
+
+body.black-tea {
+  background-image: url(../public/images/black.png);
+  background-size: 100% 100%;
+}
+
+body.puer-tea {
+  background-image: url(../public/images/puer.png);
+  background-size: 100% 100%;
+}
+
+main {
+  width: 100vw;
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-top: 96px;
+}
+
+main.green-tea {
+  background-image: url(../public/images/green.png);
+  background-size: 100% 100%;
+}
+
+main.white-tea {
+  background-image: url(../public/images/white.png);
+  background-size: 100% 100%;
+}
+
+main.yellow-tea {
+  background-image: url(../public/images/yellow.png);
+  background-size: 100% 100%;
+}
+
+main.oolong-tea {
+  background-image: url(../public/images/oolong.png);
+  background-size: 100% 100%;
+}
+
+main.black-tea {
+  background-image: url(../public/images/black.png);
+  background-size: 100% 100%;
+}
+
+main.puer-tea {
+  background-image: url(../public/images/puer.png);
+  background-size: 100% 100%;
+}
+
+.intro-section {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  gap: 96px;
+  width: 100%;
+  padding: 0px 96px;
+}
+
+p.character {
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.tea-info {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+}
+
+.intro-img {
+  width: 40%;
+  height: auto;
+  z-index: 999999999;
+}
