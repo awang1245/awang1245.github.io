@@ -28,8 +28,14 @@ let numRows, numCols;
  * placing them within a grid of 6 cells to prevent cluster overlap
  */
 function initClusters() {
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
+  let vw = window.innerWidth;
+  let vh = window.innerHeight;
+
+  if (md.matches) {
+    vh = Math.max(vh, 1000);
+  } else if (sm.matches) {
+    vh = Math.max(vh, 1100);
+  }
 
   // choose grid layout based on aspect ratio
   let cols, rows, radius;
@@ -42,11 +48,11 @@ function initClusters() {
   } else if (md.matches) {
     cols = 2;
     rows = 3;
-    radius = 80;
+    radius = 60;
   } else {
     cols = 1;
     rows = 6;
-    radius = 60;
+    radius = 40;
   }
 
   // store in global vars for later use
@@ -89,7 +95,7 @@ function initClusters() {
       // to allow even more vertical gapping for small screens
       if (sm.matches) {
         xMax = vw - 2 * padding;
-        yMin = r * (cellHeight + 150) + padding;
+        yMin = r * (cellHeight + 200);
         yMax = yMin + cellHeight - padding;
       }
 
