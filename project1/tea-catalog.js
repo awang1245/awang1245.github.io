@@ -1,7 +1,7 @@
 // cluster properties
 const num_clusters = 6;
 const min_leaves = 10;
-let radius = 100;
+let radius = 80;
 const padding = 100; // how far from cell border leaves can spawn
 const tea_types = ["green", "white", "yellow", "oolong", "black", "puer"];
 
@@ -43,7 +43,7 @@ function initClusters() {
   if (lg.matches) {
     cols = 3;
     rows = 2;
-    radius = 100;
+    radius = 80;
     // for narrower screens, tablet and mobile especially
   } else if (md.matches) {
     cols = 2;
