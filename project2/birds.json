@@ -135,25 +135,26 @@
     {
       "id": "greathornedowl",
       "name": "Great Horned Owl",
-      "img": "",
-      "ascii": "  ,-_-,\n ((•v•))\n ()|||()\n===\"=\"===\n   VVV",
+      "img": "./public/images/great-horned-owl.jpg",
+      "ascii": "  >\\_/<\n _\\*v*/_\n \\\\   //\n====\"====\n   /^\\",
+
       "scientific_name": "Bubo virginianus",
       "seasonality": "Year-round",
       "us_range": "All of U.S.",
       "time_of_day": ["Night"],
-      "description": "Large nocturnal owl with deep “hoo-hoo” calls; hunts at dusk/night.",
+      "description": "Large and widespread owl with distinctive ear tufts. Found in a variety of habitats from dense woods to prairie and deserts with at least some trees. Also, found in wooded towns and suburbs. Typically well-camouflaged dark brown overall, but varies in color. Often engages in haunting duets, with males and females hooting back and forth. Preys upon a variety of animals, including mammals, birds and reptiles.",
       "sound": "./public/sounds/great_horned_owl.wav"
     },
     {
       "id": "barredowl",
       "name": "Barred Owl",
-      "img": "",
-      "ascii": "  >\\_/<\n _\\*v*/_\n \\\\   //\n====\"====\n   /^\\",
+      "img": "./public/images/barred-owl.jpg",
+      "ascii": "  ,-_-,\n ((•v•))\n ()|||()\n===\"=\"===\n   VVV",
       "scientific_name": "Strix varia",
       "seasonality": "Year-round",
       "us_range": "Eastern U.S.",
       "time_of_day": ["Night"],
-      "description": "Nocturnal forest owl; recognizable “Who cooks for you?” call at dusk/night.",
+      "description": "Large owl, mottled brown and white. Rounded head lacks ear tufts. Black eyes. Listen for its instantly recognizable “Who cooks for you? Who cooks for you all” call. Favors large, mature forests with deciduous and coniferous trees, often near water. Hunts small animals at night; however, is more active during the day than other owls.",
       "sound": "./public/sounds/barred_owl.wav"
     },
     {

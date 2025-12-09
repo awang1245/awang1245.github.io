@@ -92,14 +92,20 @@
       <div id="pond" class="ascii"></div>
       <div id="bird-overlay" style="display: none">
         <div id="bird-modal">
-          <h2 id="modal-name"></h2>
-          <p id="modal-science"></p>
+          <div class="modal-top">
+            <div class="modal-top-left">
+              <h2 id="modal-name"></h2>
+              <p id="modal-science"></p>
+            </div>
+            <button id="modal-close-btn">Return to Scene</button>
+          </div>
+
           <img id="modal-img" alt="Bird image placeholder" />
-          <p>
-            <strong>Seasonality:</strong> <span id="modal-seasonality"></span>
-          </p>
-          <p><strong>Time of Day:</strong> <span id="modal-time"></span></p>
-          <p><strong>U.S. Range:</strong> <span id="modal-range"></span></p>
+          <div class="modal-stats">
+            <p>Seasonality: <span id="modal-seasonality"></span></p>
+            <p>Active Hours: <span id="modal-time"></span></p>
+            <p>Geographic Range: <span id="modal-range"></span></p>
+          </div>
           <p id="modal-description"></p>
 
           <button id="modal-sound-btn" class="sound-icon-btn">
@@ -124,8 +130,6 @@
               />
             </svg>
           </button>
-
-          <button id="modal-close-btn">Close</button>
         </div>
       </div>
     </main>
