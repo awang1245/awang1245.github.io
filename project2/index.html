@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--document type declaration-->
+<html>
+  <head>
+    <!-- a container for metadata -->
+    <meta charset="utf-8" />
+    <!--charset: character encoding capable of encoding all characters on the web  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--for browser compatibility: choose rendering engine to view the page in an correct view (for old ver. IE)  -->
+    <title>Project 2: Change Over Time</title>
+    <!--declaring the title, or name, of the HTML document. displayed in the browser's title bar-->
+    <meta name="description" content="" />
+    <!--keywords/snippet for search engines-->
+    <meta name="viewport" content="width=device-width" />
+    <!--the browser will (probably) render the width of the page at the width of its own screen -->
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/typography.css" />
+    <script src="https://unpkg.com/@tabler/icons@latest/icons.svg"></script>
+  </head>
+  <body>
+    <main>
+      <div class="grain-texture"></div>
+      <div class="top-left" id="top-left">
+        <p>Rhode Island Bird Guide</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+          <path d="M12 9h.01" />
+          <path d="M11 12h1v4h1" />
+        </svg>
+      </div>
+      <div class="bottom-left">
+        <div class="time">
+          <span id="time-icon"></span>
+          <span id="time-text"></span>
+        </div>
+        <div class="weather">
+          <span id="weather-icon"></span>
+          <span id="weather-text"></span>
+        </div>
+      </div>
+      <div class="bottom-right" id="bottom-right">
+        <div class="mode-dropdown">
+          <button id="mode-button">
+            <p class="">Real-Time</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 9l6 6l6 -6" />
+            </svg>
+          </button>
+          <div id="mode-menu" class="hidden">
+            <div data-mode="realtime">Real-Time</div>
+            <div data-mode="dawn">Dawn</div>
+            <div data-mode="day">Day</div>
+            <div data-mode="dusk">Dusk</div>
+            <div data-mode="night">Night</div>
+          </div>
+        </div>
+
+        <button id="sound-button"></button>
+      </div>
+      <div id="trees-far-1" class="ascii"></div>
+      <div id="trees-far-2" class="ascii"></div>
+
+      <div id="trees-mid-1" class="ascii"></div>
+      <div id="trees-mid-2" class="ascii"></div>
+
+      <div id="trees-near" class="ascii"></div>
+
+      <div id="pond" class="ascii"></div>
+      <div id="bird-overlay" style="display: none">
+        <div id="bird-modal">
+          <h2 id="modal-name"></h2>
+          <p id="modal-science"></p>
+          <img id="modal-img" alt="Bird image placeholder" />
+          <p>
+            <strong>Seasonality:</strong> <span id="modal-seasonality"></span>
+          </p>
+          <p><strong>Time of Day:</strong> <span id="modal-time"></span></p>
+          <p><strong>U.S. Range:</strong> <span id="modal-range"></span></p>
+          <p id="modal-description"></p>
+
+          <button id="modal-sound-btn" class="sound-icon-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icon-tabler-volume"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 8a5 5 0 0 1 0 8" />
+              <path d="M17.7 5a9 9 0 0 1 0 14" />
+              <path
+                d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5
+      a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5"
+              />
+            </svg>
+          </button>
+
+          <button id="modal-close-btn">Close</button>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
