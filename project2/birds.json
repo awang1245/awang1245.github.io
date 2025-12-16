@@ -10,7 +10,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "One of the most common and widespread sparrows in North America. Fairly large with a long, rounded tail. Overall coarsely patterned with gray and brown, usually with more reddish-brown wings and tail. Look especially for thick brown streaks on the underparts and a broad dark mustache stripe. Significant variation in plumage geographically: relatively pale and rusty in the southwestern U.S.; blacker streaking in California; overall dusky in the Pacific Northwest. Larger, longer-tailed and usually more rusty than Savannah Sparrow. Found in a variety of scrubby habitats both near and far from human development, especially edges of fields, often near water. Listen for husky \"chimp\" calls and melodic song with chips and trills.",
-      "sound": "./public/sounds/song_sparrow.mp3"
+      "sound": "./public/sounds/song_sparrow.mp3",
+      "spawn": ["far"]
     },
     {
       "id": "white_throated_sparrow",
@@ -22,7 +23,8 @@
       "us_range": "Eastern U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Large, long-tailed sparrow. Usually shows a bold head pattern and contrasting white throat. Two morphs with different head colors: white-striped and tan-striped. Both morphs show a yellow patch in front of the eye, but it is more obvious on white-striped birds. Adults have a fairly plain gray-brown breast without bold streaks, but immatures can be quite streaky. Note the grayish bill, unlike White-crowned Sparrow. Breeds in coniferous or mixed forests, often near clearings. In migration and winter, can be found in woods, forest edge, thickets and shrubby fields. Whistled song often transcribed as \"Old Sam Peabody\" or \"O Sweet Canada.\" Visits feeders.",
-      "sound": "./public/sounds/white_throated_sparrow.mp3"
+      "sound": "./public/sounds/white_throated_sparrow.mp3",
+      "spawn": ["far"]
     },
     {
       "id": "dark_eyed_junco",
@@ -34,7 +36,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Day"],
       "description": "Unique sparrow with incredible variation between populations. Generally patterned with gray, white, and shades of tan. All have pinkish bills and white outer tail feathers. Juveniles are streaky. Breeds in a variety of forested habitats, especially with conifers. Found in any wooded habitat in the winter, often in flocks. Usually forages on the ground for seeds, but also fond of brushy thickets or weedy fields. Visits feeders. Subspecies include: Slate-colored (widespread), Oregon (West), Pink-sided (Rockies), Gray-headed (Rockies and southwest U.S. to Mexico), Red-backed (central Arizona and New Mexico), and White-winged (breeds in Black Hills, winters mainly Colorado).",
-      "sound": "./public/sounds/dark_eyed_junco.mp3"
+      "sound": "./public/sounds/dark_eyed_junco.mp3",
+      "spawn": ["far"]
     },
     {
       "id": "mallard",
@@ -46,7 +49,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Day"],
       "description": "A large duck, generally common and familiar within its extensive range. Males are distinctive with iridescent green head, yellow bill, chestnut breast, and gray body. Females are mottled brown with orange and black splotches on the bill. Found anywhere with water, including city parks, backyard creeks, and various wetland habitats. Often in flocks, and frequently mixes with other duck species. In North America, females can be tricky to distinguish from American Black Duck, Mottled Duck, and Mexican Duck where ranges overlap. Those species are all darker-bodied than Mallard. A good view of the wing can be helpful, too: white wingbars on the leading and trailing edges of the blue wing patch are bolder on Mallard. Frequently hybridizes with those species, which can be even more confusing. Any bird with extensive white in the tail or curled feathers above the tail has some Mallard genes.",
-      "sound": "./public/sounds/mallard.mp3"
+      "sound": "./public/sounds/mallard.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "american_black_duck",
@@ -58,7 +62,8 @@
       "us_range": "Northeastern & mid-Atlantic U.S.",
       "time_of_day": ["Day"],
       "description": "A large duck, nearly identical to Mallard in size and shape but with a much darker chocolate-colored body. Bill is yellow with a slight greenish tinge on males, dull grayish-green on females. Note blue wing patch lacks any white borders. Fairly common in northeastern North America, especially along the coast. Large flocks can gather in the winter in saltmarshes and estuaries, but also occurs in smaller numbers on ponds and lakes, often mixed with other duck species. Frequently hybridizes with Mallard. Hybrids usually look darker than typical Mallards and may have an intermediate head pattern; also look for white in the tail or curled feathers above the tail to indicate Mallard genes.",
-      "sound": "./public/sounds/american_black_duck.mp3"
+      "sound": "./public/sounds/american_black_duck.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "hooded_merganser",
@@ -70,7 +75,8 @@
       "us_range": "Eastern & northwestern U.S.",
       "time_of_day": ["Day"],
       "description": "Small diving duck with thin serrated bill. Breeding males have showy black-and-white crest, a couple zebra stripes on the white breast, and cinnamon-colored sides. Females are brown with a puffy crest and partly yellow bill. Looks slender and long-necked in flight, with very fast wingbeats. Widespread across much of North America, but usually only seen in pairs or small flocks. Nests in cavities near small ponds or marshes; especially fond of wooded swamps. In winter, usually found on calm bodies of water; almost never on the ocean. Sometimes mixes loosely with other duck species.",
-      "sound": "./public/sounds/hooded_merganser.mp3"
+      "sound": "./public/sounds/hooded_merganser.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "bufflehead",
@@ -82,7 +88,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Day"],
       "description": "Small, compact diving duck with large head and small gray bill. Breeding males are black and white with large white patch on back of head. Females and immature males are gray-brown with white patch on cheek. Much smaller than Common Goldeneye with which it often associates. Found in bays, estuaries, reservoirs, and lakes in winter. Travels to boreal forest and nests in cavities in summer.",
-      "sound": "./public/sounds/bufflehead.mp3"
+      "sound": "./public/sounds/bufflehead.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "common_eider",
@@ -94,7 +101,8 @@
       "us_range": "Northeastern Atlantic coast",
       "time_of_day": ["Day"],
       "description": "Flocks of these large sea ducks enliven northern coastlines. Males are white and black with a soft suffusion of green on the nape. Immature males are variable and messy-looking with patches of black and white. Females vary from rich rufous-brown to cold grayish, always with extensive black barring covering body and wings. Slight variation in bill shape and color across subspecies, especially obvious on males; Pacific birds have brightest orange bills, most others have greenish bills. Dives to feed on mollusks and other crustaceans. In late summer, look for flocks of females with dozens of ducklings; broods often join together. Compare females with other eider species, and note details of bill and head shape.",
-      "sound": "./public/sounds/common_eider.mp3"
+      "sound": "./public/sounds/common_eider.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "mute_swan",
@@ -106,7 +114,8 @@
       "us_range": "Northeastern & Great Lakes U.S.",
       "time_of_day": ["Day"],
       "description": "Huge white bird with long neck, reddish-orange bill, and black face. Adults have a black knob on top of the bill. Immatures are dusky brown with a gray bill. Native to northern Europe and Asia, but introduced in many regions, where it is now common on ponds, lakes, and calm coastal waters. Very aggressive toward native waterfowl. Often seen in pairs or small family groups.",
-      "sound": "./public/sounds/mute_swan.mp3"
+      "sound": "./public/sounds/mute_swan.mp3",
+      "spawn": ["pond"]
     },
     {
       "id": "downy_woodpecker",
@@ -118,7 +127,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Day"],
       "description": "Tiny woodpecker, common and widespread across much of North America. Black-and-white plumage is nearly identical to the larger Hairy Woodpecker. Focus on the bill: Downy has a very short bill, much shorter than the length of the head. Also note the small black markings on the white outer tail feathers. Pacific population has smaller white spots on the wing and a grayer body than Eastern birds. Occurs in any wooded habitat, though western birds are more restricted to riparian areas. Often forages on smaller branches than Hairy Woodpecker. Familiar visitor to backyard feeders, especially fond of suet. Calls include a soft “pik!” and descending rattle, weaker than Hairy Woodpecker.",
-      "sound": "./public/sounds/downy_woodpecker.mp3"
+      "sound": "./public/sounds/downy_woodpecker.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "red_bellied_woodpecker",
@@ -130,7 +140,8 @@
       "us_range": "Eastern U.S.",
       "time_of_day": ["Day"],
       "description": "Medium-sized woodpecker that is not well named; rarely is the slight red wash on the belly visible! Instead, note the black-and-white barring on the back and wings, plain buffy breast and face, and red nape. On adult males, look for the red extending onto the crown. In flight, look for the white rump. Found in forested and suburban areas, typically preferring deciduous trees. Slowly expanding its range northward. Visits feeders, especially for suet. Nests in cavities.",
-      "sound": "./public/sounds/red_bellied_woodpecker.mp3"
+      "sound": "./public/sounds/red_bellied_woodpecker.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "great_horned_owl",
@@ -142,7 +153,8 @@
       "us_range": "All of U.S.",
       "time_of_day": ["Night"],
       "description": "Large and widespread owl with distinctive ear tufts. Found in a variety of habitats from dense woods to prairie and deserts with at least some trees. Also, found in wooded towns and suburbs. Typically well-camouflaged dark brown overall, but varies in color. Often engages in haunting duets, with males and females hooting back and forth. Preys upon a variety of animals, including mammals, birds and reptiles.",
-      "sound": "./public/sounds/great_horned_owl.mp3"
+      "sound": "./public/sounds/great_horned_owl.mp3",
+      "spawn": ["mid", "near"]
     },
     {
       "id": "barred_owl",
@@ -154,7 +166,8 @@
       "us_range": "Eastern U.S.",
       "time_of_day": ["Night"],
       "description": "Large owl, mottled brown and white. Rounded head lacks ear tufts. Black eyes. Listen for its instantly recognizable “Who cooks for you? Who cooks for you all” call. Favors large, mature forests with deciduous and coniferous trees, often near water. Hunts small animals at night; however, is more active during the day than other owls.",
-      "sound": "./public/sounds/barred_owl.mp3"
+      "sound": "./public/sounds/barred_owl.mp3",
+      "spawn": ["mid", "near"]
     },
     {
       "id": "red_tailed_hawk",
@@ -166,7 +179,8 @@
       "us_range": "All of U.S.",
       "time_of_day": ["Day"],
       "description": "Most common roadside raptor across much of North America. Often perches atop telephone poles, light posts, and edges of trees. Incredible variation in plumages, including less common dark morphs and various regional differences. Eastern adults have brilliant reddish-orange tail and pale underparts with obvious band of dark marks across belly. Western birds are typically darker. Immatures do not have a red tail.",
-      "sound": "./public/sounds/red_tailed_hawk.mp3"
+      "sound": "./public/sounds/red_tailed_hawk.mp3",
+      "spawn": ["near"]
     },
     {
       "id": "coopers_hawk",
@@ -178,7 +192,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Day"],
       "description": "Small to medium-sized hawk with relatively short rounded wings and rounded tail. Adults are gray above with pale orange barring below; immatures are browner and streaky. Very similar to Sharp-shinned Hawk, but larger with bigger head. Also note deeper, slower wingbeats. Breeds in forested areas; more common in suburban areas than Sharp-shinned Hawk. Feeds mainly on birds captured in flight. Often stalks feeders in search of prey.",
-      "sound": "./public/sounds/coopers_hawk.mp3"
+      "sound": "./public/sounds/coopers_hawk.mp3",
+      "spawn": ["mid", "near"]
     },
     {
       "id": "blue_jay",
@@ -190,7 +205,8 @@
       "us_range": "Eastern U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Familiar but stunning jay found year-round throughout most of eastern North America. Bright blue above and pale gray below with a fluffy crest. Also look for black necklace and black and white markings on the wings and tail. Pairs or small groups travel through mature deciduous or coniferous woodlands, often revealing their presence with loud, harsh “jay” calls. Frequently visits bird feeders, where it is often aggressive towards other birds.",
-      "sound": "./public/sounds/blue_jay.mp3"
+      "sound": "./public/sounds/blue_jay.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "tufted_titmouse",
@@ -202,7 +218,8 @@
       "us_range": "Eastern U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Familiar but stunning jay found year-round throughout most of eastern North America. Bright blue above and pale gray below with a fluffy crest. Also look for black necklace and black and white markings on the wings and tail. Pairs or small groups travel through mature deciduous or coniferous woodlands, often revealing their presence with loud, harsh “jay” calls. Frequently visits bird feeders, where it is often aggressive towards other birds.",
-      "sound": "./public/sounds/tufted_titmouse.mp3"
+      "sound": "./public/sounds/tufted_titmouse.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "black_capped_chickadee",
@@ -214,7 +231,8 @@
       "us_range": "Northern & Northeastern U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "This tiny, plump-bodied, big-headed bird is a familiar woodland resident and backyard visitor in the northern U.S. and Canada. Gray overall with light buffy flanks and a contrasting head pattern: black cap, white cheek, and black throat. Short, stubby bill is used for hammering open seeds. Often the core of mixed flocks of songbirds. Visits feeders. Nearly identical to Carolina Chickadee, but range barely overlaps. Especially note voice, brighter white on wings, and buffier flanks on Black-capped. Beware that hybrids occur frequently in the overlap zone and some are best left unidentified.",
-      "sound": "./public/sounds/black_capped_chickadee.wav"
+      "sound": "./public/sounds/black_capped_chickadee.wav",
+      "spawn": ["far"]
     },
     {
       "id": "northern_cardinal",
@@ -226,7 +244,8 @@
       "us_range": "Eastern & Midwest U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Striking and familiar backyard bird throughout most of eastern North America; also occurs in the southwestern U.S. and fairly extensively in Mexico. Crest, large red bill, and long tail render this species distinctive even with a poor view. Male is entirely red with a black face. Female is brownish overall with redder wings and tail. Usually seen in pairs or small groups near dense cover, especially thickets near forest edges. Frequently visits bird feeders. Listen for high-pitched metallic chips and series of loud, sweet whistles.",
-      "sound": "./public/sounds/northern_cardinal.mp3"
+      "sound": "./public/sounds/northern_cardinal.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "mourning_dove",
@@ -238,7 +257,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Svelte with a long, pointed tail. Plain brown overall with dark spots on wing. Juvenile is covered with pale scaly pattern, but is much larger and longer-tailed than ground doves. Widespread and common throughout much of North America, from southern Canada to Panama, including the Caribbean. Found in a variety of habitats from agricultural fields to lightly wooded areas. Loves suburbs, where it often sits on telephone wires and visits bird feeders. Avoids dense forest, but found on forest edges. Usually seen in pairs or small flocks, sometimes gathering in larger numbers, especially in winter. Listen for distinctive cooing song and whistling wings as it takes off.",
-      "sound": "./public/sounds/mourning_dove.mp3"
+      "sound": "./public/sounds/mourning_dove.mp3",
+      "spawn": ["ground"]
     },
     {
       "id": "white_breasted_nuthatch",
@@ -250,7 +270,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "The largest nuthatch in North America, with distinctive white face, black cap, and blue-gray upperparts. Also note rusty lower belly and undertail coverts. Females have a slightly paler crown than males. Fairly common and widespread, usually in mature woodlands with large trees. Creeps along tree trunks and branches, often upside-down. Sometimes joins mixed flocks with other songbirds. Visits feeders. Listen for insistent yammering calls. Some subtle variation across range, mainly in the darkness of the sides and back, width of the black crown, and vocalizations.",
-      "sound": "./public/sounds/white_breasted_nuthatch.mp3"
+      "sound": "./public/sounds/white_breasted_nuthatch.mp3",
+      "spawn": ["far"]
     },
     {
       "id": "cedar_waxwing",
@@ -262,7 +283,8 @@
       "us_range": "Most of U.S.",
       "time_of_day": ["Dawn", "Day", "Dusk"],
       "description": "Plump, smooth-plumaged bird with distinctive thin, high-pitched call. Adults have a sleek crest, black mask, pale yellow wash on the belly, and yellow-tipped tail. Juveniles are drabber than adults, with coarse streaking on the breast and a reduced mask. Widespread and fairly common in open woodlands, orchards, and shrubby areas throughout most of North America. Winter range is variable and somewhat dependent on fruit crops; sometimes ventures as far south as Panama. Often gathers in large flocks, especially around fruiting trees. Compare with Bohemian Waxwing in the northern part of range; Cedar is smaller, browner, and has a white (not rufous) undertail.",
-      "sound": "./public/sounds/cedar_waxwing.mp3"
+      "sound": "./public/sounds/cedar_waxwing.mp3",
+      "spawn": ["mid", "far"]
     },
     {
       "id": "american_robin",
@@ -274,7 +296,8 @@
       "us_range": "All continental U.S.",
       "time_of_day": ["Dawn", "Day"],
       "description": "Fairly large songbird with round body, long legs, and longish tail. Gray above with warm orange underparts and blackish head. Hops across lawns and stands erect with its bill often tilted upward. In fall and winter, forms large flocks and gathers in trees to roost or eat berries. Common across North America in gardens, parks, yards, golf courses, fields, pastures, and many other wooded habitats.",
-      "sound": "./public/sounds/american_robin.mp3"
+      "sound": "./public/sounds/american_robin.mp3",
+      "spawn": ["ground"]
     }
   ]
 }

@@ -1,6 +1,9 @@
 import { timeIcons, weatherIcons, volumeIcons, pond, trees } from "./assets.js";
 
-let birds = []; // stored fetched bird data
+let userEntered = false;
+
+let birds = []; // all fetched birds
+let sceneBirds = []; // birds currently in scene
 let currentCaller = null; // bird currently making a random call
 let mode = "realtime"; // realtime, dawn, day, dusk, night
 let isPaused = false; // to pause ambient logic when bird modal is open
@@ -24,6 +27,23 @@ window.addEventListener("DOMContentLoaded", () => {
   // update weather/temp display for prov every 10 mins
   updateWeather();
   setInterval(updateWeather, 10 * 60 * 1000);
+
+  const enterButton = document.getElementById("enter-button");
+  if (enterButton) {
+    enterButton.addEventListener("click", () => {
+      userEntered = true;
+
+      document.getElementById("enter-overlay").style.display = "none";
+
+      // unlock audio
+      const unlock = new Audio();
+      unlock.volume = 0;
+      unlock.play().catch(() => {});
+
+      // start ambient audio only after interaction
+      startCallLoop();
+    });
+  }
 
   // logic surrounding sound button allowing user to mute/unmute ambient bird sounds
   const soundButton = document.getElementById("sound-button");
@@ -77,8 +97,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       birds = data.birds || [];
       console.log("Loaded birds:", birds);
-
-      startCallLoop(); // start ambient audio loop
       spawnBirdsForCurrentMode(); // place birds in scene
     })
     .catch((err) => {
@@ -246,12 +264,13 @@ function startCallLoop() {
   // small delay to ensure birds are placed first
   setTimeout(() => {
     pickRandomBirdCall();
-  }, 1000);
+  }, 5000);
 }
 
 function pickRandomBirdCall() {
+  if (!userEntered) return;
   if (isPaused) return;
-  if (!birds.length) return;
+  if (!sceneBirds.length) return;
 
   // remove calling class from previous caller
   if (currentCaller) {
@@ -262,16 +281,11 @@ function pickRandomBirdCall() {
   }
 
   // choose and select random bird
-  const randomBird = birds[Math.floor(Math.random() * birds.length)];
+  const randomBird = sceneBirds[Math.floor(Math.random() * sceneBirds.length)];
   currentCaller = randomBird;
   const birdDiv = document.querySelector(
     `.bird-instance[data-id="${randomBird.id}"]`
   );
-
-  // add calling class to new calling bird
-  if (birdDiv) {
-    birdDiv.classList.add("calling");
-  }
 
   console.log("Current bird calling", randomBird.id);
 
@@ -303,10 +317,20 @@ function pickRandomBirdCall() {
 
       ambientAudio.currentTime = 0;
       ambientAudio.play();
+
+      // add calling class to new calling bird
+      if (birdDiv) {
+        birdDiv.classList.add("calling");
+      }
     };
 
     ambientAudio.onended = () => {
       playCount++; // increment play count after audio ends
+
+      // remove calling class when not actively calling
+      if (birdDiv) {
+        birdDiv.classList.remove("calling");
+      }
 
       // if more repeats remain, keep going
       if (playCount < repeats) {
@@ -328,46 +352,197 @@ function pickRandomBirdCall() {
   };
 }
 
-// continue ambient audio loop by picking another random bird after 20 seconds
+// continue ambient audio loop by picking another random bird after 15 seconds
 function scheduleNextCall() {
   if (isPaused) return;
   setTimeout(() => {
     pickRandomBirdCall();
-  }, 20000);
+  }, 15000);
 }
 
-// bird spawning logic
+/*
+GENERAL BIRD SPAWNING LOGIC
+*/
 
-const TREE_WIDTH = {
-  near: 108,
-  mid: 77,
-  far: 52,
-};
+// get birds allowed per layer
+function birdsForLayer(birds, layer) {
+  return birds.filter((b) => b.spawn?.includes(layer));
+}
 
-const SCREEN_TOP_LIMIT = window.innerHeight * 0.1; // top 10%
-const SCREEN_BOTTOM_GROUND = window.innerHeight * 0.7; // bottom 30%
+// place birds in scene for current time of day
+function spawnBirdsForCurrentMode() {
+  // clear any previous bird instances + reset list of birds curr in scene
+  document.querySelectorAll(".bird-instance").forEach((b) => b.remove());
+  sceneBirds = [];
 
-// pond horizontal limits
-const POND_LEFT = window.innerWidth * 0.2 + 50;
-const POND_RIGHT = POND_LEFT + 510;
+  // get birds that match the current time of day
+  const eligible = birds.filter((b) =>
+    b.time_of_day.some(
+      (t) => t.toLowerCase() === getCurrentMode().toLowerCase()
+    )
+  );
 
-// pond vertical limits (from bottom)
-const POND_MIN_Y = window.innerHeight - 320; // higher up
-const POND_MAX_Y = window.innerHeight - 210; // near bottom
+  // get allowed pond birds and randomize
+  const pondBirds = birdsForLayer(eligible, "pond").sort(
+    () => Math.random() - 0.5
+  );
+  // 1 bird on left and right side of pond
+  spawnPondLayer(pondBirds.slice(0, 2));
 
-const GROUND_LEFT = POND_LEFT - 50;
-const GROUND_RIGHT = POND_RIGHT + 50;
+  // get allowed ground birds and randomize
+  const groundBirds = birdsForLayer(eligible, "ground").sort(
+    () => Math.random() - 0.5
+  );
+  // 1 ground bird
+  groundBirds.slice(0, 1).forEach((bird) => spawnGroundBird(bird));
+
+  // get allowed near tree birds and randomize
+  const nearBirds = birdsForLayer(eligible, "near").sort(
+    () => Math.random() - 0.5
+  );
+  // 1 bird on left and right side of tree
+  spawnNearLayer(nearBirds.slice(0, 2));
+
+  // get allowed mid tree birds and randomize
+  const midBirds = birdsForLayer(eligible, "mid").sort(
+    () => Math.random() - 0.5
+  );
+  // 1 bird per mid tree
+  spawnMidLayer(midBirds.slice(0, 2));
+
+  // get allowed far tree birds and randomize
+  const farBirds = birdsForLayer(eligible, "far").sort(
+    () => Math.random() - 0.5
+  );
+  // 1 bird per far tree
+  spawnFarLayer(farBirds.slice(0, 2));
+
+  // make all birds clickable
+  requestAnimationFrame(enableClicks);
+}
+
+// set up div and styling for each bird
+function createBirdDiv(bird, fontSize, opacity) {
+  // make new bird-instance
+  const div = document.createElement("div");
+  div.classList.add("bird-instance");
+
+  // add styling
+  div.style.position = "absolute";
+  div.style.whiteSpace = "pre";
+  div.style.fontSize = `${fontSize}px`;
+  div.style.zIndex = "50";
+  div.style.opacity = opacity;
+
+  // ascii art
+  div.textContent = bird.ascii;
+
+  // store bird id for modal
+  div.dataset.id = bird.id;
+
+  document.body.appendChild(div);
+  return div;
+}
+
+// add transition for when bird appears in scene
+function fadeIn(div, opacity = 1) {
+  div.style.opacity = 0;
+  requestAnimationFrame(() => {
+    div.style.transition = "opacity 0.8s ease";
+    div.style.opacity = `${opacity}`;
+  });
+}
+
+/*
+SPAWN GROUND BIRD
+*/
+
+const GROUND_LEFT = window.innerWidth * 0.2 + 200;
+const GROUND_RIGHT = window.innerWidth * 0.2 + 640;
 
 const GROUND_MIN_Y = window.innerHeight * 0.85; // top of bottom 20%
 const GROUND_MAX_Y = window.innerHeight - 100;
 
-// depth layers
+// randomly place a ground bird in scene within allowed bounds
+function spawnGroundBird(bird) {
+  // add bird to list of birds curr in scene + create div
+  sceneBirds.push(bird);
+  const birdDiv = createBirdDiv(bird, 24, 1.0);
+
+  // random x within allowed bounds
+  const x = GROUND_LEFT + Math.random() * (GROUND_RIGHT - GROUND_LEFT - 80);
+  // random y within allowed bounds
+  let y = GROUND_MIN_Y + Math.random() * (GROUND_MAX_Y - GROUND_MIN_Y);
+
+  birdDiv.style.left = `${x}px`;
+  birdDiv.style.top = `${y}px`;
+
+  fadeIn(birdDiv, 1.0);
+}
+
+/*
+SPAWN POND BIRDS
+*/
+
+const POND_BOUNDS = {
+  left: {
+    xMin: window.innerWidth * 0.2 + 30,
+    xMax: window.innerWidth * 0.2 + 230,
+  },
+  right: {
+    xMin: window.innerWidth * 0.2 + 270,
+    xMax: window.innerWidth * 0.2 + 480,
+  },
+  yMin: window.innerHeight - 320,
+  yMax: window.innerHeight - 210,
+};
+
+// randomly place a pond bird in scene within allowed bounds
+function spawnPondBird(bird, side) {
+  // add bird to list of birds curr in scene + create div
+  sceneBirds.push(bird);
+  const birdDiv = createBirdDiv(bird, 24, 0.8);
+
+  // get allowed bounds based on which side of pond
+  const bounds = POND_BOUNDS[side];
+
+  // random x within allowed bounds
+  const x = bounds.xMin + Math.random() * (bounds.xMax - bounds.xMin);
+  // random y within allowed bounds
+  const y =
+    POND_BOUNDS.yMin + Math.random() * (POND_BOUNDS.yMax - POND_BOUNDS.yMin);
+
+  birdDiv.style.left = `${x}px`;
+  birdDiv.style.top = `${y}px`;
+
+  fadeIn(birdDiv, 0.8);
+}
+
+// spawn one pond bird in each slot within the pond layer
+function spawnPondLayer(birdList) {
+  const slots = [
+    { side: "left", bird: birdList[0] },
+    { side: "right", bird: birdList[1] },
+  ];
+
+  slots.forEach(({ bird, side }) => {
+    if (!bird) return;
+    spawnPondBird(bird, side);
+  });
+}
+
+/*
+SPAWN TREE BIRDS
+*/
+
+// text styling for each tree layer
 const LAYERS = {
   near: { font: 24, opacity: 1.0 },
   mid: { font: 20, opacity: 0.8 },
   far: { font: 16, opacity: 0.6 },
 };
 
+// position birds on specific parts of tree to reduce some potential overlap
 const TREE_SLOTS = {
   near: [
     { id: "trees-near", side: "left" },
@@ -383,190 +558,95 @@ const TREE_SLOTS = {
   ],
 };
 
-const POND_BIRDS = new Set([
-  "mallard",
-  "americanblackduck",
-  "hoodedmerganser",
-  "bufflehead",
-  "commoneider",
-  "muteswan",
-]);
+// randomly place a tree bird within the allowed bounds
+function spawnTreeBird(bird, treeRect, layer, side) {
+  // add bird to list of birds curr in scene
+  sceneBirds.push(bird);
 
-const GROUND_BIRDS = new Set(["mourningdove", "americanrobin"]);
+  const birdDiv = createBirdDiv(bird, layer.font, layer.opacity);
+
+  requestAnimationFrame(() => {
+    // get y within upper 60% of tree
+    let y = treeRect.top + Math.random() * (treeRect.height * 0.6);
+    // if y is within top 10% of screen, shift down a random amount so bird isn't cut off
+    if (y < window.innerHeight * 0.1) {
+      y = window.innerHeight * 0.1 + Math.random() * 40;
+    }
+
+    // get x based on side of tree
+    let x;
+    if (side === "left") {
+      // if bird is on left side, offset it by the width of the bird
+      x = treeRect.left - birdDiv.getBoundingClientRect().width;
+    } else {
+      x = treeRect.right;
+    }
+
+    birdDiv.style.left = `${x}px`;
+    birdDiv.style.top = `${y}px`;
+
+    fadeIn(birdDiv, layer.opacity);
+  });
+}
 
 // need to make sure woodpeckers are on right side of a tree
-const WOODPECKERS = new Set(["downywoodpecker", "redbelliedwoodpecker"]);
-
-function spawnBirdsForCurrentMode() {
-  console.log("SPAWN CALLED");
-  document.querySelectorAll(".bird-instance").forEach((b) => b.remove());
-
-  const tod = getCurrentMode().toLowerCase();
-
-  // filter birds by time-of-day ONLY
-  const eligible = birds.filter((b) =>
-    b.time_of_day.some((t) => t.toLowerCase() === tod)
-  );
-  // randomize list
-  const shuffled = eligible.sort(() => Math.random() - 0.5);
-
-  // prepare layers
-  const pondBirds = shuffled.filter((b) => POND_BIRDS.has(b.id));
-  const landBirds = shuffled.filter((b) => GROUND_BIRDS.has(b.id));
-  const rest = shuffled.filter(
-    (b) => !POND_BIRDS.has(b.id) && !GROUND_BIRDS.has(b.id)
-  );
-
-  // pond 2 birds
-  pondBirds.slice(0, 2).forEach((bird) => spawnPondBird(bird));
-
-  // ground 1 bird
-  landBirds.slice(0, 1).forEach((bird) => spawnGroundBird(bird));
-
-  // Near: exactly 2 (left + right)
-  const nearBirds = rest.slice(0, 2);
-  spawnNearLayer(nearBirds);
-
-  // Mid: 1 each
-  const midBirds = rest.slice(2, 4);
-  spawnMidLayer(midBirds);
-
-  // Far: 1 each
-  const farBirds = rest.slice(4, 6);
-  spawnFarLayer(farBirds);
-
-  requestAnimationFrame(() => enableClicks());
+function getBirdTreeSide(bird, defaultSide) {
+  const woodpeckers = new Set(["downy_woodpecker", "red_bellied_woodpecker"]);
+  return woodpeckers.has(bird.id) ? "right" : defaultSide;
 }
 
-function spawnPondBird(bird) {
-  const div = createBirdDiv(bird, 24, 1.0);
-
-  // X must be inside pond region
-  const x = POND_LEFT + Math.random() * (POND_RIGHT - POND_LEFT - 80);
-
-  // Y must be between POND_MIN_Y and POND_MAX_Y
-  let y = POND_MIN_Y + Math.random() * (POND_MAX_Y - POND_MIN_Y);
-
-  div.style.left = `${x}px`;
-  div.style.top = `${y}px`;
-
-  fadeIn(div);
-}
-
-function spawnGroundBird(bird) {
-  const div = createBirdDiv(bird, 24, 1.0);
-
-  // X within pond region + 100px extra on both sides
-  const x = GROUND_LEFT + Math.random() * (GROUND_RIGHT - GROUND_LEFT - 80);
-
-  // Y within bottom 20%
-  let y = GROUND_MIN_Y + Math.random() * (GROUND_MAX_Y - GROUND_MIN_Y);
-
-  div.style.left = `${x}px`;
-  div.style.top = `${y}px`;
-
-  fadeIn(div);
-}
-
+// spawn one tree bird in each slot within the near layer
 function spawnNearLayer(birdList) {
   if (!birdList.length) return;
-  const anchor = document.getElementById("trees-near");
-  const rect = anchor.getBoundingClientRect();
 
+  // get tree div to use its bounding box width and height in spawnTreeBird
+  const treeDiv = document.getElementById("trees-near").getBoundingClientRect();
   const positions = [
     { side: "left", bird: birdList[0] },
     { side: "right", bird: birdList[1] },
   ];
 
+  // spawn a tree bird for each side of the tree
   positions.forEach((entry) => {
     if (!entry.bird) return;
 
-    // woodpeckers ALWAYS go on the right
-    const side = WOODPECKERS.has(entry.bird.id) ? "right" : entry.side;
-
-    placeBirdAtTree(entry.bird, rect, LAYERS.near, side, "near");
+    spawnTreeBird(
+      entry.bird,
+      treeDiv,
+      LAYERS.near,
+      getBirdTreeSide(entry.bird, entry.side)
+    );
   });
 }
 
+// spawn one tree bird in each slot within the mid layer
 function spawnMidLayer(birdList) {
+  if (!birdList.length) return;
+
+  // spawn a tree bird for each side of the tree
   TREE_SLOTS.mid.forEach((slot, i) => {
-    if (!birdList[i]) return;
+    const bird = birdList[i];
+    if (!bird) return; // return if no valid birds for layer
 
-    const el = document.getElementById(slot.id);
-    if (!el) return;
+    // get tree div to use its bounding box width and height in spawnTreeBird
+    const treeDiv = document.getElementById(slot.id).getBoundingClientRect();
 
-    const rect = el.getBoundingClientRect();
-    placeBirdAtTree(birdList[i], rect, LAYERS.mid, slot.side, "mid");
+    spawnTreeBird(bird, treeDiv, LAYERS.mid, getBirdTreeSide(bird, slot.side));
   });
 }
 
+// spawn one tree bird in each slot within the far layer
 function spawnFarLayer(birdList) {
+  if (!birdList.length) return;
+
   TREE_SLOTS.far.forEach((slot, i) => {
-    if (!birdList[i]) return;
+    const bird = birdList[i];
+    if (!bird) return; // return if no valid birds for layer
 
-    const el = document.getElementById(slot.id);
-    if (!el) return;
+    // get tree div to use its bounding box width and height in spawnTreeBird
+    const treeDiv = document.getElementById(slot.id).getBoundingClientRect();
 
-    const rect = el.getBoundingClientRect();
-    placeBirdAtTree(birdList[i], rect, LAYERS.far, slot.side, "far");
-  });
-}
-
-function placeBirdAtTree(
-  bird,
-  treeRect,
-  layer,
-  side = "right",
-  treeType = "near"
-) {
-  const div = createBirdDiv(bird, layer.font, layer.opacity);
-
-  requestAnimationFrame(() => {
-    const birdRect = div.getBoundingClientRect();
-    const birdWidth = birdRect.width;
-
-    // Y: within upper 60%
-    let y = treeRect.top + Math.random() * (treeRect.height * 0.6);
-    if (y < SCREEN_TOP_LIMIT) {
-      y = SCREEN_TOP_LIMIT + Math.random() * 40;
-    }
-
-    let x;
-
-    if (side === "left") {
-      x = treeRect.left - birdWidth; // same as near tree logic
-    } else {
-      x = treeRect.right;
-    }
-
-    div.style.left = `${x}px`;
-    div.style.top = `${y}px`;
-
-    fadeIn(div);
-  });
-}
-
-function createBirdDiv(bird, fontSize = 24, opacity = 1) {
-  const div = document.createElement("div");
-  div.classList.add("bird-instance");
-  div.style.position = "absolute";
-  div.style.whiteSpace = "pre";
-  div.style.fontSize = `${fontSize}px`;
-  div.style.zIndex = "50";
-  div.style.opacity = opacity;
-  div.textContent = bird.ascii;
-
-  div.dataset.id = bird.id; // needed for selection + modal
-
-  document.body.appendChild(div);
-  return div;
-}
-
-function fadeIn(div) {
-  div.style.opacity = 0;
-  requestAnimationFrame(() => {
-    div.style.transition = "opacity 0.8s ease";
-    div.style.opacity = 1;
+    spawnTreeBird(bird, treeDiv, LAYERS.far, getBirdTreeSide(bird, slot.side));
   });
 }
 
