@@ -15,35 +15,34 @@ window.globalMuted = false;
 window.addEventListener("DOMContentLoaded", () => {
   // set up the scene
   applyBackground();
+  placeAscii();
 
   // update time display every second
-  updateTimePanel();
-  setInterval(updateTimePanel, 1000);
+  updateTime();
+  setInterval(updateTime, 1000);
 
   // update weather/temp display for prov every 10 mins
   updateWeather();
   setInterval(updateWeather, 10 * 60 * 1000);
 
-  placeAscii();
-
+  // logic surrounding sound button allowing user to mute/unmute ambient bird sounds
   const soundButton = document.getElementById("sound-button");
   soundButton.innerHTML = volumeIcons.on;
-
   soundButton.addEventListener("click", () => {
     isMuted = !isMuted;
     window.globalMuted = isMuted;
 
-    // set volume true or false according to whether user has muted sound
+    // set volume property on htmlaudioelement instance based on whether muted or not
     if (ambientAudio) {
-      ambientAudio.volume = isMuted ? 0 : 0.6;
+      ambientAudio.volume = isMuted ? 0 : 0.5;
     }
 
     soundButton.innerHTML = isMuted ? volumeIcons.off : volumeIcons.on;
   });
 
+  // logic surrounding dropdown allowing user to change the time of day mode
   const modeButton = document.getElementById("mode-button");
   const modeMenu = document.getElementById("mode-menu");
-
   modeButton.addEventListener("click", () => {
     modeMenu.classList.toggle("hidden");
     modeButton.classList.toggle("open");
@@ -51,27 +50,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
   modeMenu.querySelectorAll("div").forEach((item) => {
     item.addEventListener("click", () => {
+      // update mode to reflect selected mode div
       mode = item.dataset.mode;
 
-      const label =
-        item.dataset.mode === "realtime"
-          ? "Real-Time"
-          : item.dataset.mode.charAt(0).toUpperCase() +
-            item.dataset.mode.slice(1);
-
-      modeButton.querySelector("p").textContent = label;
+      // update main mode button to reflect the selected div
+      modeButton.querySelector("p").textContent = item.textContent;
 
       modeMenu.classList.add("hidden");
       modeButton.classList.remove("open");
 
-      // reapply immediately
+      // update scene for new mode
       applyBackground();
-      updateTimePanel();
-
+      updateTime();
       spawnBirdsForCurrentMode();
     });
   });
 
+  // get all bird data
   fetch("./birds.json")
     .then((res) => {
       if (!res.ok) {
@@ -83,113 +78,21 @@ window.addEventListener("DOMContentLoaded", () => {
       birds = data.birds || [];
       console.log("Loaded birds:", birds);
 
-      if (!birds.length) {
-        console.warn("No birds found in JSON.");
-        return;
-      }
-
-      startCallLoop();
-
-      requestAnimationFrame(() => {
-        console.log("Calling spawnBirdsForCurrentMode()");
-        spawnBirdsForCurrentMode();
-      });
+      startCallLoop(); // start ambient audio loop
+      spawnBirdsForCurrentMode(); // place birds in scene
     })
     .catch((err) => {
       console.error("Failed to load birds.json:", err);
     });
 });
 
-function startCallLoop() {
-  // small delay to ensure birds are placed first
-  setTimeout(() => {
-    pickRandomBirdCall();
-  }, 1000);
-}
+/*
+SETTING UP UI + SCENE
+*/
 
-function pickRandomBirdCall() {
-  if (isPaused) return;
-  if (!birds.length) return;
-
-  // remove calling class from previous caller
-  if (currentCaller) {
-    const prevDiv = document.querySelector(
-      `.bird-instance[data-id="${currentCaller.id}"]`
-    );
-    if (prevDiv) prevDiv.classList.remove("calling");
-  }
-
-  // choose random bird
-  const randomBird = birds[Math.floor(Math.random() * birds.length)];
-  currentCaller = randomBird;
-
-  const birdDiv = document.querySelector(
-    `.bird-instance[data-id="${randomBird.id}"]`
-  );
-
-  if (birdDiv && !isPaused) {
-    birdDiv.classList.add("calling"); // wiggle class
-  }
-
-  if (isPaused) return;
-
-  console.log("Playing:", randomBird.id);
-
-  if (window.globalMuted) {
-    if (birdDiv) birdDiv.classList.remove("calling");
-    scheduleNextCall();
-    return;
-  }
-
-  ambientAudio = new Audio(randomBird.sound);
-  ambientAudio.volume = window.globalMuted ? 0 : 1;
-
-  // play audio
-  ambientAudio.play().catch((err) => {
-    console.warn("Audio failed to play:", err);
-    scheduleNextCall();
-  });
-
-  ambientAudio.onended = () => {
-    ambientAudio = null;
-    if (birdDiv) birdDiv.classList.remove("calling");
-    scheduleNextCall();
-  };
-}
-
-function scheduleNextCall() {
-  if (isPaused) return;
-  setTimeout(() => {
-    pickRandomBirdCall();
-  }, 10000);
-}
-
-function enableClicks() {
-  const birdDivs = document.querySelectorAll(".bird-instance");
-
-  birdDivs.forEach((div) => {
-    div.addEventListener("click", () => {
-      const birdId = div.dataset.id;
-      const bird = birds.find((b) => b.id === birdId);
-      if (!bird) return;
-
-      // remove previous selection
-      document.querySelectorAll(".bird-instance.selected").forEach((prev) => {
-        prev.classList.remove("selected");
-      });
-
-      // highlight clicked bird
-      div.classList.add("selected");
-
-      // open modal
-      openBirdModal(bird);
-    });
-  });
-}
-
-// for ui and background
-function getDayState(date = new Date()) {
-  const h = date.getHours();
+// get fields corresponding to real-time mode
+function getDayState() {
+  const h = new Date().getHours();
 
   if (h >= 4.5 && h < 7.5) {
     return {
@@ -218,67 +121,86 @@ function getDayState(date = new Date()) {
   }
 }
 
+// apply background based on current mode
 function applyBackground() {
   const body = document.body;
 
+  // remove current styling
   body.classList.remove("bg-dawn", "bg-day", "bg-dusk", "bg-night");
 
+  // apply custom mode
   if (mode !== "realtime") {
     body.classList.add("bg-" + mode);
     return;
   }
 
+  // apply real-time mode
   const realState = getDayState();
   body.classList.add(realState.className);
 }
 
-function formatTime(date = new Date()) {
-  let h = date.getHours();
-  let m = date.getMinutes().toString().padStart(2, "0");
-  let s = date.getSeconds().toString().padStart(2, "0");
+// getter for current mode
+function getCurrentMode() {
+  // return immediately if custom picked mode
+  if (mode !== "realtime") {
+    return mode;
+  }
+
+  // if realtime, use actual real time logic
+  const h = new Date().getHours();
+
+  if (h >= 4.5 && h < 7.5) {
+    return "dawn";
+  } else if (h >= 7.5 && h < 17) {
+    return "day";
+  } else if (h >= 17 && h < 19) {
+    return "dusk";
+  } else {
+    return "night";
+  }
+}
+
+// handle updating the time UI
+function updateTime() {
+  // update time text based on current time
+  const timeText = document.getElementById("time-text");
+  let h = new Date().getHours();
+  let m = new Date().getMinutes().toString().padStart(2, "0");
+  let s = new Date().getSeconds().toString().padStart(2, "0");
 
   const am = h < 12;
   h = h % 12 || 12;
+  timeText.textContent = `${h}:${m}:${s} ${am ? "AM" : "PM"}`;
 
-  return `${h}:${m}:${s} ${am ? "AM" : "PM"}`;
-}
-
-function updateTimePanel() {
-  const now = new Date();
-  const state = getDayState(now);
-
-  const timeText = document.getElementById("time-text");
-
-  if (timeText) {
-    timeText.textContent = formatTime(now);
-  }
-
+  // update icon in time panel according to real-time time of day
   const iconContainer = document.getElementById("time-icon");
+  const state = getDayState();
   iconContainer.innerHTML = timeIcons[state.mode];
 }
 
+// handle updating weather UI
 async function updateWeather() {
+  // fetch weather data from open source weather api using providence coordinates
   const url =
-    "https://api.open-meteo.com/v1/forecast?latitude=41.8236&longitude=-71.4222&current_weather=true";
+    "https://api.open-meteo.com/v1/forecast?latitude=41.8245&longitude=-71.4127&current_weather=true";
 
   try {
     const res = await fetch(url);
     const data = await res.json();
 
-    const tempC = data.current_weather.temperature; // °C
-    const tempF = Math.round((tempC * 9) / 5 + 32); // convert to F
+    const tempC = data.current_weather.temperature; // celsius by default
+    const tempF = Math.round((tempC * 9) / 5 + 32); // convert to fahrenheit
 
+    // get icon + label for current weather code
     const code = data.current_weather.weathercode;
     const state = interpretWeatherCode(code);
-
     document.getElementById("weather-icon").innerHTML =
       weatherIcons[state.icon];
-
     document.getElementById(
       "weather-text"
     ).textContent = `${state.label}, ${tempF}°F / ${tempC}°C`;
   } catch (err) {
-    console.error("Weather error:", err);
+    console.error("Error fetching weather data:", err);
   }
 }
 
@@ -302,20 +224,7 @@ function interpretWeatherCode(code) {
   return { icon: "cloudy", label: "Unknown" };
 }
 
-function getCurrentMode() {
-  if (mode !== "realtime") {
-    return mode;
-  }
-
-  // if realtime, use actual real time logic
-  const h = new Date().getHours();
-
-  if (h >= 4.5 && h < 7.5) return "dawn";
-  if (h >= 7.5 && h < 17) return "day";
-  if (h >= 17 && h < 19) return "dusk";
-  return "night";
-}
-
+// add in ascii scene
 function placeAscii() {
   document.getElementById("trees-far-1").textContent = trees.far;
   document.getElementById("trees-far-2").textContent = trees.far;
@@ -326,6 +235,105 @@ function placeAscii() {
   document.getElementById("trees-near").textContent = trees.near;
 
   document.getElementById("pond").textContent = pond;
+}
+
+/*
+AMBIENT BIRD CALL LOOP
+*/
+
+// start ambient audio loop by picking a random bird to call
+function startCallLoop() {
+  // small delay to ensure birds are placed first
+  setTimeout(() => {
+    pickRandomBirdCall();
+  }, 1000);
+}
+
+function pickRandomBirdCall() {
+  if (isPaused) return;
+  if (!birds.length) return;
+
+  // remove calling class from previous caller
+  if (currentCaller) {
+    const prevDiv = document.querySelector(
+      `.bird-instance[data-id="${currentCaller.id}"]`
+    );
+    if (prevDiv) prevDiv.classList.remove("calling");
+  }
+
+  // choose and select random bird
+  const randomBird = birds[Math.floor(Math.random() * birds.length)];
+  currentCaller = randomBird;
+  const birdDiv = document.querySelector(
+    `.bird-instance[data-id="${randomBird.id}"]`
+  );
+
+  // add calling class to new calling bird
+  if (birdDiv) {
+    birdDiv.classList.add("calling");
+  }
+
+  console.log("Current bird calling", randomBird.id);
+
+  // if sound button is muted rn, skip sound creation, but keep random bird selection logic ongoing
+  if (window.globalMuted) {
+    scheduleNextCall();
+    return;
+  }
+
+  // initialize htmlaudioelement object
+  ambientAudio = new Audio(randomBird.sound);
+  ambientAudio.volume = window.globalMuted ? 0 : 0.5;
+
+  ambientAudio.onloadedmetadata = () => {
+    let repeats = 1;
+    if (ambientAudio.duration < 3) {
+      repeats = 3;
+    } else if (ambientAudio.duration <= 9) {
+      repeats = 2;
+    } else {
+      repeats = 1;
+    }
+
+    let playCount = 0;
+
+    // function to play bird call one time
+    const playOnce = () => {
+      if (isPaused) return;
+
+      ambientAudio.currentTime = 0;
+      ambientAudio.play();
+    };
+
+    ambientAudio.onended = () => {
+      playCount++; // increment play count after audio ends
+
+      // if more repeats remain, keep going
+      if (playCount < repeats) {
+        // wait 1 second, then replay
+        setTimeout(() => {
+          if (!isPaused) playOnce();
+        }, 1000);
+
+        // finished all repeats
+      } else {
+        ambientAudio = null; // clear ambientAudio for next bird
+        if (birdDiv) birdDiv.classList.remove("calling");
+        scheduleNextCall(); // continue ambient audio loop
+      }
+    };
+
+    // call playOnce for the first time
+    playOnce();
+  };
+}
+
+// continue ambient audio loop by picking another random bird after 20 seconds
+function scheduleNextCall() {
+  if (isPaused) return;
+  setTimeout(() => {
+    pickRandomBirdCall();
+  }, 20000);
 }
 
 // bird spawning logic
@@ -562,7 +570,9 @@ function fadeIn(div) {
   });
 }
 
-// modal logic
+/*
+MODAL LOGIC
+*/
 
 let modalAudio = null;
 
@@ -575,36 +585,66 @@ document.getElementById("modal-sound-btn").addEventListener("click", () => {
   modalAudio.play().catch((err) => console.warn("Sound failed:", err));
 });
 
-function openBirdModal(bird) {
-  isPaused = true;
-  const overlay = document.getElementById("bird-overlay");
+// make all bird instances in scene clickable
+function enableClicks() {
+  const birdDivs = document.querySelectorAll(".bird-instance");
 
+  birdDivs.forEach((div) => {
+    div.addEventListener("click", () => {
+      const birdId = div.dataset.id;
+      const bird = birds.find((b) => b.id === birdId);
+      if (!bird) return;
+
+      // remove previous selection
+      document.querySelectorAll(".bird-instance.selected").forEach((prev) => {
+        prev.classList.remove("selected");
+      });
+
+      // highlight clicked bird
+      div.classList.add("selected");
+
+      // open modal
+      openBirdModal(bird);
+    });
+  });
+}
+
+// handle logic for showing bird modal
+function openBirdModal(bird) {
+  // pause the random ambient bird call logic
+  isPaused = true;
+  // stop any current ambient bird calls that might be playing
+  if (ambientAudio) {
+    ambientAudio.pause();
+    ambientAudio.currentTime = 0;
+    ambientAudio = null;
+  }
+
+  // add overlay over scene + disable buttons in scene
+  const overlay = document.getElementById("bird-overlay");
+  overlay.style.display = "block";
   document.getElementById("top-left").classList.add("ui-disabled");
   document.getElementById("bottom-right").classList.add("ui-disabled");
 
+  // populate modal fields with bird info from json
   document.getElementById("modal-name").textContent = bird.name;
-  document.getElementById("modal-science").textContent =
-    bird.scientific_name || "";
-  document.getElementById("modal-img").src = bird.img || "";
-  document.getElementById("modal-seasonality").textContent =
-    bird.seasonality || "";
-  document.getElementById("modal-time").textContent =
-    bird.time_of_day?.join(", ") || "";
-  document.getElementById("modal-range").textContent = bird.us_range || "";
-  document.getElementById("modal-description").textContent =
-    bird.description || "";
+  document.getElementById("modal-science").textContent = bird.scientific_name;
+  document.getElementById("modal-img").src = bird.img;
+  document.getElementById("modal-seasonality").textContent = bird.seasonality;
+  document.getElementById("modal-range").textContent = bird.us_range;
+  document.getElementById("modal-description").textContent = bird.description;
   modalAudio = new Audio(bird.sound);
-
-  overlay.style.display = "block";
 }
 
+// handle logic for closing bird modal
 function closeBirdModal() {
+  // remove overlay and unpause scene
   document.getElementById("bird-overlay").style.display = "none";
   isPaused = false;
-
   document.getElementById("top-left").classList.remove("ui-disabled");
   document.getElementById("bottom-right").classList.remove("ui-disabled");
 
+  // remove selected class from clicked bird
   document
     .querySelectorAll(".bird-instance.selected")
     .forEach((el) => el.classList.remove("selected"));

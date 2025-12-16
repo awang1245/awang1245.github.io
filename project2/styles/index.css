@@ -227,9 +227,7 @@ main {
 }
 
 .bird-instance {
-  position: absolute;
-  white-space: pre;
-  z-index: 50;
+  /* in case */
 }
 
 .bird-instance.selected {
