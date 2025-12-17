@@ -1,10 +1,10 @@
 * {
   box-sizing: border-box;
-  font-family: "Proto Mono", sans-serif;
+  font-family: "Proto Mono", monospace;
 }
 
 :root {
-  font-family: "Proto Mono", sans-serif;
+  font-family: "Proto Mono", monospace, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.1;
@@ -45,6 +45,7 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
 .bg-dawn {
@@ -115,7 +116,7 @@ main {
   z-index: 999999999;
 }
 
-.top-left,
+#top-right,
 .time,
 .weather {
   width: fit-content;
@@ -127,13 +128,101 @@ main {
   background-color: white;
   border-radius: 16px;
   padding: 13.5px 16px;
+
+  pointer-events: none;
 }
 
-.top-left {
+#top-right {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+}
+
+#about-button {
   position: absolute;
   left: 24px;
   top: 24px;
   z-index: 100;
+
+  width: fit-content;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 12px;
+
+  background-color: white;
+  border-radius: 16px;
+  padding: 13.5px 16px;
+}
+
+#info-modal {
+  width: 467.22px;
+  height: calc(100% - 190px);
+  overflow-y: scroll;
+  position: absolute;
+  left: 24px;
+  top: 91px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 32px;
+  z-index: 100;
+
+  scrollbar-color: #999999 transparent;
+  scrollbar-width: thin;
+}
+
+#info-modal,
+#info-modal * {
+  font-family: "Geist Mono";
+  font-weight: 400;
+  font-size: 16px;
+  color: #666666;
+}
+
+#info-modal h1 {
+  font-family: "Proto Mono";
+  font-size: 20px;
+  color: black;
+}
+
+#info-modal .proto {
+  font-family: "Proto Mono";
+  font-size: 16px;
+  color: #666666;
+}
+
+#info-modal section {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#info-modal p {
+  padding-top: 12px;
+}
+
+#info-modal a {
+  text-decoration: underline;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-top: 16px;
+  padding-left: 16px;
+}
+
+ul > li {
+  text-indent: -5px;
+}
+
+ul > li:before {
+  content: "-";
+  text-indent: -5px;
 }
 
 .bottom-left {
@@ -169,12 +258,13 @@ main {
 }
 
 .mode-dropdown {
-  width: 145px;
+  width: 155px;
   display: flex;
   flex-flow: column-reverse nowrap;
   gap: 16px;
 }
 
+#about-button,
 #mode-button {
   font-size: 16px;
   background-color: white;
@@ -192,7 +282,7 @@ main {
   transition: transform 0.2s ease;
 }
 
-#mode-button.open svg {
+#mode-button.active svg {
   transform: rotate(180deg);
 }
 
@@ -208,10 +298,12 @@ main {
   border: none;
 }
 
-.top-left:hover,
+#about-button:hover,
 #mode-button:hover,
 #sound-button:hover,
-#enter-button:hover {
+#enter-button:hover,
+#mode-button.active,
+#about-button.active {
   background-color: #e0e0e0;
   transition: background-color 0.2s;
 }
@@ -222,18 +314,20 @@ main {
   border-radius: 16px;
 }
 
-.hidden {
+#top-right.hidden,
+#info-modal.hidden,
+#mode-menu.hidden {
   display: none;
 }
 
 #mode-menu > div {
-  width: 145px;
+  width: 155px;
   padding: 13.5px 0px;
   padding-left: 13.5px;
 }
 
 #mode-menu > div:first-child {
-  width: 145px;
+  width: 155px;
   padding: 13.5px 0px;
   padding-left: 13.5px;
   border-top-left-radius: 16px;
@@ -241,7 +335,7 @@ main {
 }
 
 #mode-menu > div:last-child {
-  width: 145px;
+  width: 155px;
   padding: 13.5px 0px;
   padding-left: 13.5px;
   border-bottom-left-radius: 16px;
@@ -352,6 +446,9 @@ main {
   gap: 24px;
   z-index: 200;
   font-size: 16px;
+
+  scrollbar-color: #999999 transparent;
+  scrollbar-width: thin;
 }
 
 .modal-top {
@@ -365,19 +462,32 @@ main {
 .modal-top-left {
   display: flex;
   flex-flow: column nowrap;
-  gap: 12px;
+  gap: 6px;
 }
 
 #modal-name {
-  font-size: 24px;
+  font-size: 20px;
 }
 
-#modal-science {
-  color: #666666;
+.modal-image {
+  width: 100%;
+  min-height: 380px;
+  max-height: 380px;
+  overflow: hidden;
+  border-radius: 16px;
+  display: flex;
+  align-items: start;
 }
 
-#modal-close-btn,
-#modal-sound-btn {
+#modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#modal-close-button,
+#modal-sound-button {
+  font-size: 14px;
   color: #999999;
   border: none;
   background-color: transparent;
@@ -385,21 +495,59 @@ main {
   margin: 0;
 }
 
-#modal-sound-btn:hover,
-#modal-close-btn:hover {
+#modal-sound-button {
+  width: 32px;
+  height: 32px;
+}
+
+#modal-sound-button > svg {
+  width: 32px;
+  height: 32px;
+}
+
+#modal-sound-button:hover,
+#modal-close-button:hover {
   color: black;
   transition: color 0.2s;
 }
 
-.modal-stats {
+.modal-bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 12px;
+}
+
+.modal-details {
   width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+}
+
+.modal-stats {
+  width: 80%;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
 }
 
+.modal-stat-row {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 12px;
+}
+
+#modal-science,
+#modal-range,
+#modal-seasonality,
 #modal-description {
   color: #666666;
+  font-family: "Geist Mono";
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.5px;
 }
 
 .ui-disabled {

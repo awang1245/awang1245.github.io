@@ -6,7 +6,6 @@ let birds = []; // all fetched birds
 let sceneBirds = []; // birds currently in scene
 let currentCaller = null; // bird currently making a random call
 let mode = "realtime"; // realtime, dawn, day, dusk, night
-let isPaused = false; // to pause ambient logic when bird modal is open
 
 // handle ambient random bird sounds
 let callTimerId = null; // id of next scheduled bird call
@@ -64,12 +63,20 @@ window.addEventListener("DOMContentLoaded", () => {
     soundButton.innerHTML = isMuted ? volumeIcons.off : volumeIcons.on;
   });
 
+  // logic surrounding site info popup
+  const infoButton = document.getElementById("about-button");
+  const infoModal = document.getElementById("info-modal");
+  infoButton.addEventListener("click", () => {
+    infoButton.classList.toggle("active");
+    infoModal.classList.toggle("hidden");
+  });
+
   // logic surrounding dropdown allowing user to change the time of day mode
   const modeButton = document.getElementById("mode-button");
   const modeMenu = document.getElementById("mode-menu");
   modeButton.addEventListener("click", () => {
+    modeButton.classList.toggle("active");
     modeMenu.classList.toggle("hidden");
-    modeButton.classList.toggle("open");
   });
 
   modeMenu.querySelectorAll("div").forEach((item) => {
@@ -81,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
       modeButton.querySelector("p").textContent = item.textContent;
 
       modeMenu.classList.add("hidden");
-      modeButton.classList.remove("open");
+      modeButton.classList.remove("active");
 
       // first stop old population loops
       stopPopulationLoops();
@@ -99,6 +106,29 @@ window.addEventListener("DOMContentLoaded", () => {
         startPopulationLoops();
       }, 10000);
     });
+  });
+
+  // logic surrounding bird name appearin gon hover
+  const topRight = document.getElementById("top-right");
+  const hoverName = document.getElementById("bird-text");
+
+  document.addEventListener("mouseover", (e) => {
+    const birdDiv = e.target.closest(".bird-instance");
+    if (!birdDiv) return;
+
+    const birdId = birdDiv.dataset.id;
+    const bird = birds.find((b) => b.id === birdId);
+    if (!bird) return;
+
+    hoverName.textContent = bird.name;
+    topRight.classList.remove("hidden");
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    const birdDiv = e.target.closest(".bird-instance");
+    if (!birdDiv) return;
+
+    topRight.classList.add("hidden");
   });
 
   // get all bird data
@@ -278,7 +308,6 @@ AMBIENT BIRD CALL LOOP
 
 function pickRandomBirdCall() {
   if (!userEntered) return;
-  if (isPaused) return;
   if (!sceneBirds.length) return;
 
   // remove calling class from previous caller
@@ -323,7 +352,6 @@ function pickRandomBirdCall() {
 
     // function to play bird call one time
     const playOnce = () => {
-      if (isPaused) return;
       if (audio !== ambientAudio) return;
 
       audio.currentTime = 0;
@@ -368,8 +396,6 @@ function pickRandomBirdCall() {
 
 // continue ambient audio loop by picking another random bird after 20 seconds
 function scheduleNextCall() {
-  if (isPaused) return;
-
   if (callTimerId) clearTimeout(callTimerId);
   callTimerId = setTimeout(() => {
     callTimerId = null;
@@ -385,13 +411,10 @@ function stopCallLoop() {
     callTimerId = null;
   }
 
-  // remove calling class from previous caller
-  if (currentCaller) {
-    const prevDiv = document.querySelector(
-      `.bird-instance[data-id="${currentCaller.id}"]`
-    );
-    if (prevDiv) prevDiv.classList.remove("calling");
-  }
+  // remove calling class from all bird instances
+  document
+    .querySelectorAll(".bird-instance.calling")
+    .forEach((el) => el.classList.remove("calling"));
 
   // stop current audio
   if (ambientAudio) {
@@ -1000,7 +1023,7 @@ MODAL LOGIC
 
 let modalAudio = null;
 
-document.getElementById("modal-sound-btn").addEventListener("click", () => {
+document.getElementById("modal-sound-button").addEventListener("click", () => {
   if (!modalAudio) return;
   if (window.globalMuted) return;
 
@@ -1028,7 +1051,7 @@ function enableClicks() {
 // handle logic for showing bird modal
 function openBirdModal(birdId) {
   // pause the random ambient bird call logic
-  isPaused = true;
+  stopCallLoop();
   stopPopulationLoops();
   // stop any current ambient bird calls that might be playing
   if (ambientAudio) {
@@ -1041,16 +1064,21 @@ function openBirdModal(birdId) {
   const bird = birds.find((b) => b.id === birdId);
   if (!bird) return;
 
-  // add overlay over scene + disable buttons in scene
+  // add overlay over scene + disable buttons in scene + close any popups
   const overlay = document.getElementById("bird-overlay");
   overlay.style.display = "block";
-  document.getElementById("top-left").classList.add("ui-disabled");
+  document.getElementById("about-button").classList.add("ui-disabled");
   document.getElementById("bottom-right").classList.add("ui-disabled");
+  document.getElementById("mode-button").classList.remove("active");
+  document.getElementById("mode-menu").classList.add("hidden");
+  document.getElementById("about-button").classList.remove("active");
+  document.getElementById("info-modal").classList.add("hidden");
 
   // populate modal fields with bird info from json
   document.getElementById("modal-name").textContent = bird.name;
   document.getElementById("modal-science").textContent = bird.scientific_name;
   document.getElementById("modal-img").src = bird.img;
+  document.getElementById("modal-img").alt = bird.name;
   document.getElementById("modal-seasonality").textContent = bird.seasonality;
   document.getElementById("modal-range").textContent = bird.us_range;
   document.getElementById("modal-description").textContent = bird.description;
@@ -1059,10 +1087,9 @@ function openBirdModal(birdId) {
 
 // handle logic for closing bird modal
 function closeBirdModal() {
-  // remove overlay and unpause scene
+  // remove overlay and un-disable ui
   document.getElementById("bird-overlay").style.display = "none";
-  isPaused = false;
-  document.getElementById("top-left").classList.remove("ui-disabled");
+  document.getElementById("about-button").classList.remove("ui-disabled");
   document.getElementById("bottom-right").classList.remove("ui-disabled");
 
   // remove selected class from clicked bird
@@ -1077,7 +1104,7 @@ function closeBirdModal() {
 
 // close button
 document
-  .getElementById("modal-close-btn")
+  .getElementById("modal-close-button")
   .addEventListener("click", closeBirdModal);
 
 // clicking outside closes modal

@@ -43,7 +43,12 @@
           </svg>
         </button>
       </div>
-      <div class="top-left" id="top-left">
+      <button
+        class="about-button"
+        id="about-button"
+        aria-label="About this site"
+        aria-haspopup="dialog"
+      >
         <p>Providence Bird Guide</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +67,27 @@
           <path d="M12 9h.01" />
           <path d="M11 12h1v4h1" />
         </svg>
+      </button>
+      <div id="top-right" class="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-feather bird-icon"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 20l10 -10m0 -5v5h5m-9 -1v5h5m-9 -1v5h5m-5 -5l4 -4l4 -4" />
+          <path
+            d="M19 10c.638 -.636 1 -1.515 1 -2.486a3.515 3.515 0 0 0 -3.517 -3.514c-.97 0 -1.847 .367 -2.483 1m-3 13l4 -4l4 -4"
+          />
+        </svg>
+        <span id="bird-text"></span>
       </div>
       <div class="bottom-left">
         <div class="time">
@@ -120,39 +146,313 @@
               <h2 id="modal-name"></h2>
               <p id="modal-science"></p>
             </div>
-            <button id="modal-close-btn">Return to Scene</button>
+            <button id="modal-close-button">Return to Scene</button>
           </div>
 
-          <img id="modal-img" alt="Bird image placeholder" />
-          <div class="modal-stats">
-            <p>Seasonality: <span id="modal-seasonality"></span></p>
-            <p>Geographic Range: <span id="modal-range"></span></p>
+          <div class="modal-image">
+            <img id="modal-img" />
           </div>
-          <p id="modal-description"></p>
 
-          <button id="modal-sound-btn" class="sound-icon-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icon-tabler-volume"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 8a5 5 0 0 1 0 8" />
-              <path d="M17.7 5a9 9 0 0 1 0 14" />
-              <path
-                d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5
+          <div class="modal-bottom">
+            <div class="modal-details">
+              <div class="modal-stats">
+                <div class="modal-stat-row">
+                  <p id="modal-season-label">Seasonality:</p>
+                  <span id="modal-seasonality"></span>
+                </div>
+                <div class="modal-stat-row">
+                  <p id="modal-range-label">Geographic Range:</p>
+                  <span id="modal-range"></span>
+                </div>
+              </div>
+              <button id="modal-sound-button" class="modal-sound-button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icon-tabler-volume"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M15 8a5 5 0 0 1 0 8" />
+                  <path d="M17.7 5a9 9 0 0 1 0 14" />
+                  <path
+                    d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5
       a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5"
-              />
-            </svg>
-          </button>
+                  />
+                </svg>
+              </button>
+            </div>
+            <p id="modal-description"></p>
+          </div>
         </div>
+      </div>
+
+      <div
+        id="info-modal"
+        class="hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="info-title"
+      >
+        <section>
+          <h1 id="info-title">About</h1>
+          <p>
+            This site is designed to be a fun, audiovisual guide to help users
+            identify some common birds in the Providence area. I hope that this
+            guide can help you learn more about the feathered friends you may
+            hear in your daily life.
+          </p>
+
+          <p>
+            Designed and coded by Anna Wang for Web as Medium 1
+            <span class="proto">@</span> RISD, advised by Minkyoung Kim.
+          </p>
+        </section>
+
+        <section>
+          <h1>Feedback</h1>
+          <p>
+            Bugs to catch? Questions, comments, or suggestions? Fill out
+            <a href="forms.gle/sqYQttajz9oUvpEB9" target="_blank" rel="noopener"
+              >this form</a
+            >.
+          </p>
+
+          <p>
+            I'm hoping to add seasons and more birds in the future, along with
+            increased accessibility. This site still has many ways to grow, so
+            any and all feedback is appreciated.
+          </p>
+        </section>
+
+        <section>
+          <h1>Credits</h1>
+          <p>
+            Bird images and identification descriptions are sourced from
+            <a href="https://ebird.org/home" target="_blank" rel="noopener"
+              >eBird</a
+            >
+            and
+            <a
+              href="https://merlin.allaboutbirds.org/"
+              target="_blank"
+              rel="noopener"
+              >Merlin</a
+            >, projects of the
+            <a
+              href="https://www.birds.cornell.edu/home"
+              target="_blank"
+              rel="noopener"
+              >Cornell Lab of Ornithology</a
+            >.
+          </p>
+
+          <p>
+            Bird vocalization recordings are thanks to
+            <a href="https://xeno-canto.org/" target="_blank" rel="noopener"
+              >xeno-canto</a
+            >
+            and its community:
+          </p>
+
+          <ul>
+            <li>
+              American Black Duck:
+              <a
+                href="https://xeno-canto.org/contributor/FSCGENVPXK"
+                target="_blank"
+                >Paul Driver</a
+              >
+            </li>
+            <li>
+              American Robin:
+              <a
+                href="https://xeno-canto.org/contributor/YPDXKAZUZN"
+                target="_blank"
+                >Audevard Aurélien</a
+              >
+            </li>
+            <li>
+              Barred Owl:
+              <a
+                href="https://xeno-canto.org/contributor/HNIFQCMOLA"
+                target="_blank"
+                >Christopher McPherson</a
+              >
+            </li>
+            <li>
+              Black-capped Chickadee:
+              <a
+                href="https://xeno-canto.org/contributor/UTLXKPYDDK"
+                target="_blank"
+                >Don Profota</a
+              >
+            </li>
+            <li>
+              Blue Jay:
+              <a
+                href="https://xeno-canto.org/contributor/FVNPWGEQCT"
+                target="_blank"
+                >Ed Pandolfino</a
+              >
+            </li>
+            <li>
+              Bufflehead:
+              <a
+                href="https://xeno-canto.org/contributor/CDTGHVBGZP"
+                target="_blank"
+                >Andrew Spencer</a
+              >
+            </li>
+            <li>
+              Cedar Waxwing:
+              <a
+                href="https://xeno-canto.org/contributor/ARFGONJCBJ"
+                target="_blank"
+                >Tayler Brooks</a
+              >
+            </li>
+            <li>
+              Common Eider:
+              <a
+                href="https://xeno-canto.org/contributor/CIMGCGUWCS"
+                target="_blank"
+                >Terje Kolaas</a
+              >
+            </li>
+            <li>
+              Cooper's Hawk:
+              <a
+                href="https://xeno-canto.org/contributor/ILUHRFXDNU"
+                target="_blank"
+                >Manuel Grosselet</a
+              >
+            </li>
+            <li>
+              Dark-eyed Junco:
+              <a
+                href="https://xeno-canto.org/contributor/OJMFAOUBDU"
+                target="_blank"
+                >Jonathon Jongsma</a
+              >
+            </li>
+            <li>
+              Downy Woodpecker:
+              <a
+                href="https://xeno-canto.org/contributor/WOPIRNCCSX"
+                target="_blank"
+                >Martin St-Michel</a
+              >
+            </li>
+            <li>
+              Great Horned Owl:
+              <a
+                href="https://xeno-canto.org/contributor/WUKEUEONAI"
+                target="_blank"
+                >Jarod Swackhamer</a
+              >
+            </li>
+            <li>
+              Hooded Merganser:
+              <a
+                href="https://xeno-canto.org/contributor/CDTGHVBGZP"
+                target="_blank"
+                >Andrew Spencer</a
+              >
+            </li>
+            <li>
+              Mallard:
+              <a
+                href="https://xeno-canto.org/contributor/WSTVOVMGXC"
+                target="_blank"
+                >Bernard Collet</a
+              >
+            </li>
+            <li>
+              Mourning Dove:
+              <a
+                href="https://xeno-canto.org/contributor/NWXCLJYBDK"
+                target="_blank"
+                >Thomas Ryder Payne</a
+              >
+            </li>
+            <li>
+              Mute Swan:
+              <a
+                href="https://xeno-canto.org/contributor/LACGOEKMVI"
+                target="_blank"
+                >Dominique Guillerme</a
+              >
+            </li>
+            <li>
+              Northern Cardinal:
+              <a
+                href="https://xeno-canto.org/contributor/PVQOLRXXWL"
+                target="_blank"
+                >Sue Riffe</a
+              >
+            </li>
+            <li>
+              Red-bellied Woodpecker:
+              <a
+                href="https://xeno-canto.org/contributor/RFTXRYBVBX"
+                target="_blank"
+                >Paul Marvin</a
+              >
+            </li>
+            <li>
+              Red-tailed Hawk:
+              <a
+                href="https://xeno-canto.org/contributor/ILUHRFXDNU"
+                target="_blank"
+                >Manuel Grosselet</a
+              >
+            </li>
+            <li>
+              Song Sparrow:
+              <a
+                href="https://xeno-canto.org/contributor/KADPGEQPZI"
+                target="_blank"
+                >Ted Floyd</a
+              >
+            </li>
+            <li>
+              Tufted Titmouse:
+              <a
+                href="https://xeno-canto.org/contributor/PJVICFDZGZ"
+                target="_blank"
+                >Antonio Xeira</a
+              >
+            </li>
+            <li>
+              White-breasted Nuthatch:
+              <a
+                href="https://xeno-canto.org/contributor/RFTXRYBVBX"
+                target="_blank"
+                >Paul Marvin</a
+              >
+            </li>
+            <li>
+              White-throated Sparrow:
+              <a
+                href="https://xeno-canto.org/contributor/NWXCLJYBDK"
+                target="_blank"
+                >Thomas Ryder Payne</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Typography</h1>
+          <p>Typeset in Proto Mono and Geist Mono.</p>
+        </section>
       </div>
     </main>
     <script type="module" src="./script.js"></script>
