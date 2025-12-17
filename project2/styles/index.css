@@ -212,11 +212,12 @@ main {
 ul {
   list-style-type: none;
   margin: 0;
-  padding-top: 16px;
+  padding-top: 4px;
   padding-left: 16px;
 }
 
 ul > li {
+  padding-top: 8px;
   text-indent: -5px;
 }
 
