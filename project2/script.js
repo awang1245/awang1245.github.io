@@ -437,7 +437,7 @@ function birdsForLayer(birds, layer) {
 
 // place a random num of initial birds in scene for current time of day
 function spawnInitialBirdsForCurrentMode() {
-  // clear any previous bird instances + reset list of birds curr in scene
+  // clear any previous bird instances + reset list of scenebirds + reset slos
   document.querySelectorAll(".bird-instance").forEach((b) => b.remove());
   sceneBirds = [];
   sceneBirdsByLayer = {
@@ -513,6 +513,7 @@ function spawnInitialBirdsForCurrentMode() {
   requestAnimationFrame(enableClicks);
 }
 
+// based on layer and list of birds specified, randomly spawn one in an avail slot
 function spawnSingleBirdInLayer(layer, birds) {
   // get a random bird that is eligible for curr layer
   const bird = birds[Math.floor(Math.random() * birds.length)];
@@ -560,6 +561,7 @@ function spawnSingleBirdInLayer(layer, birds) {
   }
 }
 
+// track timers for each layer to prevent duplicated intervals
 const populationTimers = {
   pond: null,
   ground: null,
@@ -588,7 +590,7 @@ function startLayerPopulationLoop(layer) {
       max,
     });
 
-    // update layer population for each layer
+    // update layer population for each layer (either spawn, despawn, or do nothing)
     updateLayerPopulation(layer, birdsForLayer(eligible, layer));
 
     // schedule next tick at a random time b/w 30 and 60 seconds later
@@ -598,6 +600,7 @@ function startLayerPopulationLoop(layer) {
   populationTimers[layer] = setTimeout(tick, 30000 + Math.random() * 30000);
 }
 
+// to start up population loops for each layer
 function startPopulationLoops() {
   startLayerPopulationLoop("pond");
   startLayerPopulationLoop("ground");
@@ -606,6 +609,7 @@ function startPopulationLoops() {
   startLayerPopulationLoop("far");
 }
 
+// stop all population loops, used when changing modes or pulling up modal
 function stopPopulationLoops() {
   Object.keys(populationTimers).forEach((layer) => {
     if (populationTimers[layer]) {
@@ -649,12 +653,14 @@ function fadeIn(div, opacity = 1) {
   div.style.opacity = `${opacity}`;
 }
 
+// handles logic for despawning a bird from the scene
 function despawnBird(div) {
+  // make sure transition is drawn
   div.getBoundingClientRect();
-
   div.style.transition = "opacity 0.8s ease";
   div.style.opacity = 0;
 
+  // timeout to make sure transition happens
   setTimeout(() => {
     const id = div.dataset.id;
     const layer = div.dataset.layer;
@@ -682,6 +688,7 @@ function despawnBird(div) {
   }, 800);
 }
 
+// function to randomly update the layer and list of birds specified
 function updateLayerPopulation(layer, eligibleBirds) {
   const current = sceneBirdsByLayer[layer].length;
   const max = LAYER_CAPACITY[layer];
@@ -689,22 +696,24 @@ function updateLayerPopulation(layer, eligibleBirds) {
   // random choice: spawn, despawn, or do nothing
   const roll = Math.random();
 
-  // spawn (only if we have room)
+  // spawn, if scene not full
   if (roll < 0.4 && current < max) {
     const available = eligibleBirds.filter(
       (b) => !sceneBirdsByLayer[layer].some((sb) => sb.id === b.id)
     );
 
+    // if there is room, randomly spawn a bird
     if (available.length) {
       spawnSingleBirdInLayer(layer, available);
     }
   }
 
-  // despawn (only if there's something to remove)
+  // despawn, if scene not empty
   else if (roll > 0.8 && current > 0) {
     const divs = document.querySelectorAll(
       `.bird-instance[data-layer="${layer}"]`
     );
+    // if there is are birds that can be removed, randomly pick one
     if (divs.length) {
       despawnBird(divs[Math.floor(Math.random() * divs.length)]);
     }
@@ -805,14 +814,14 @@ function spawnPondLeft(bird) {
   if (slotState.pondLeft) return;
 
   spawnPondBird(bird, "left", "pondLeft");
-  slotState.pondLeft = bird;
+  slotState.pondLeft = bird; // fill slot
 }
 // randomly place a pond bird in the right side of pond
 function spawnPondRight(bird) {
   if (slotState.pondRight) return;
 
   spawnPondBird(bird, "right", "pondRight");
-  slotState.pondRight = bird;
+  slotState.pondRight = bird; // fill slot
 }
 
 /*
@@ -888,8 +897,7 @@ function spawnNearLeft(bird) {
     LAYERS.near,
     getBirdTreeSide(bird, "left")
   );
-
-  slotState.nearLeft = bird;
+  slotState.nearLeft = bird; // fill slot
 }
 
 function spawnNearRight(bird) {
@@ -906,8 +914,7 @@ function spawnNearRight(bird) {
     LAYERS.near,
     getBirdTreeSide(bird, "right")
   );
-
-  slotState.nearRight = bird;
+  slotState.nearRight = bird; // fill slot
 }
 
 // spawn one tree bird in first mid tree
@@ -927,7 +934,7 @@ function spawnMidTree1(bird) {
     LAYERS.mid,
     getBirdTreeSide(bird, "right")
   );
-  slotState.midTree1 = bird;
+  slotState.midTree1 = bird; // fill slot
 }
 // spawn one tree bird in second mid tree
 function spawnMidTree2(bird) {
@@ -945,7 +952,7 @@ function spawnMidTree2(bird) {
     LAYERS.mid,
     getBirdTreeSide(bird, "right")
   );
-  slotState.midTree2 = bird;
+  slotState.midTree2 = bird; // fill slot
 }
 
 // spawn one tree bird in first far tree
@@ -965,7 +972,7 @@ function spawnFarTree1(bird) {
     LAYERS.far,
     getBirdTreeSide(bird, "left")
   );
-  slotState.farTree1 = bird;
+  slotState.farTree1 = bird; // fill slot
 }
 // spawn one tree bird in second far tree
 function spawnFarTree2(bird) {
