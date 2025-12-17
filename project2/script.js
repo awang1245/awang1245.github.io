@@ -605,14 +605,6 @@ function startLayerPopulationLoop(layer) {
       )
     );
 
-    // const current = sceneBirdsByLayer[layer].length;
-    // const max = LAYER_CAPACITY[layer];
-    // console.log("curr tick status b4 new call to updateLayerPopulation", {
-    //   layer,
-    //   current,
-    //   max,
-    // });
-
     // update layer population for each layer (either spawn, despawn, or do nothing)
     updateLayerPopulation(layer, birdsForLayer(eligible, layer));
 
