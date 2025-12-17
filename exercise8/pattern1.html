@@ -47,7 +47,10 @@
       </div>
     </nav>
     <main class="pattern1">
-      <p id="center-text">Hooray, my ducks are in a row!</p>
+      <p id="center-text">
+        Hooray, my ducks are in a row! <br />Let's drag our cursors up and down
+        to celebrate!
+      </p>
       <img src="./public/images/ducky.svg" />
       <img src="./public/images/ducky.svg" />
       <img src="./public/images/ducky.svg" />
@@ -95,7 +98,8 @@
       isDragging = true;
 
       if (!hasDraggedOnce) {
-        text.textContent = "Oh nevermind, my ducks are NOT in a row.";
+        text.innerHTML =
+          "Oh nevermind, my ducks are NOT in a row.<br>What have you done!!!";
         hasDraggedOnce = true;
       }
     });

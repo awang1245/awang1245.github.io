@@ -6,9 +6,11 @@ main.pattern1 {
 
 #center-text {
   position: absolute;
+  width: 480px;
   left: 50%;
-  top: calc(50% - 12px);
+  top: calc(50% - 16px);
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 main.pattern1 img {
