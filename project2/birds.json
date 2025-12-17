@@ -68,7 +68,7 @@
     {
       "id": "hooded_merganser",
       "name": "Hooded Merganser",
-      "img": "./public/images/american_black_duck.jpeg",
+      "img": "./public/images/hooded_merganser.jpeg",
       "ascii": " __\n-・D___\n(____/",
       "scientific_name": "Lophodytes cucullatus",
       "seasonality": "Winter",

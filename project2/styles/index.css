@@ -258,7 +258,6 @@ main {
 }
 
 .bird-instance.selected {
-  color: red;
   transform: scale(1.2);
   animation: none;
 }
