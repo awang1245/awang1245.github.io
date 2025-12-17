@@ -98,7 +98,16 @@
         // fade outward from center based on distance
         const opacity = 1 - dist / maxDist;
 
-        cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        // use an if statement to adjust lightness
+        if (dist < maxDist * 0.8) {
+          // inner core: more vibrant
+          cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        } else {
+          // outer petals: brighter, lighter
+          cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${
+            lightness + 5
+          }%)`;
+        }
         cell.style.opacity = opacity;
 
         grid.appendChild(cell);
