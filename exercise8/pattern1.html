@@ -89,7 +89,7 @@
     // set starting position for all ducks based on starting duck's position
     ducks.forEach((duck, i) => {
       positions[i].x = startX + i * spacing;
-      positions[i].y = rect.height / 2 + 12;
+      positions[i].y = rect.height / 2 + 16;
       duck.style.transform = `translate(${positions[i].x}px, ${positions[i].y}px)`;
     });
 
