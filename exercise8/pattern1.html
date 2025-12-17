@@ -15,6 +15,8 @@
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/pattern1.css" />
+
     <script src="./script.js"></script>
   </head>
   <body>
@@ -44,6 +46,92 @@
         </a>
       </div>
     </nav>
-    <main></main>
+    <main class="pattern1">
+      <p id="center-text">Hooray, my ducks are in a row!</p>
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+      <img src="./public/images/ducky.svg" />
+    </main>
   </body>
+  <script>
+    const ducks = Array.from(document.querySelectorAll("main.pattern1 img"));
+    const text = document.getElementById("center-text");
+
+    const container = document.querySelector("main.pattern1");
+
+    let isDragging = false;
+    let hasDraggedOnce = false;
+
+    // store positions for each duck
+    const positions = ducks.map(() => ({ x: 0, y: 0 }));
+
+    // calculate x position of first duck
+    const rect = container.getBoundingClientRect();
+    const duckWidth = 72;
+    const spacing = 90;
+    const startX =
+      rect.width / 2 - (duckWidth + (ducks.length - 1) * spacing) / 2;
+
+    // set starting position for all ducks based on starting duck's position
+    ducks.forEach((duck, i) => {
+      positions[i].x = startX + i * spacing;
+      positions[i].y = rect.height / 2 + 12;
+      duck.style.transform = `translate(${positions[i].x}px, ${positions[i].y}px)`;
+    });
+
+    // when mouse down, set dragging true and update text
+    document.addEventListener("mousedown", () => {
+      isDragging = true;
+
+      if (!hasDraggedOnce) {
+        text.textContent = "Oh nevermind, my ducks are NOT in a row.";
+        hasDraggedOnce = true;
+      }
+    });
+
+    // stop the behavior of ducks following cursor when mouse up
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      dragStartedOnDuck = false;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return; // if mouseup then dont want duck following logic to run
+
+      // move head duck to where cursor is
+      const rect = container.getBoundingClientRect();
+      positions[0].x = e.clientX - rect.left - duckWidth / 2;
+      positions[0].y = e.clientY - rect.top - duckWidth / 2;
+
+      // each duck follows the one before it
+      for (let i = positions.length - 1; i > 0; i--) {
+        const prev = positions[i - 1];
+        const curr = positions[i];
+
+        // get distance bw curr and prev duck, move curr duck 10% closer to prev duck
+        positions[i].x += (prev.x - curr.x) * 0.1;
+        positions[i].y += (prev.y - curr.y) * 0.1;
+      }
+
+      // translate each duck
+      for (let i = 0; i < ducks.length; i++) {
+        const curr = positions[i];
+
+        ducks[i].style.transform = `
+        translate(${curr.x}px, ${curr.y}px)
+      `;
+      }
+    });
+  </script>
 </html>

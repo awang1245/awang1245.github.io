@@ -16,12 +16,18 @@ body {
   margin: 0;
   display: flex;
   flex-flow: column nowrap;
+  overflow: hidden;
 }
 
 a,
 a:visited {
   color: black;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 nav {
@@ -103,7 +109,4 @@ a.work-index:hover {
 svg {
   width: 32px;
   height: auto;
-}
-
-main {
 }

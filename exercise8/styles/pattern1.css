@@ -1,0 +1,18 @@
+main.pattern1 {
+  width: 100%;
+  height: calc(100% - 73px);
+  position: relative;
+}
+
+#center-text {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 12px);
+  transform: translate(-50%, -50%);
+}
+
+main.pattern1 img {
+  position: absolute;
+  width: 72px;
+  pointer-events: none;
+}

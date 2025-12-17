@@ -15,6 +15,7 @@
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/pattern2.css" />
   </head>
   <body>
     <!--all the contents of an HTML document goes here-->
@@ -63,6 +64,45 @@
         </a>
       </div>
     </nav>
-    <main></main>
+    <main class="pattern2">
+      <p>FALLING</p>
+      <p>FALLING</p>
+      <p>FALLING</p>
+      <p>FALLING</p>
+      <p>FALLING</p>
+    </main>
   </body>
+  <script>
+    const items = document.querySelectorAll("main.pattern2 p");
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    let shiftX = vw * 0.2;
+    let shiftY = vh * 0.35;
+
+    const dimX = 0.7;
+    const dimY = 0.95;
+
+    let x = 0;
+    let y = 0;
+
+    items.forEach((el, i) => {
+      // skip first iteration so it starts top left
+      if (i == 0) {
+        x = 32;
+        y = 24;
+      } else {
+        x += shiftX;
+        y += shiftY;
+      }
+
+      el.style.transform = `translate(${x}px, ${y}px) rotate(${i * 24}deg)`;
+      el.style.opacity = 1 - i * 0.2;
+
+      // reduce the amount it gets shifted x gradually as we enter later iterations
+      shiftX *= dimX;
+      shiftY *= dimY;
+    });
+  </script>
 </html>

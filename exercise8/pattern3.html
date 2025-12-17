@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width" />
     <!--the browser will (probably) render the width of the page at the width of its own screen -->
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/pattern3.css" />
     <link rel="stylesheet" href="./styles/typography.css" />
   </head>
   <body>
@@ -63,6 +64,45 @@
         </a>
       </div>
     </nav>
-    <main></main>
+    <main class="pattern3">
+      <p>Here's a flower for you! It changes colors on refresh :D</p>
+      <div class="grid"></div>
+      <div class="stem"></div>
+    </main>
   </body>
+  <script>
+    const grid = document.querySelector(".grid");
+    const size = 7;
+
+    // pick a random base color + lightness on each load
+    const hue = Math.floor(Math.random() * 360);
+    const saturation = 100; // to maximize visibility
+    const lightness = 30 + Math.random() * 40;
+
+    // get center of the pixel grid
+    const center = Math.floor(size / 2);
+    // get diagonal of each pixel cell
+    const maxDist = Math.hypot(center, center);
+
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        // create div per pixel cel
+        const cell = document.createElement("div");
+        cell.className = "cell";
+
+        // find distance from center
+        const dx = x - center;
+        const dy = y - center;
+        const dist = Math.hypot(dx, dy);
+
+        // fade outward from center based on distance
+        const opacity = 1 - dist / maxDist;
+
+        cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        cell.style.opacity = opacity;
+
+        grid.appendChild(cell);
+      }
+    }
+  </script>
 </html>

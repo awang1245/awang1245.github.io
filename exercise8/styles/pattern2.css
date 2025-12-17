@@ -1,0 +1,9 @@
+main.pattern2 {
+  width: 100%;
+  height: calc(100% - 73px);
+  position: relative;
+}
+
+main.pattern2 p {
+  font-size: 48px;
+}

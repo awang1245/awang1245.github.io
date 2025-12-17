@@ -1,0 +1,33 @@
+main.pattern3 {
+  width: 100%;
+  height: calc(100% - 73px);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 40vh;
+  aspect-ratio: 1;
+  z-index: 10;
+  background-color: white;
+}
+
+.cell {
+  aspect-ratio: 1;
+}
+
+.stem {
+  position: absolute;
+  background-color: green;
+  width: calc(40vh / 7);
+  bottom: 0;
+  height: 50%;
+  left: calc(50%);
+  transform: translateX(-50%);
+}
