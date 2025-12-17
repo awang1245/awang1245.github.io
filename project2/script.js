@@ -29,6 +29,9 @@ window.addEventListener("DOMContentLoaded", () => {
   updateWeather();
   setInterval(updateWeather, 10 * 60 * 1000);
 
+  // so birds can be clickable to pull up modal
+  enableClicks();
+
   const enterButton = document.getElementById("enter-button");
   if (enterButton) {
     enterButton.addEventListener("click", () => {
@@ -293,7 +296,7 @@ function pickRandomBirdCall() {
     `.bird-instance[data-id="${randomBird.id}"]`
   );
 
-  console.log("Current bird calling", randomBird.id);
+  console.log("calling:", randomBird.id);
 
   // if sound button is muted rn, skip sound creation, but keep random bird selection logic ongoing
   if (window.globalMuted) {
@@ -508,9 +511,6 @@ function spawnInitialBirdsForCurrentMode() {
   // spawn anywhere between 0 and 1 birds on far layer for each tree
   if (farBirds[0] && Math.random() < 0.5) spawnFarTree1(farBirds[0]);
   if (farBirds[1] && Math.random() < 0.5) spawnFarTree2(farBirds[1]);
-
-  // make all birds clickable
-  requestAnimationFrame(enableClicks);
 }
 
 // based on layer and list of birds specified, randomly spawn one in an avail slot
@@ -582,13 +582,13 @@ function startLayerPopulationLoop(layer) {
       )
     );
 
-    const current = sceneBirdsByLayer[layer].length;
-    const max = LAYER_CAPACITY[layer];
-    console.log("curr tick status b4 new call to updateLayerPopulation", {
-      layer,
-      current,
-      max,
-    });
+    // const current = sceneBirdsByLayer[layer].length;
+    // const max = LAYER_CAPACITY[layer];
+    // console.log("curr tick status b4 new call to updateLayerPopulation", {
+    //   layer,
+    //   current,
+    //   max,
+    // });
 
     // update layer population for each layer (either spawn, despawn, or do nothing)
     updateLayerPopulation(layer, birdsForLayer(eligible, layer));
@@ -666,7 +666,7 @@ function despawnBird(div) {
     const layer = div.dataset.layer;
     const slot = div.dataset.slot;
 
-    console.log("[scene:despawn]", {
+    console.log("despawned:", {
       bird: id,
       layer,
       slot,
@@ -681,7 +681,7 @@ function despawnBird(div) {
     // free slot in list tracking slots
     if (slot && slotState[slot]) {
       slotState[slot] = null;
-      console.log("[slot:free]", slot);
+      console.log("slot freed:", slot);
     }
 
     div.remove(); // remove bird div
@@ -742,7 +742,7 @@ function spawnGroundBird(bird) {
   birdDiv.dataset.layer = "ground";
   birdDiv.dataset.slot = "ground";
 
-  console.log("[scene:spawn]", {
+  console.log("spawned:", {
     bird: bird.id,
     layer: "ground",
     slot: "ground",
@@ -788,7 +788,7 @@ function spawnPondBird(bird, side, slot) {
   birdDiv.dataset.layer = "pond";
   birdDiv.dataset.slot = slot;
 
-  console.log("[scene:spawn]", {
+  console.log("spawned:", {
     bird: bird.id,
     layer: "pond",
     slot: slot,
@@ -845,7 +845,7 @@ function spawnTreeBird(bird, treeRect, layerName, slot, layerStyle, side) {
   birdDiv.dataset.layer = layerName;
   birdDiv.dataset.slot = slot;
 
-  console.log("[scene:spawn]", {
+  console.log("spawned:", {
     bird: bird.id,
     layer: layerName,
     side: side,
@@ -1010,30 +1010,23 @@ document.getElementById("modal-sound-btn").addEventListener("click", () => {
 
 // make all bird instances in scene clickable
 function enableClicks() {
-  const birdDivs = document.querySelectorAll(".bird-instance");
+  document.addEventListener("click", (e) => {
+    const birdDiv = e.target.closest(".bird-instance");
+    if (!birdDiv) return;
 
-  birdDivs.forEach((div) => {
-    div.addEventListener("click", () => {
-      const birdId = div.dataset.id;
-      const bird = birds.find((b) => b.id === birdId);
-      if (!bird) return;
+    // highlight clicked bird
+    birdDiv.classList.add("selected");
 
-      // remove previous selection
-      document.querySelectorAll(".bird-instance.selected").forEach((prev) => {
-        prev.classList.remove("selected");
-      });
+    const birdId = birdDiv.dataset.id;
+    if (!birdId) return;
 
-      // highlight clicked bird
-      div.classList.add("selected");
-
-      // open modal
-      openBirdModal(bird);
-    });
+    // open modal
+    openBirdModal(birdId);
   });
 }
 
 // handle logic for showing bird modal
-function openBirdModal(bird) {
+function openBirdModal(birdId) {
   // pause the random ambient bird call logic
   isPaused = true;
   stopPopulationLoops();
@@ -1043,6 +1036,10 @@ function openBirdModal(bird) {
     ambientAudio.currentTime = 0;
     ambientAudio = null;
   }
+
+  // get bird object using passed in id
+  const bird = birds.find((b) => b.id === birdId);
+  if (!bird) return;
 
   // add overlay over scene + disable buttons in scene
   const overlay = document.getElementById("bird-overlay");
