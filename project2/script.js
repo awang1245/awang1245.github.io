@@ -151,6 +151,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+let resizeTimeout = null;
+
+// need to reset scene whenever window is resized so birds are positioned correctly
+window.addEventListener("resize", () => {
+  if (resizeTimeout) clearTimeout(resizeTimeout);
+
+  resizeTimeout = setTimeout(() => {
+    resetSceneOnResize();
+  }, 250);
+});
+
 /*
 SETTING UP UI + SCENE
 */
@@ -188,20 +199,20 @@ function getDayState() {
 
 // apply background based on current mode
 function applyBackground() {
-  const body = document.body;
+  const html = document.documentElement;
 
   // remove current styling
-  body.classList.remove("bg-dawn", "bg-day", "bg-dusk", "bg-night");
+  html.classList.remove("bg-dawn", "bg-day", "bg-dusk", "bg-night");
 
   // apply custom mode
   if (mode !== "realtime") {
-    body.classList.add("bg-" + mode);
+    html.classList.add("bg-" + mode);
     return;
   }
 
   // apply real-time mode
   const realState = getDayState();
-  body.classList.add(realState.className);
+  html.classList.add(realState.className);
 }
 
 // getter for current mode
@@ -263,7 +274,7 @@ async function updateWeather() {
       weatherIcons[state.icon];
     document.getElementById(
       "weather-text"
-    ).textContent = `${state.label}, ${tempF}°F / ${tempC}°C`;
+    ).textContent = `${state.label}, ${tempF}°F`;
   } catch (err) {
     console.error("Error fetching weather data:", err);
   }
@@ -300,6 +311,64 @@ function placeAscii() {
   document.getElementById("trees-near").textContent = trees.near;
 
   document.getElementById("pond").textContent = pond;
+}
+
+// get max width between vw and 1300px
+function getSceneWidth() {
+  return Math.max(window.innerWidth, 1300);
+}
+
+function resetSceneOnResize() {
+  // stop everything that depends on timing
+  stopPopulationLoops();
+  stopCallLoop();
+
+  // stop any playing audio
+  if (ambientAudio) {
+    ambientAudio.pause();
+    ambientAudio.currentTime = 0;
+    ambientAudio = null;
+  }
+
+  currentCaller = null;
+
+  // remove all birds from DOM
+  document.querySelectorAll(".bird-instance").forEach((b) => b.remove());
+
+  // reset scene state
+  sceneBirds = [];
+  sceneBirdsByLayer = {
+    pond: [],
+    ground: [],
+    near: [],
+    mid: [],
+    far: [],
+  };
+
+  slotState = {
+    nearLeft: null,
+    nearRight: null,
+    midTree1: null,
+    midTree2: null,
+    farTree1: null,
+    farTree2: null,
+    pondLeft: null,
+    pondRight: null,
+    ground: null,
+  };
+
+  // reapply background (viewport may have crossed a breakpoint)
+  applyBackground();
+
+  // rebuild scene
+  spawnInitialBirdsForCurrentMode();
+
+  // restart loops only if the user has entered
+  if (userEntered && !window.globalMuted) {
+    scheduleNextCall();
+  }
+
+  startPopulationLoops();
 }
 
 /*
@@ -653,7 +722,7 @@ function createBirdDiv(bird, fontSize) {
   // store bird id for modal
   div.dataset.id = bird.id;
 
-  document.body.appendChild(div);
+  document.getElementById("scene").appendChild(div);
   return div;
 }
 
@@ -739,8 +808,8 @@ function updateLayerPopulation(layer, eligibleBirds) {
 SPAWN GROUND BIRD
 */
 
-const GROUND_LEFT = window.innerWidth * 0.2 + 200;
-const GROUND_RIGHT = window.innerWidth * 0.2 + 640;
+const GROUND_LEFT = getSceneWidth() * 0.2 + 200;
+const GROUND_RIGHT = getSceneWidth() * 0.2 + 640;
 
 const GROUND_MIN_Y = window.innerHeight * 0.85; // top of bottom 20%
 const GROUND_MAX_Y = window.innerHeight - 100;
@@ -782,12 +851,12 @@ SPAWN POND BIRDS
 
 const POND_BOUNDS = {
   left: {
-    xMin: window.innerWidth * 0.2 + 30,
-    xMax: window.innerWidth * 0.2 + 230,
+    xMin: getSceneWidth() * 0.2 + 30,
+    xMax: getSceneWidth() * 0.2 + 230,
   },
   right: {
-    xMin: window.innerWidth * 0.2 + 270,
-    xMax: window.innerWidth * 0.2 + 480,
+    xMin: getSceneWidth() * 0.2 + 270,
+    xMax: getSceneWidth() * 0.2 + 480,
   },
   yMin: window.innerHeight - 320,
   yMax: window.innerHeight - 210,
@@ -868,8 +937,14 @@ function spawnTreeBird(bird, treeRect, layerName, slot, layerStyle, side) {
   });
 
   requestAnimationFrame(() => {
+    // get scene bounding box
+    const sceneRect = document.getElementById("scene").getBoundingClientRect();
+    // compute tree x and y relative to the scene
+    const treeX = treeRect.left - sceneRect.left;
+    const treeY = treeRect.top - sceneRect.top;
+
     // get y within upper 60% of tree
-    let y = treeRect.top + Math.random() * (treeRect.height * 0.6);
+    let y = treeY + Math.random() * (treeRect.height * 0.6);
     // if y is within top 10% of screen, shift down a random amount so bird isn't cut off
     if (y < window.innerHeight * 0.1) {
       y = window.innerHeight * 0.1 + Math.random() * 40;
@@ -879,9 +954,9 @@ function spawnTreeBird(bird, treeRect, layerName, slot, layerStyle, side) {
     let x;
     if (side === "left") {
       // if bird is on left side, offset it by the width of the bird
-      x = treeRect.left - birdDiv.getBoundingClientRect().width;
+      x = treeX - birdDiv.getBoundingClientRect().width;
     } else {
-      x = treeRect.right;
+      x = treeX + treeRect.width;
     }
 
     birdDiv.style.left = `${x}px`;

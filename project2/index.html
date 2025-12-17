@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="./styles/typography.css" />
   </head>
   <body>
-    <main>
-      <div class="grain-texture"></div>
+    <div class="ui">
       <div id="enter-overlay">
         <p>Turn your sound up for the best experience</p>
         <button id="enter-button">
@@ -130,15 +129,6 @@
 
         <button id="sound-button"></button>
       </div>
-      <div id="trees-far-1" class="ascii"></div>
-      <div id="trees-far-2" class="ascii"></div>
-
-      <div id="trees-mid-1" class="ascii"></div>
-      <div id="trees-mid-2" class="ascii"></div>
-
-      <div id="trees-near" class="ascii"></div>
-
-      <div id="pond" class="ascii"></div>
       <div id="bird-overlay" style="display: none">
         <div id="bird-modal">
           <div class="modal-top">
@@ -149,9 +139,7 @@
             <button id="modal-close-button">Return to Scene</button>
           </div>
 
-          <div class="modal-image">
-            <img id="modal-img" />
-          </div>
+          <img id="modal-img" />
 
           <div class="modal-bottom">
             <div class="modal-details">
@@ -457,6 +445,18 @@
           <p>Typeset in Proto Mono and Geist Mono.</p>
         </section>
       </div>
+    </div>
+    <main id="scene">
+      <div class="grain-texture"></div>
+      <div id="trees-far-1" class="ascii"></div>
+      <div id="trees-far-2" class="ascii"></div>
+
+      <div id="trees-mid-1" class="ascii"></div>
+      <div id="trees-mid-2" class="ascii"></div>
+
+      <div id="trees-near" class="ascii"></div>
+
+      <div id="pond" class="ascii"></div>
     </main>
     <script type="module" src="./script.js"></script>
   </body>
