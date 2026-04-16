@@ -1,2 +1,3 @@
 # awang1245.github.io
-For GRAPH 3237: Web as Medium 1
+GRAPH 3237: Web as Medium 1
+DATA 1500: Data Visualization
