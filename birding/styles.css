@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+img,
+p,
+h1,
+h2,
+.divider {
+  width: 100%;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+  display: block;
+  padding: 15px 0px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Crimson Text";
+}
+
+p.name {
+  font-family: "Roboto";
+  font-size: 16px;
+  margin-top: 4px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h1,
+h2 {
+  font-family: "Roboto";
+}
+
+.divider {
+  height: 2px;
+  background-color: #0868ac;
+  margin: 16px auto;
+}
